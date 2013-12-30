@@ -42,6 +42,12 @@ exports.signout = function(req, res) {
 };
 
 /**
+ *
+ * @param req
+ * @param res
+ */
+
+/**
  * Session
  */
 exports.session = function(req, res) {
@@ -74,7 +80,7 @@ exports.create = function(req, res, next) {
         }
         req.logIn(user, function(err) {
             if (err) return next(err);
-            return res.redirect('/');
+            return res.jsonp(user);
         });
     });
 };

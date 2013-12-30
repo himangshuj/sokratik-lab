@@ -1,6 +1,13 @@
 extends layouts/default
-
 block content
-  section(data-ng-view)
-  script(type="text/javascript").
-    window.user = !{user};
+    div(class="topbar")
+        div(class="logo") Sokratik
+        div(class="menu")
+            a(ui-sref="login",ng-hide="logged") Log In
+            a(href="/logout",ng-show="logged") Log Out
+    div(ui-view="root")
+    div(class="show-case",ng-show="showCase")
+        div Sample presentation 1
+        div Sample presentation 2
+        div Sample presentation 3
+        div Sample presentation 4

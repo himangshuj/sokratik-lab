@@ -1,0 +1,15 @@
+<div class="listing-main">
+    <div ng-repeat="presentation in presentations">
+        <div ng-class="presentation.class">
+            <h1>{{presentation.title}}</h1>
+            <div class="subtitle">
+                {{presentation.subtitle}}
+            </div>
+            <a href="/create" ng-class="presentation.link.class">
+                 Edit
+            </a>
+        </div>
+    </div>
+
+
+</div>

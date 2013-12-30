@@ -1,0 +1,45 @@
+<div class="signin-main">
+    <h1>
+        Sign in
+    </h1>
+    <div class="signin-info">
+        <div class="flat-form">
+            <form>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="Email"  ng-model="email"/>
+                    </li>
+                    <li>
+                        <input type="password" placeholder="Password" ng-model="password"/>
+                    </li>
+                    <li>
+                        <a class="btn btn-small btn-2 btn-2c"  style="float:left;margin-left: 0px" ng-click="login()">
+                            Log in
+                        </a>
+                        <a class="btn btn-small btn-2 btn-2c"  style="float:left;margin-left: 0px" ng-click="createUser()">
+                            Sign Up
+                        </a>
+                    </li>
+                </ul>
+            </form>
+
+        </div>
+    </div>
+    <div class="signin-social">
+        <div class="color-green background-color-inherit">
+            <a class="btn btn-3 btn-3d fa-facebook" href="/auth/facebook">
+                Login with facebook
+            </a>
+        </div>
+        <div class="color-green background-color-inherit">
+            <a class="btn btn-3 btn-3d fa-google-plus" style="padding-right: 68px" href="/auth/google">
+                Login with google plus
+            </a>
+        </div>
+        <div class="color-green background-color-inherit">
+            <a class="btn btn-3 btn-3d fa-google-plus" style="padding-right: 68px" href="/auth/twitter">
+                Login with twitter
+            </a>
+        </div>
+    </div>
+</div>

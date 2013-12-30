@@ -1,9 +1,10 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        staticRoot: (grunt.option('static') || 'public'),
         watch: {
             jade: {
                 files: ['app/views/**'],
@@ -12,12 +13,13 @@ module.exports = function(grunt) {
                 },
             },
             js: {
-                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
-                tasks: ['jshint'],
+                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'test/**/*.js','assets/js/**/*.js'],
+                tasks: ['jshint','copy'],
                 options: {
                     livereload: true,
                 },
             },
+
             html: {
                 files: ['public/views/**'],
                 options: {
@@ -33,7 +35,7 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: {
-                src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
+                src: ['gruntfile.js', 'server.js', 'app/**/*.js'],
                 options: {
                     jshintrc: true
                 }
@@ -76,7 +78,44 @@ module.exports = function(grunt) {
             unit: {
                 configFile: 'test/karma/karma.conf.js'
             }
+        },
+        copy: {
+            lib: {
+                dest: '<%= staticRoot %>/js/lib/',
+                src: ['angular/angular.js',
+                    'angular-bootstrap/ui-bootstrap-tpls.js' ,
+                    'angular-ui-router/release/angular-ui-router.js',
+                    'underscore/underscore.js'],
+                filter: 'isFile',
+                cwd: 'vendor',
+                flatten: true,
+                expand: true
+            },
+            assets: {
+                dest: '<%= staticRoot %>/js/assets/',
+                src: ['**/*.js', '!**/*.spec.js'],
+                filter: 'isFile',
+                cwd: 'assets/js',
+                flatten: false,
+                expand: true
+            }
+
+        },
+        html2js: {
+            /**
+             * These are the templates from `src/app`.
+             */
+            app: {
+                options: {
+                    base: 'assets/js/app'
+                },
+                src: [ 'assets/js/app/**/*.tpl.html' ],
+                dest: 'public/js/templates-app.js'
+            }
+
+
         }
+
     });
 
     //Load NPM tasks 
@@ -87,12 +126,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-env');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-html2js');
+
+
 
     //Making grunt default to force in order not to break the project.
     grunt.option('force', true);
 
     //Default task(s).
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'copy' ,'html2js', 'concurrent']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
