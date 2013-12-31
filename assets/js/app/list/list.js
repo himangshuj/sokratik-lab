@@ -2,7 +2,8 @@
     ng.module(app, [
             'ui.router',
             'templates-app'    ,
-            'sokratik.lab.user.services'
+            'sokratik.lab.user.services',
+            'sokratik.lab.presentation.services'
         ])
 
     /**
@@ -21,13 +22,9 @@
                     }
                 },
                 resolve: {
-                    presentations: [function () {
+                    presentations: ['presentationService',function (presentationService) {
                         //noinspection JSValidateTypes
-                        return [
-                            {title: 'Add New', subtitle: '30/12/13', class: 'css', link: {css: 'linkcss'}},
-                            {title: 'Created By Me', subtitle: '30/12/13', class: 'css', link: {css: 'linkcss'}}
-
-                        ];//dummy
+                        return presentationService.presentations();
                     }]
                 },
                 parent: 'root'

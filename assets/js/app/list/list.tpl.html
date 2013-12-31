@@ -1,11 +1,18 @@
 <div class="listing-main">
+
+    <div class="color-dark-gray tile">
+        <a class="btn btn-7 btn-7g btn-icon-only fa-plus"  ui-sref="create({})">
+            Create a new presentation
+        </a>
+    </div>
     <div ng-repeat="presentation in presentations">
         <div ng-class="presentation.class">
             <h1>{{presentation.title}}</h1>
             <div class="subtitle">
                 {{presentation.subtitle}}
+
             </div>
-            <a href="/create" ng-class="presentation.link.class">
+            <a ui-sref="create({presentationId : presentation.id})" >
                  Edit
             </a>
         </div>

@@ -5,15 +5,15 @@ describe('ListCtrl', function () {
 
         beforeEach(module('sokratik.lab.list'));
 
-        beforeEach(inject(function ($controller, _$location_, $rootScope,userService) {
+        beforeEach(inject(function ($controller, _$location_, $rootScope) {
             $location = _$location_;
             $scope = $rootScope.$new();
-            var dummyPresentations = [
+            var dummyPresentations = {data: [
                 {title: 'Add New', subtitle: '30/12/13', class: 'css', link: {css: 'linkcss'}},
                 {title: 'Created By Me', subtitle: '30/12/13', class: 'css', link: {css: 'linkcss'}}
 
-            ];
-            ListCtrl = $controller('ListCtrl', { $location: $location, $scope: $scope ,presentations:dummyPresentations});
+            ]};
+            ListCtrl = $controller('ListCtrl', { $location: $location, $scope: $scope, presentations: dummyPresentations});
 
         }));
 

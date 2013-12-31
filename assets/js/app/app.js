@@ -2,7 +2,8 @@
     'use strict';
     ng.module(app, ['ui.router',
             'sokratik.lab.home',
-            'sokratik.lab.login'])
+            'sokratik.lab.login',
+            'sokratik.lab.create'])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 $urlRouterProvider.otherwise('/home');
@@ -14,7 +15,7 @@
                             return userService.loggedUser();
                         }],
                         logged: ['loggedUser', '$rootScope', function (loggedUser, $rootScope) {
-                            $rootScope.logged = !_.isEqual(loggedUser,'null');
+                            $rootScope.logged = !_.isEqual(loggedUser, 'null');
                             return $rootScope.logged;
                         }]
 

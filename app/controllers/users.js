@@ -59,6 +59,7 @@ exports.session = function(req, res) {
  */
 exports.create = function(req, res, next) {
     var user = new User(req.body);
+    user.username = user.username || user.email;
     var message = null;
 
     user.provider = 'local';

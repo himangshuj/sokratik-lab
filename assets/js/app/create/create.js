@@ -1,3 +1,4 @@
+'use strict';
 (function (ng, app) {
     ng.module(app, [
             'ui.router',
@@ -21,9 +22,13 @@
                     }
                 },
                 resolve: {
-                    presentation: ['$stateParams','presentation',function ($stateParams) {
-                        //noinspection JSValidateTypes
-                        return
+                    presentation: ['$stateParams', 'presentationService', function ($stateParams, presentationService) {
+                        if (($stateParams.presentationId || "").length > 0) {
+                            return presentationService.fetchPresentation($stateParams.presentationId);
+                        }else{
+                            presentationService.createNew();
+                        }
+
                     }]
                 },
                 parent: 'root'
@@ -35,6 +40,6 @@
      */
         .controller('CreateCtrl', ['$scope', 'presentation', '$rootScope', function ($scope, presentation, $rootScope) {
             $rootScope.showCase = false;
-            $scope.presentations = presentation;
+            $scope.presentation = presentation;
         }]);
 })(angular, 'sokratik.lab.create');
