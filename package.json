@@ -39,6 +39,7 @@
     "grunt-env": "latest",
     "grunt-contrib-copy": "~0.5.0",
     "html2js": "0.0.2",
+    "knox": "0.8.8",
     "grunt-html2js": "~0.2.3"
   },
   "devDependencies": {

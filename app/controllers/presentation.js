@@ -1,8 +1,47 @@
 'use strict';
 var mongoose = require('mongoose'),
     _ = require('../../vendor/underscore/underscore'),
-    Presentation = mongoose.model('Presentation');
+    Presentation = mongoose.model('Presentation'),
+    knox = require('knox'),
+    config = require('../../config/config');
 
+if (!!config.s3) {
+    var s3Client = knox.createClient({
+        key: config.s3.ACCESS_KEY,
+        secret: config.s3.SECRET,
+        bucket: config.s3.BUCKET
+    });
+}
+
+function s3AudioLocation(prefix, answerId) {
+    return (config.s3.AUDIOLOCATION_PREFIX + prefix + '/' + answerId + '.ogg');
+}
+
+function resolveAudioLocation(presentation, answerId, callback) {
+    if (!!s3Client) {
+        s3Client.head('/auphonic/' + answerId + '.ogg').on('response',function (res) {
+            if (res.statusCode == 200) {
+                callback(s3AudioLocation('auphonic', answerId), presentation);
+            } else {
+                s3Client.head('/sokratik-post-processor/' + answerId + '.ogg').on('response',function (res) {
+                    if (res.statusCode == 200) {
+                        callback(s3AudioLocation('sokratik-post-processor', answerId), presentation);
+                    } else {
+                        s3Client.head('/raw-recordings/' + answerId + '.ogg').on('response',function (res) {
+                            if (res.statusCode == 200) {
+                                callback(s3AudioLocation('raw-recordings', answerId), presentation);
+                            } else {
+                                callback("/recordings/" + answerId + ".ogg", presentation);
+                            }
+                        }).end();
+                    }
+                }).end();
+            }
+        }).end();
+    } else {
+        callback("/recordings/" + answerId + ".ogg", presentation);
+    }
+}
 
 exports.all = function (req, res) {
     if (req.user) {
@@ -86,7 +125,10 @@ exports.savePresentation = function (req, res) {
 
 };
 exports.show = function (req, res) {
-    res.jsonp(req.presentation);
+    var renderCallback = function (audioLocation, presentation) {
+        presentation.audioLocation = audioLocation;
+        res.jsonp(presentation);
+    };
+
+        resolveAudioLocation(req.presentation, req.presentation._id, renderCallback);
 };
-
-
