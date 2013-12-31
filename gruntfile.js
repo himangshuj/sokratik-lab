@@ -13,8 +13,15 @@ module.exports = function (grunt) {
                 },
             },
             js: {
-                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'test/**/*.js','assets/js/**/*.js'],
-                tasks: ['jshint','copy'],
+                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'test/**/*.js', 'assets/js/**/*.js'],
+                tasks: ['jshint', 'copy'],
+                options: {
+                    livereload: true,
+                },
+            },
+            tpls: {
+                files: ['assets/js/**/*.html'],
+                tasks: ['html2js'],
                 options: {
                     livereload: true,
                 },
@@ -85,7 +92,10 @@ module.exports = function (grunt) {
                 src: ['angular/angular.js',
                     'angular-bootstrap/ui-bootstrap-tpls.js' ,
                     'angular-ui-router/release/angular-ui-router.js',
-                    'underscore/underscore.js'],
+                    'angular-resource/angular-resource.js',
+                    'angular-sanitize/angular-sanitize.js',
+                    'underscore/underscore.js',
+                    'underscore.string/lib/underscore.string.js'],
                 filter: 'isFile',
                 cwd: 'vendor',
                 flatten: true,
@@ -97,6 +107,24 @@ module.exports = function (grunt) {
                 filter: 'isFile',
                 cwd: 'assets/js',
                 flatten: false,
+
+                expand: true
+            },
+
+            atelierApp: {
+                dest: '<%= staticRoot %>/js/atelier/app',
+                src: ['**/*.js', '!**/*.spec.js'],
+                filter: 'isFile',
+                cwd: 'atelier/src/app',
+                flatten: false,
+                expand: true
+            },
+            atelierCommon: {
+                dest: '<%= staticRoot %>/js/atelier/common',
+                src: ['**/*.js', '!**/*.spec.js'],
+                filter: 'isFile',
+                cwd: 'atelier/src/common',
+                flatten: false,
                 expand: true
             }
 
@@ -105,15 +133,41 @@ module.exports = function (grunt) {
             /**
              * These are the templates from `src/app`.
              */
-            app: {
+            lab: {
                 options: {
                     base: 'assets/js/app'
                 },
                 src: [ 'assets/js/app/**/*.tpl.html' ],
+                dest: 'public/js/templates-lab.js'
+            },
+            app: {
+                options: {
+                    base: 'atelier/src/app'
+                },
+                src: [ 'atelier/src/app/**/*.tpl.html' ],
                 dest: 'public/js/templates-app.js'
+            },
+            common: {
+                options: {
+                    base: 'atelier/src/common'
+                },
+                src: [ 'atelier/src/common/**/*.tpl.html' ],
+                dest: 'public/js/templates-common.js'
             }
 
 
+        },
+        less:{
+            development: {
+                options: {
+                    paths: ["atelier/src/less"],
+                    ieCompat:false,
+                    strictImports: true,
+                },
+                files: {
+                    "public/css/atelier.css": "atelier/src/less/main.less"
+                }
+            }
         }
 
     });
@@ -128,14 +182,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-html2js');
-
+    grunt.loadNpmTasks('grunt-contrib-less');
 
 
     //Making grunt default to force in order not to break the project.
     grunt.option('force', true);
 
     //Default task(s).
-    grunt.registerTask('default', ['jshint', 'copy' ,'html2js', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'copy' , 'html2js', 'concurrent']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

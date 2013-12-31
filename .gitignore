@@ -9,6 +9,6 @@ test/coverage/
 assets/vendor/
 public/js/assets/
 public/js/lib/
-public/js/templates-app.js
+public/js
 vendor/
 

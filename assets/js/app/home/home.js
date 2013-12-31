@@ -1,9 +1,9 @@
 (function (ng, app) {
     ng.module(app, [
             'ui.router',
-            'templates-app'    ,
             'sokratik.lab.user.services',
-            'sokratik.lab.list'
+            'sokratik.lab.list',
+            'templates-lab'
         ])
 
     /**
@@ -28,7 +28,7 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('HomeCtrl', ['$scope', '$state', function HomeController($scope,  $state) {
+        .controller('HomeCtrl', ['$scope', '$state', function HomeController($scope, $state) {
             $scope.showCase = true;
 
 

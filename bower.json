@@ -1,16 +1,17 @@
 {
-    "name": "sokratik-trial",
-    "version": "0.1.0",
-    "dependencies": {
-        "angular-bootstrap": "0.7.0",
-        "angular-ui-utils": "0.0.4" ,
-        "bootstrap": "3.0.0",
-        "angular": "~1.2.1",
-        "angular-resource": "~1.2.1",
-        "angular-ui-router": "~0.2.0",
-        "angular-cookies": "~1.2.1",
-        "angular-bootstrap": "~0.6.0",
-        "angular-ui-utils": "~0.0.4",
-        "underscore": "~1.5.2"
-    }
+  "name": "sokratik-trial",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "~1.2.6",
+    "angular-resource": "~1.2.6",
+    "angular-mocks": "~1.2.6",
+    "underscore": "~1.5.2",
+    "angular-ui-router": "~0.2.7",
+    "angular-cookies": "~1.2.6",
+    "angular-bootstrap": "~0.9.0",
+    "angular-sanitize": "~1.2.6",
+    "angular-ui-utils": "~0.1.0",
+    "underscore.string": "~2.3.3",
+    "angular-animate": "~1.2.6"
+  }
 }

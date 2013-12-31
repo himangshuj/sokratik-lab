@@ -7,7 +7,7 @@
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 $urlRouterProvider.otherwise('/home');
-                $locationProvider.html5Mode(true);
+               // $locationProvider.html5Mode(true);
                 $stateProvider.state('root', {
                     abstract: true,
                     resolve: {

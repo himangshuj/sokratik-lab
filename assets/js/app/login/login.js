@@ -2,7 +2,7 @@
     'use strict';
     ng.module(app, [
             'ui.router',
-            'templates-app',
+            'templates-lab',
             'sokratik.lab.user.services'
         ])
         .config(function config($stateProvider) {

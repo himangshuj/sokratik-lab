@@ -1,7 +1,7 @@
 (function (ng, app) {
     ng.module(app, [
             'ui.router',
-            'templates-app'    ,
+            'templates-lab',
             'sokratik.lab.user.services',
             'sokratik.lab.presentation.services'
         ])
@@ -22,7 +22,7 @@
                     }
                 },
                 resolve: {
-                    presentations: ['presentationService',function (presentationService) {
+                    presentations: ['presentationService', function (presentationService) {
                         //noinspection JSValidateTypes
                         return presentationService.presentations();
                     }]

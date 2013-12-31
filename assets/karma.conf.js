@@ -18,9 +18,24 @@ module.exports = function (config) {
             '../vendor/angular-ui-router/release/angular-ui-router.js',
             '../vendor/underscore/underscore.js',
             '../public/js/templates-app.js',
-            'vendor/angular-mocks/angular-mocks.js',
+            '../vendor/angular-mocks/angular-mocks.js',
+            '../vendor/angular-sanitize/angular-sanitize.min.js',
+            '../vendor/angular-cookies/angular-cookies.min.js',
+            '../vendor/angular-resource/angular-resource.min.js',
+            '../vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
+            '../vendor/angular-ui-router/release/angular-ui-router.js',
+            '../vendor/angular-ui-utils/ui-utils.js',
+            '../vendor/underscore/underscore-min.js',
+            '../vendor/underscore.string/dist/underscore.string.min.js',
+            '../vendor/angular-animate/angular-animate.min.js',
+            '../public/js/temp*.js' ,
+            '../vendor/angular-mocks/angular-mocks.js',
+            '../atelier/src/testingmocks/acoustics.spec.js',
+            '../atelier/src/common/**/*.js',
+            '../atelier/src/app/**/*.js',
             'js/**/*.js',
-            'js/**/*.spec.js'
+            'js/**/*.spec.js',
+
         ],
 
 
@@ -36,7 +51,7 @@ module.exports = function (config) {
 
 
         // web server port
-        port: 9876,
+        port: 9018,
 
 
         // enable / disable colors in the output (reporters and logs)

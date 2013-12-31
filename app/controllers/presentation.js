@@ -67,7 +67,7 @@ exports.create = function (req, res) {
  * Find presentation by id
  */
 exports.presentation = function (req, res, next, id) {
-    Presentation.find({_id: id}, function (err, presentation) {
+    Presentation.findOne({_id: id}, function (err, presentation) {
         if (err) return next(err);
         if (!presentation) return next(new Error('Failed to load presentation ' + id));
         req.presentation = presentation;

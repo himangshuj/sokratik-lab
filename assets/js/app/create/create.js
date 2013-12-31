@@ -3,7 +3,9 @@
     ng.module(app, [
             'ui.router',
             'templates-app'    ,
-            'sokratik.lab.presentation.services'
+            'sokratik.lab.presentation.services',
+            'sokratik.atelier.edit',
+            'templates-lab'
         ])
 
     /**

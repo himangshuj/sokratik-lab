@@ -1,0 +1,30 @@
+m.modal-body{
+    height:90%;
+    height: calc(100% - 130px);
+    height:-webkit-calc(100% - 150px);
+    height:-moz-calc(100% - 150px);
+    height:-o-calc(100% - 150px);
+}
+
+.part-image{
+    height:50%;
+    height:calc(100% - 7.7em);
+    height:-moz-calc(100% - 7.7em);
+    height:-o-calc(100% - 7.7em);
+    height:-webkit-calc(100% - 7.7em);
+}
+
+.part-image i{
+    font-size: calc(100% - 7.7em -3px);
+    font-size: -webkit-calc(100% - 7.7em -3px);
+    font-size: -moz-calc(100% - 7.7em -3px);
+    font-size: -o-calc(100% - 7.7em -3px);
+}
+.full-text{
+    margin-top:0.5em;
+    height:80%;
+    height:calc(100% - 3.1em);
+    height:-webkit-calc(100% - 3.1em);
+    height:-moz-calc(100% - 3.1em);
+    height:-o-calc(100% - 3.1em);
+}

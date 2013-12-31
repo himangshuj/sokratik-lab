@@ -3,13 +3,15 @@ if (process.env.NODE_ENV == 'development')
     script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
     //AngularJS
     script(type='text/javascript', src='/js/lib/angular.js')
-
+    script(type='text/javascript', src='/js/lib/angular-resource.js')
+    script(type='text/javascript', src='/js/lib/angular-sanitize.js')
     //Angular UI
     script(type='text/javascript', src='/js/lib/ui-bootstrap-tpls.js')
     script(type='text/javascript', src='/js/lib/angular-ui-router.js')
 
     //underscore
     script(type='text/javascript', src='/js/lib/underscore.js')
+    script(type='text/javascript', src='/js/lib/underscore.string.js')
 
     //APP
     script(type='text/javascript',src='/js/assets/app/app.js')
@@ -19,8 +21,21 @@ if (process.env.NODE_ENV == 'development')
     script(type='text/javascript',src='/js/assets/app/create/create.js')
     script(type='text/javascript',src='/js/assets/common/user/services.js')
     script(type='text/javascript',src='/js/assets/common/presentation/services.js')
-    script(type='text/javascript',src='/js/templates-app.js')
+    script(type='text/javascript',src='/js/templates-lab.js')
 
+    //atelier
+    script(type='text/javascript',src='/js/atelier/app/edit/edit.js')
+    script(type='text/javascript',src='/js/atelier/app/play/play.js')
+    script(type='text/javascript',src='/js/atelier/app/record/record.js')
+    script(type='text/javascript',src='/js/atelier/common/acoustics/services.js')
+    script(type='text/javascript',src='/js/atelier/common/apollo/services.js')
+    script(type='text/javascript',src='/js/atelier/common/apollo/directives.js')
+    script(type='text/javascript',src='/js/atelier/common/istari/services.js')
+    script(type='text/javascript',src='/js/atelier/common/minerva/directives.js')
+    script(type='text/javascript',src='/js/atelier/common/minerva/services.js')
+    script(type='text/javascript',src='/js/atelier/common/sokratube/services.js')
+    script(type='text/javascript',src='/js/templates-app.js')
+    script(type='text/javascript',src='/js/templates-common.js')
 
 
 
