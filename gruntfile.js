@@ -95,7 +95,9 @@ module.exports = function (grunt) {
                     'angular-resource/angular-resource.js',
                     'angular-sanitize/angular-sanitize.js',
                     'underscore/underscore.js',
-                    'underscore.string/lib/underscore.string.js'],
+                    'angular-animate/angular-animate.js',
+                    'underscore.string/lib/underscore.string.js',
+                    '../node_modules/binaryjs/dist/binary.js'],
                 filter: 'isFile',
                 cwd: 'vendor',
                 flatten: true,
@@ -157,15 +159,15 @@ module.exports = function (grunt) {
 
 
         },
-        less:{
+        less: {
             development: {
                 options: {
-                    paths: ["atelier/src/less"],
-                    ieCompat:false,
+                    paths: ['atelier/src/less'],
+                    ieCompat: false,
                     strictImports: true,
                 },
                 files: {
-                    "public/css/atelier.css": "atelier/src/less/main.less"
+                    'public/css/atelier.css': 'atelier/src/less/main.less'
                 }
             }
         }
@@ -189,7 +191,7 @@ module.exports = function (grunt) {
     grunt.option('force', true);
 
     //Default task(s).
-    grunt.registerTask('default', ['jshint', 'copy' , 'html2js', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'copy' , 'html2js', 'less', 'concurrent']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

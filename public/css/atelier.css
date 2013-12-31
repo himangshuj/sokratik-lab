@@ -1,4 +1,3 @@
-@import "/css/hacks/modal.css";
 /*Building-block less files*/
 .clearfix:before,
 .clearfix:after {
@@ -1545,7 +1544,7 @@ textarea.input-lg {
 }
 .modal-header {
   height: 60px;
-  margin: 0px;
+  margin: 0 px;
   padding: 0px 0px 0px 35px;
 }
 .modal-body {
@@ -1589,10 +1588,9 @@ body {
 }
 body {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: white;
+  background: #ffffff;
   color: #333333;
   font-weight: lighter;
-  font-size: 200%;
   overflow: hidden;
   font-size: 36px;
 }
@@ -1654,14 +1652,13 @@ body {
   font-size: 1em;
 }
 .simple p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
 }
 .full-image {
   background-position: 0px 0px;
   background-repeat: repeat-x;
-  width: 100%;
   height: 100%;
+  width: 100%;
   animation: animatedBackground 25s linear infinite;
   -webkit-animation: animatedBackground 25s linear infinite;
 }
@@ -1691,6 +1688,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: 100%;
+  max-height: 300px;
 }
 .part-image .caption-holder {
   position: absolute;
@@ -1726,33 +1724,40 @@ body {
 }
 .control-bar-left {
   position: absolute;
-  left: 0px;
+  right: 0px;
   top: 30%;
   text-align: left;
 }
 .image-button-left {
   position: absolute;
-  right: 0px;
   top: 20%;
+  right: 0px;
   margin-right: -25px;
-  border: none;
+}
+.image-button-left:hover {
+  right: 0px;
 }
 .image-button-left:active {
-  top: 20% !important;
-  right: 1px;
   left: inherit !important;
+  top: 20% !important;
+  right: 1px !important;
 }
 .image-button-right {
   position: absolute;
-  right: 0px;
   top: 0px;
+  right: 20px;
   margin-right: -25px;
+  z-index: 100;
+  background-color: transparent !important;
   border: none;
 }
+.image-button-right:hover {
+  right: 20px;
+}
 .image-button-right:active {
-  top: 0px;
-  right: 1px;
   left: inherit !important;
+  top: 0px !important;
+  right: 20px !important;
 }
 .image-buttons {
   visibility: hidden;
@@ -1764,7 +1769,7 @@ body {
   top: 50%;
   margin-top: -100px;
   height: 200px;
-  width: 40px;
+  width: 80px;
   border: none;
   position: absolute;
   text-shadow: none !important;
@@ -1796,14 +1801,9 @@ body {
 }
 .button-delete {
   position: absolute;
-  top: 75px;
+  top: 100px;
   right: -92px;
   border: none;
-  /*
-    *{
-      vertical-align:baseline;
-    }
-  */
 }
 .button-delete:hover {
   right: 0px;
@@ -1813,34 +1813,10 @@ body {
   top: 76px !important;
   right: 0px !important;
 }
-.button-app {
-  position: absolute;
-  top: 100px;
-  right: 100px;
-  border: none;
-}
-.button-app:active {
-  left: inherit !important;
-  top: 100px !important;
-  right: 100px !important;
-}
 .button-record {
   position: absolute;
   top: 4px;
   right: -142px;
-  /*
-    border:none;
-    *{
-      vertical-align:baseline;
-    }
-  */
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
 }
 .button-record:hover {
   right: 0px;
@@ -1854,19 +1830,6 @@ body {
   position: absolute;
   top: 4px;
   right: -63px;
-  /*
-    border:none;
-    *{
-      vertical-align:baseline;
-    }
-  */
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
 }
 .button-complete:hover {
   right: 0px;
@@ -1879,82 +1842,54 @@ body {
 .button-top-left-0 {
   position: absolute;
   top: 4px;
-  left: 50px;
+  left: 90px;
   border: none;
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
+}
+.button-top-left-0:active {
+  left: 104px !important;
+  top: 5px !important;
 }
 .button-top-left-0 * {
   vertical-align: baseline;
 }
-.button-top-left-0:active {
-  left: 49px !important;
-  top: 5px !important;
-}
 .button-top-left-1 {
   position: absolute;
   top: 4px;
-  left: 105px;
+  left: 10px;
   border: none;
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
+}
+.button-top-left-1:active {
+  left: 10px !important;
+  top: 5px !important;
 }
 .button-top-left-1 * {
   vertical-align: baseline;
 }
-.button-top-left-1:active {
-  left: 104px !important;
-  top: 5px !important;
-}
 .button-top-left-2 {
   position: absolute;
   top: 4px;
-  left: 153px;
+  left: 200px;
   border: none;
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
+}
+.button-top-left-2:active {
+  left: 200px !important;
+  top: 5px !important;
 }
 .button-top-left-2 * {
   vertical-align: baseline;
-}
-.button-top-left-2:active {
-  left: 152px !important;
-  top: 5px !important;
 }
 .button-bottom-left {
   position: absolute;
   top: 4px;
   left: 104px;
   border: none;
-  /*
-    &:hover{
-      &:after{
-        content:"Go to record mode";
-      }
-    }
-  */
-}
-.button-bottom-left * {
-  vertical-align: baseline;
 }
 .button-bottom-left:active {
   left: 103px !important;
   top: 5px !important;
+}
+.button-bottom-left * {
+  vertical-align: baseline;
 }
 div[contenteditable=true],
 span[contenteditable=true] {
@@ -2125,6 +2060,77 @@ span[contenteditable=true]:focus {
 video {
   margin-top: -50px;
 }
+.img-modal-close {
+  float: right;
+  color: #000;
+  cursor: pointer;
+}
+.blink_me {
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@-moz-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+.record-blink {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #fa5f5f;
+  z-index: 1000;
+}
+.image-add-top,
+.image-youtube {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  color: #000;
+  cursor: pointer;
+}
+.image-youtube {
+  top: 50px;
+}
 .animated {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
@@ -2178,10 +2184,4 @@ video {
 }
 .master-view .fragment {
   opacity: 1;
-}
-.modal {
-  display: block;
-}
-.hide {
-  display: none;
 }

@@ -5,7 +5,7 @@
             'templates-app'    ,
             'sokratik.lab.presentation.services',
             'sokratik.atelier.edit',
-            'templates-lab'
+            'sokratik.atelier.record'
         ])
 
     /**
