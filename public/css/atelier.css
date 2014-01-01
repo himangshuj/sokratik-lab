@@ -1878,6 +1878,26 @@ body {
 .button-top-left-2 * {
   vertical-align: baseline;
 }
+.button-top-left-3 {
+  position: absolute;
+  top: 4px;
+  left: 201px;
+  border: none;
+  /*
+    &:hover{
+      &:after{
+        content:"Start drawing";
+      }
+    }
+  */
+}
+.button-top-left-3 * {
+  vertical-align: baseline;
+}
+.button-top-left-3:active {
+  left: 200px !important;
+  top: 5px !important;
+}
 .button-bottom-left {
   position: absolute;
   top: 4px;
@@ -2127,6 +2147,9 @@ video {
   z-index: 1000;
   color: #000;
   cursor: pointer;
+}
+.btn-light {
+  z-index: 1001;
 }
 .image-youtube {
   top: 50px;

@@ -69,6 +69,9 @@ module.exports = function (app, passport, auth) {
     app.post('/presentation', presentations.create);
     app.get('/presentation/:presentationId', presentations.show);
     app.put('/presentation/:presentationId', presentations.savePresentation);
+    app.get('/play/:presentationId', presentations.play);
+
+
 
     //Finish with setting up the articleId param
     app.param('presentationId', presentations.presentation);

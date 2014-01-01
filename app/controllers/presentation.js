@@ -31,7 +31,7 @@ function resolveAudioLocation(presentation, answerId, callback) {
                             if (res.statusCode == 200) {
                                 callback(s3AudioLocation('raw-recordings', answerId), presentation);
                             } else {
-                                callback("/recordings/" + answerId + ".ogg", presentation);
+                                callback('/recordings/' + answerId + '.ogg', presentation);
                             }
                         }).end();
                     }
@@ -39,7 +39,7 @@ function resolveAudioLocation(presentation, answerId, callback) {
             }
         }).end();
     } else {
-        callback("/recordings/" + answerId + ".ogg", presentation);
+        callback('/recordings/' + answerId + '.ogg', presentation);
     }
 }
 
@@ -50,7 +50,7 @@ exports.all = function (req, res) {
 
                 res.jsonp(_.map(presentations, function (presentation) {
                     var titleSlide = presentation.presentationData[0];
-                    return  _.extend({id:presentation._id},titleSlide.keyVals) ;
+                    return  _.extend({id: presentation._id}, titleSlide.keyVals);
                 }));
             } else {
                 res.jsonp([]);
@@ -84,7 +84,7 @@ exports.create = function (req, res) {
         presentationData: [
             {
                 templateName: 'title',
-                keyVals: {title:'What do you want to tell?'}
+                keyVals: {title: 'What do you want to tell?'}
             }
         ]
     };
@@ -110,7 +110,10 @@ exports.presentation = function (req, res, next, id) {
         if (err) return next(err);
         if (!presentation) return next(new Error('Failed to load presentation ' + id));
         req.presentation = presentation;
-        next();
+        resolveAudioLocation(req.presentation, req.presentation._id, function (audiolocation, presentation) {
+            req.presentation.audioLocation = audiolocation;
+            next();
+        });
     });
 };
 
@@ -125,10 +128,13 @@ exports.savePresentation = function (req, res) {
 
 };
 exports.show = function (req, res) {
-    var renderCallback = function (audioLocation, presentation) {
-        presentation.audioLocation = audioLocation;
-        res.jsonp(presentation);
-    };
+    res.jsonp(req.presentation);
+};
 
-        resolveAudioLocation(req.presentation, req.presentation._id, renderCallback);
+exports.play = function (req, res) {
+    res.render('play', {
+        presentation: JSON.stringify(req.presentation),
+        audioLocation: req.presentation.audioLocation
+
+    });
 };
