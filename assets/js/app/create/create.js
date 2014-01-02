@@ -5,7 +5,8 @@
             'templates-app'    ,
             'sokratik.lab.presentation.services',
             'sokratik.atelier.edit',
-            'sokratik.atelier.record'
+            'sokratik.atelier.record'    ,
+            'sokratik.atelier.player'
         ])
 
     /**
@@ -28,7 +29,7 @@
                         if (($stateParams.presentationId || "").length > 0) {
                             return presentationService.fetchPresentation($stateParams.presentationId);
                         }else{
-                            presentationService.createNew();
+                            return presentationService.createNew();
                         }
 
                     }]

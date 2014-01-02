@@ -20,18 +20,18 @@ function s3AudioLocation(prefix, answerId) {
 function resolveAudioLocation(presentation, answerId, callback) {
     if (!!s3Client) {
         s3Client.head('/auphonic/' + answerId + '.ogg').on('response',function (res) {
-            if (res.statusCode == 200) {
-                callback(s3AudioLocation('auphonic', answerId), presentation);
+            if (res.statusCode === 200) {
+                callback(s3AudioLocation('auphonic', answerId));
             } else {
                 s3Client.head('/sokratik-post-processor/' + answerId + '.ogg').on('response',function (res) {
-                    if (res.statusCode == 200) {
-                        callback(s3AudioLocation('sokratik-post-processor', answerId), presentation);
+                    if (res.statusCode === 200) {
+                        callback(s3AudioLocation('sokratik-post-processor', answerId));
                     } else {
                         s3Client.head('/raw-recordings/' + answerId + '.ogg').on('response',function (res) {
-                            if (res.statusCode == 200) {
-                                callback(s3AudioLocation('raw-recordings', answerId), presentation);
+                            if (res.statusCode === 200) {
+                                callback(s3AudioLocation('raw-recordings', answerId));
                             } else {
-                                callback('/recordings/' + answerId + '.ogg', presentation);
+                                callback('/recordings/' + answerId + '.ogg');
                             }
                         }).end();
                     }
@@ -39,7 +39,7 @@ function resolveAudioLocation(presentation, answerId, callback) {
             }
         }).end();
     } else {
-        callback('/recordings/' + answerId + '.ogg', presentation);
+        callback('/recordings/' + answerId + '.ogg');
     }
 }
 
@@ -110,7 +110,7 @@ exports.presentation = function (req, res, next, id) {
         if (err) return next(err);
         if (!presentation) return next(new Error('Failed to load presentation ' + id));
         req.presentation = presentation;
-        resolveAudioLocation(req.presentation, req.presentation._id, function (audiolocation, presentation) {
+        resolveAudioLocation(req.presentation, req.presentation._id, function (audiolocation) {
             req.presentation.audioLocation = audiolocation;
             next();
         });

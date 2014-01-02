@@ -1881,22 +1881,15 @@ body {
 .button-top-left-3 {
   position: absolute;
   top: 4px;
-  left: 201px;
+  left: 260px;
   border: none;
-  /*
-    &:hover{
-      &:after{
-        content:"Start drawing";
-      }
-    }
-  */
+}
+.button-top-left-3:active {
+  left: 260px !important;
+  top: 5px !important;
 }
 .button-top-left-3 * {
   vertical-align: baseline;
-}
-.button-top-left-3:active {
-  left: 200px !important;
-  top: 5px !important;
 }
 .button-bottom-left {
   position: absolute;

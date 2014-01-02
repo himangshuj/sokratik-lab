@@ -55,7 +55,7 @@ require('./config/routes')(app, passport, auth);
 
 //Start the app by listening on <port>
 var port = process.env.PORT || config.port;
-app.listen(port,"127.0.0.1");
+app.listen(port,'127.0.0.1');
 console.log('Express app started on port ' + port);
 
 //Initializing logger

@@ -69,7 +69,6 @@ module.exports = function (app, passport, auth) {
     app.post('/presentation', presentations.create);
     app.get('/presentation/:presentationId', presentations.show);
     app.put('/presentation/:presentationId', presentations.savePresentation);
-    app.get('/play/:presentationId', presentations.play);
 
 
 
@@ -89,6 +88,8 @@ module.exports = function (app, passport, auth) {
     app.get('/list', index.render);
     app.get('/create', index.render);
     app.get('/create/:presentationId', index.render);
+    app.get('/play/:presentationId', index.render);
+
 
 
 };
