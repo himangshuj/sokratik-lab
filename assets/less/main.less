@@ -1,0 +1,126 @@
+@import '../../vendor/bootstrap/less/variables';
+@import '../../vendor/bootstrap/less/mixins';
+@import 'buttons';
+
+html, body{
+  width:100%;
+  ul{
+    margin:0px;
+    padding:0px;
+  }
+}
+
+body{
+  font-family:'Open Sans';
+  margin:0px;
+  color:#FFF;
+  a{
+    text-decoration: none;
+  }
+}
+
+.no-border{
+  border:none !important;
+}
+.background-color-inherit{
+  background-color:inherit !important;
+}
+
+.color-red{
+  background-color: #f06060;
+  .btn-2{
+    .btn-2(#cb4e4e, #ab3c3c);
+  }
+  .btn-6{
+    .btn-6(#cb4e4e);
+  }
+  .btn-3{
+    .btn-3(#f06060,#cb4e4e,#ab3c3c);
+  }
+}
+
+
+.color-green{
+  background-color: #2ac56c;
+  .btn-2{
+    .btn-2(#17aa56, #119e4d);
+  }
+  .btn-3{
+    .btn-3(#17aa56, #119e4d, #119e4d);
+  }
+}
+
+.color-yellow{
+  background-color: #fcad26;
+  .btn-3{
+    .btn-3(#fcad26,#f29e0d,#f58500);
+  }
+}
+
+.color-blue{
+  background-color:#0e83cd;
+    .btn-3{
+    .btn-3(#5cbcf6, #49a7df,#0e83cd);
+  }
+}
+
+.color-gray{
+  background-color:#ecf0f1;
+}
+
+.color-purple{
+  background-color:#9e54bd;
+}
+
+.color-purple{
+  background-color:#9e54bd;
+}
+
+.color-dark-gray{
+  background-color: #CCCCCC;
+}
+
+.topbar{
+  padding:0.5em 2em 0.5em 2em;
+  font-size:2.4em;
+  font-weight:lighter;
+  .logo{
+    float:left;
+  }
+  .menu{
+    font-size:0.5em;
+    float:right;
+    margin-top: -0.75em;
+  }
+  a{
+    color:#FFFFFF;
+  }
+  .clearfix
+}
+
+.tile{
+  .make-xs-column(3,0px);
+  box-sizing: border-box;
+  text-align: center;
+  height:250px;
+  padding-top:125px;
+  h1{
+    color:#FFF;
+    font-weight: lighter;
+    padding-top:0px;
+    margin-top:-1.5em;
+    margin-bottom:0.2em;
+  }
+}
+
+.tile-footer{
+  border:2px solid #FFF;
+  padding-top:0px;
+  height:3.6em;
+}
+
+
+@import 'home/home';
+@import 'signin/signin';
+@import 'listing/listing';
+//@import '../../atelier/src/less/main';

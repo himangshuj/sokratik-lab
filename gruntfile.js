@@ -167,7 +167,7 @@ module.exports = function (grunt) {
                     strictImports: true,
                 },
                 files: {
-                    'public/css/atelier.css': 'atelier/src/less/main.less'
+                    'public/css/atelier.css': 'assets/less/main.less'
                 }
             }
         }
