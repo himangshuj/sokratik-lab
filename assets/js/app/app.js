@@ -23,7 +23,7 @@
                     },
                     views: {
                         'root': {
-                            template: '<div ui-view ="main"/>'
+                            template: '<div ui-view ="main" class="parent-height"/>'
                         }
                     }
 

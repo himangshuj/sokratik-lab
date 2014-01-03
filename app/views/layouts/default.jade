@@ -5,11 +5,10 @@ xmlns='http://www.w3.org/1999/xhtml'
 itemscope='itemscope',
 itemtype='http://schema.org/Product',
 ng-app='sokratik.lab.app',
-ng-controller='AppCtrl')
+ng-controller='AppCtrl',
+class="full-sized")
     include ../includes/head
-    body
-        section.content
-            section.container
-                block content
+    body(ng-class="{presentation: hideMenu }")
+        block content
         include ../includes/foot
 
