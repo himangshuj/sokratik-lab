@@ -23,7 +23,8 @@
                     },
                     views: {
                         'root': {
-                            template: '<div ui-view ="main" class="parent-height"/>'
+                            template: '<div ui-view ="main" class="parent-height"/>' ,
+                            controller:'AppCtrl'
                         }
                     }
 
@@ -33,6 +34,7 @@
 
         .controller('AppCtrl', ['$rootScope', function ($rootScope) {
             $rootScope.showCase = true;
+            $rootScope.hideMenu = false;
         }]);
 
 })(angular, 'sokratik.lab.app');

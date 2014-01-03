@@ -1,6 +1,6 @@
 extends layouts/default
 block content
-    div(class="color-red")
+    div(ng-class="{'color-red': hideMenu!= true}")
         div(class="topbar",ng-hide="hideMenu")
             div(class="logo")
                 a(ui-sref="home") sokratik
