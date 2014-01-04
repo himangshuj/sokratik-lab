@@ -33,8 +33,8 @@
             }])
 
         .controller('AppCtrl', ['$rootScope', function ($rootScope) {
-            $rootScope.showCase = true;
-            $rootScope.hideMenu = false;
+            $rootScope.presentationMode = false;
+            $rootScope.navigationMode = true;
         }]);
 
 })(angular, 'sokratik.lab.app');

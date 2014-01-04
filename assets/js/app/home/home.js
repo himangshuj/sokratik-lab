@@ -29,8 +29,6 @@
      * And of course we define a controller for our route.
      */
         .controller('HomeCtrl', ['$scope', '$state', function HomeController($scope, $state) {
-            $scope.showCase = true;
-
 
         }]);
 })(angular, 'sokratik.lab.home');

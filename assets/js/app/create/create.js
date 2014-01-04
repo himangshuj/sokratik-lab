@@ -41,8 +41,7 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('CreateCtrl', ['$scope', 'presentation', '$rootScope', function ($scope, presentation, $rootScope) {
-            $rootScope.showCase = false;
+        .controller('CreateCtrl', ['$scope', 'presentation', '$rootScope', function ($scope, presentation) {
             $scope.presentation = presentation;
         }]);
 })(angular, 'sokratik.lab.create');
