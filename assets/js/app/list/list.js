@@ -37,5 +37,7 @@
         .controller('ListCtrl', ['$scope', 'presentations', '$rootScope', function ($scope, presentations, $rootScope) {
             $rootScope.showCase = false;
             $scope.presentations = presentations;
+            $scope.colors=["color-green","color-yellow","color-purple"];
+            $scope.len= $scope.colors.length;
         }]);
 })(angular, 'sokratik.lab.list');
