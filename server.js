@@ -23,7 +23,7 @@ var config = require('./config/config'),
     mongoose = require('mongoose');
 
 //Bootstrap db connection
-var db = mongoose.connect(config.db.uri, config.db.options);
+var db = mongoose.connect(config.db);
 
 //Bootstrap models
 //Bootstrap models

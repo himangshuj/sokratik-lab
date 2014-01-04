@@ -9,7 +9,7 @@
             function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 $urlRouterProvider.otherwise('/home');
                 $locationProvider.html5Mode(true);
-                $stateProvider.state('root', {
+                $stateProvider.state('sokratik', {
                     abstract: true,
                     resolve: {
                         loggedUser: ['userService', function (userService) {
@@ -23,8 +23,8 @@
                     },
                     views: {
                         'root': {
-                            template: '<div ui-view ="main" class="parent-height"/>' ,
-                            controller:'AppCtrl'
+                            template: '<div ui-view ="main" class="parent-height"/>',
+                            controller: 'AppCtrl'
                         }
                     }
 

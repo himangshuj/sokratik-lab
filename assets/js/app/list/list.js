@@ -1,4 +1,6 @@
 (function (ng, app) {
+    console.log(app);
+
     ng.module(app, [
             'ui.router',
             'templates-lab',
@@ -11,9 +13,9 @@
      * will handle ensuring they are all available at run-time, but splitting it
      * this way makes each module more "self-contained".
      */
-        .config(function config($stateProvider) {
+        .config(['$stateProvider',function config($stateProvider) {
 
-            $stateProvider.state('list', {
+            $stateProvider.state('sokratik.list', {
                 url: '/list',
                 views: {
                     main: {
@@ -26,10 +28,9 @@
                         //noinspection JSValidateTypes
                         return presentationService.presentations();
                     }]
-                },
-                parent: 'root'
+                }
             });
-        })
+        }])
 
     /**
      * And of course we define a controller for our route.

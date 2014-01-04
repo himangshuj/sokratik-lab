@@ -11,19 +11,18 @@
      * will handle ensuring they are all available at run-time, but splitting it
      * this way makes each module more "self-contained".
      */
-        .config(function config($stateProvider) {
+        .config(['$stateProvider',function config($stateProvider) {
 
-            $stateProvider.state('home', {
+            $stateProvider.state('sokratik.home', {
                 url: '/home',
                 views: {
                     main: {
                         controller: 'HomeCtrl',
                         templateUrl: 'home/home.tpl.html'
                     }
-                },
-                parent: 'root'
+                }
             });
-        })
+        }])
 
     /**
      * And of course we define a controller for our route.
