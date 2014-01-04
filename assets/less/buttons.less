@@ -1,47 +1,105 @@
+.navigation{
+  .btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 
-.btn {
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background: none;
-  cursor: pointer;
-  padding: 25px 80px;
-  display: inline-block;
-  margin: 15px 30px;
-  outline: none;
-  position: relative;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
+  .btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
 
-.btn:after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
+  .btn:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.btn:before {
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-}
+  .btn-small{
+    padding:10px 30px;
+  }
+  /* Icon only style */
+  .btn-icon-only {
+    font-size: 0;
+    padding: 25px 30px;
+  }
 
-.btn-small{
-  padding:10px 30px;
+  .btn-icon-only:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 26px;
+    font-family: 'FontAwesome';
+    line-height: 54px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  /* Button 7 */
+  .btn-icon-create {
+    background: #17aa56;
+    color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px #119e4d;
+  }
+
+  /* Button 7g */
+  .btn-icon-createg:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    font-size: 26px;
+    font-family:'FontAwesome';
+    content: "\f067";
+    line-height: 54px;
+    color: #0a833d;
+    visibility: hidden;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+    opacity: 0;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+  }
+
+  .btn-icon-createg.btn-activated:after {
+    visibility: visible;
+    -webkit-animation: dropDownFade 0.5s forwards;
+    -moz-animation: dropDownFade 0.5s forwards;
+    animation: dropDownFade 0.5s forwards;
+  }
 }
 
 /*button 2*/
-.btn-2 (@color-bg,@color-border){
+.btn-pop-out (@color-bg,@color-border){
   background: @color-bg;
   color: #fff;
   box-shadow: 0 6px @color-border;
@@ -49,7 +107,7 @@
   -moz-transition: none;
   transition: none;
   /*button 2c*/
-  &.btn-2c {
+  &.btn-pop-outc {
     border-radius: 5px;
     &:hover {
       box-shadow: 0 4px @color-border;
@@ -63,7 +121,7 @@
 }
 
 /* Button 6 */
-.btn-6 (@color-border) {
+.btn-hollow (@color-border) {
   color: #fff;
   background: @color-border;
   -webkit-transition: none;
@@ -72,7 +130,7 @@
   &:active{
     top: 2px;
   }
-  &.btn-6b{
+  &.btn-hollowb{
     border: 4px solid @color-border;
     border-radius: 15px;
     &:hover{
@@ -83,7 +141,7 @@
 }
 
 /* Button 3 */
-.btn-3 (@color-bg,@color-border, @color-dark){
+.btn-social (@color-bg,@color-border, @color-dark){
   background: @color-bg;
   color: #fff;
   &:hover{
@@ -103,7 +161,7 @@
     width: 60px;
     font-family:'FontAwesome';
   }
-  &.btn-3d{
+  &.btn-sociald{
 /*
     padding: 25px 20px 25px 20px;
 */
@@ -137,65 +195,6 @@
       }
     }
   }
-}
-
-/* Icon only style */
-.btn-icon-only {
-  font-size: 0;
-  padding: 25px 30px;
-}
-
-.btn-icon-only:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 26px;
-  font-family: 'FontAwesome';
-  line-height: 54px;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-/* Button 7 */
-.btn-7 {
-  background: #17aa56;
-  color: #fff;
-  border-radius: 7px;
-  box-shadow: 0 5px #119e4d;
-}
-
-/* Button 7g */
-.btn-7g:after {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  font-size: 26px;
-  font-family:'FontAwesome';
-  content: "\f067";
-  line-height: 54px;
-  color: #0a833d;
-  visibility: hidden;
-  -webkit-transform: scale(2);
-  -moz-transform: scale(2);
-  -ms-transform: scale(2);
-  transform: scale(2);
-  opacity: 0;
-  -webkit-transition: none;
-  -moz-transition: none;
-  transition: none;
-}
-
-.btn-7g.btn-activated:after {
-  visibility: visible;
-  -webkit-animation: dropDownFade 0.5s forwards;
-  -moz-animation: dropDownFade 0.5s forwards;
-  animation: dropDownFade 0.5s forwards;
 }
 
 @-webkit-keyframes dropDownFade {
