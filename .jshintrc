@@ -31,10 +31,12 @@
         "after",
         "afterEach",
         "it",
+        "iit",
         "inject",
-        "expect"
+        "expect",
+        "angular",
+        "spyOn"
     ],
-    "indent": 4, // Specify indentation spacing
     "devel": true, // Allow development statements e.g. `console.log();`.
     "noempty": true // Prohibit use of empty blocks.
 }

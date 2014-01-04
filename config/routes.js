@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app, passport, auth) {
+module.exports = function (app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
@@ -9,13 +9,19 @@ module.exports = function(app, passport, auth) {
     app.get('/users/me', users.me);
 
     //Setting up the users api
-    app.post('/users', users.create);
+    app.post('/users/create', users.create);
 
     //Setting the local strategy route
     app.post('/users/session', passport.authenticate('local', {
         failureRedirect: '/signin',
         failureFlash: true
     }), users.session);
+
+    //Setting the local strategy ajax route
+    app.post('/users/login', passport.authenticate('local', {
+        failureRedirect: '/signin',
+        failureFlash: true
+    }), users.me);
 
     //Setting the facebook oauth routes
     app.get('/auth/facebook', passport.authenticate('facebook', {
@@ -58,22 +64,32 @@ module.exports = function(app, passport, auth) {
         failureRedirect: '/signin'
     }), users.authCallback);
 
+    var presentations = require('../app/controllers/presentation');
+    app.get('/presentations', presentations.all);
+    app.post('/presentation', presentations.create);
+    app.get('/presentation/:presentationId', presentations.show);
+    app.put('/presentation/:presentationId', presentations.savePresentation);
+
+
+
+    //Finish with setting up the articleId param
+    app.param('presentationId', presentations.presentation);
+
+
     //Finish with setting up the userId param
     app.param('userId', users.user);
 
-    //Article Routes
-    var articles = require('../app/controllers/articles');
-    app.get('/articles', articles.all);
-    app.post('/articles', auth.requiresLogin, articles.create);
-    app.get('/articles/:articleId', articles.show);
-    app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
-    app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
-
-    //Finish with setting up the articleId param
-    app.param('articleId', articles.article);
 
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
+    app.get('/home', index.render);
+    app.get('/login', index.render);
+    app.get('/list', index.render);
+    app.get('/create', index.render);
+    app.get('/create/:presentationId', index.render);
+    app.get('/play/:presentationId', index.render);
+
+
 
 };

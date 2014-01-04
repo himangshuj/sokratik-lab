@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://localhost/mean",
+    db: "mongodb://sokratik-trial:sokratik-trial@localhost:10000/sokratik-trial",
     app: {
         name: "Try Sokratik "
     },
@@ -24,5 +24,11 @@ module.exports = {
         clientID: "APP_ID",
         clientSecret: "APP_SECRET",
         callbackURL: "http://localhost:3000/auth/google/callback"
+    },
+    s3:{
+        ACCESS_KEY: "AKIAJ6Q7O3H2BK6ZGNGA",
+        SECRET: "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",
+        BUCKET: "sokratik-audio",
+        AUDIOLOCATION_PREFIX: "http://sokratik-audio.s3.amazonaws.com/"
     }
 }

@@ -1,0 +1,91 @@
+.customize-signin(@color-light,@color-dark){
+  .signin-main{
+    border-bottom: 0.8em solid @color-light;
+    .flat-form{
+      form{
+        input[type=text],input[type=password] {
+          color: @color-dark;
+          ::-webkit-input-placeholder {
+            color: @color-dark;
+          }
+          :-moz-placeholder {
+            /* Firefox 18- */
+            color: @color-dark;
+          }
+          ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: @color-dark;
+          }
+          :-ms-input-placeholder {
+            color: @color-dark;
+          }
+        }
+      }
+    }
+  }
+  .signin-main .signin-info{
+    border-right:1px solid @color-light;
+  }
+}
+
+.navigation{
+  .signin-main{
+    .make-row(0);
+    padding: 0em 4.8em 11.4em 4.8em;
+    text-align: center;
+    .signin-info{
+      .make-xs-column(6,0);
+      box-sizing: border-box;
+      padding-top:2em;
+      margin-top:-1em;
+      padding-bottom:2em;
+    }
+    .signin-social{
+      .make-xs-column(6,0);
+      box-sizing: border-box;
+    }
+    h1{
+      font-size: 2em;
+      font-weight: lighter;
+      text-align: left;
+      margin-top:0.0em;
+      margin-bottom: 1em;
+    }
+    .clearfix
+  }
+
+  .color-green{
+    .customize-signin(#119e4d,#2ac56c);
+  }
+
+  .color-red{
+    .customize-signin(#ab3c3c,#cb4e4e);
+  }
+
+  .flat-form {
+    form {
+      li {
+        list-style-type: none;
+        display: block;
+        width:100%;
+        float: left;
+        margin: 0;
+        padding: 0;
+      }
+      input[type=text], input[type=password], input[type=submit] {
+        font-family: 'Open Sans';
+      }
+      input[type=text],input[type=password] {
+        display: block;
+        width: 60%;
+        height: 40px;
+        margin-bottom: 2em;
+        padding-left: 15px;
+        background: #fff;
+        border: none;
+        outline: none;
+      }
+    }
+    .clearfix;
+  }
+}
