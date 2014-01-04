@@ -41,7 +41,8 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('CreateCtrl', ['$scope', 'presentation', '$rootScope', function ($scope, presentation) {
-            $scope.presentation = presentation;
+        .controller('CreateCtrl', ['$state', 'presentation', function ($state, presentation) {
+            $state.go('edit.template',{templateName:'title',presentationId : presentation._id,page: 0,images:0});
+
         }]);
 })(angular, 'sokratik.lab.create');

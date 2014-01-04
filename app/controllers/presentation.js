@@ -122,6 +122,8 @@ exports.savePresentation = function (req, res) {
 
     presentation = _.extend(presentation, req.body);
 
+    presentation.upDatedOn = new Date();
+
     presentation.save(function () {
         res.jsonp(presentation);
     });
