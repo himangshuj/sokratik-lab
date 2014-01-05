@@ -1,12 +1,12 @@
 {
-  "name": "mean",
-  "description": "MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).",
-  "version": "0.1.2",
-  "private": false,
-  "author": "Amos Haviv",
+  "name": "sokratik-labs",
+  "description": "Create html5 videos in a ziffy",
+  "version": "1.0.0",
+  "private": true,
+  "author": "himangshu hazarika",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linnovate/mean.git"
+    "url": "https://gitlab.com/sokratik/sokratik-lab.git"
   },
   "engines": {
     "node": "0.10.x",
@@ -18,20 +18,21 @@
     "postinstall": "node node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "express": "latest",
+    "express": "~3.4.7",
     "jade": "1.0.2",
-    "mongoose": "latest",
-    "connect-mongo": "latest",
-    "connect-flash": "latest",
-    "crypto": "latest",
-    "passport": "latest",
-    "passport-local": "latest",
-    "passport-facebook": "latest",
-    "passport-twitter": "latest",
-    "passport-github": "latest",
-    "passport-google-oauth": "latest",
-    "lodash": "latest",
-    "view-helpers": "latest",
+    "mongoose": "~3.8.3",
+    "redis": "~0.9.0",
+    "hiredis": "~0.1.15",
+    "connect-redis": "~1.4.5",
+    "connect-flash": "~0.1.1",
+    "crypto": "0.0.3",
+    "passport": "~0.1.18",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~1.0.2",
+    "passport-twitter": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "lodash": "~2.4.1",
+    "view-helpers": "~0.1.4",
     "mean-logger": "latest",
     "bower": "latest",
     "grunt": "latest",
@@ -40,7 +41,10 @@
     "grunt-contrib-copy": "~0.5.0",
     "html2js": "0.0.2",
     "knox": "0.8.8",
-    "grunt-html2js": "~0.2.3"
+    "grunt-html2js": "~0.2.3",
+    "supertest": "~0.8.2",
+    "should": "~2.1.1",
+    "grunt-contrib-uglify": "~0.2.7"
   },
   "devDependencies": {
     "supertest": "latest",

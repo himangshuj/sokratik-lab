@@ -1,0 +1,1 @@
+NODE_ENV=production forever start  -o /var/log/sokratik/sokratik.log --append -e /var/log/sokratik/sokratik-error.log  -l /var/log/sokratik/forever-sokratik.log -m 5 $PWD/server.js

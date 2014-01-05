@@ -11,7 +11,7 @@
      * will handle ensuring they are all available at run-time, but splitting it
      * this way makes each module more "self-contained".
      */
-        .config(function config($stateProvider) {
+        .config(['$stateProvider',function config($stateProvider) {
 
             $stateProvider.state('list', {
                 url: '/list',
@@ -27,9 +27,9 @@
                         return presentationService.presentations();
                     }]
                 },
-                parent: 'root'
+                parent:'root'
             });
-        })
+        }])
 
     /**
      * And of course we define a controller for our route.

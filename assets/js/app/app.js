@@ -2,14 +2,15 @@
     'use strict';
     ng.module(app, ['ui.router',
             'templates-lab',
+            'sokratik.lab.root',
             'sokratik.lab.home',
             'sokratik.lab.login',
             'sokratik.lab.create'])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 $urlRouterProvider.otherwise('/home');
-               // $locationProvider.html5Mode(true);
-                $stateProvider.state('root', {
+                $locationProvider.html5Mode(true);
+                $stateProvider.state('sokratik', {
                     abstract: true,
                     resolve: {
                         loggedUser: ['userService', function (userService) {
@@ -23,8 +24,8 @@
                     },
                     views: {
                         'root': {
-                            template: '<div ui-view ="main" class="parent-height"/>' ,
-                            controller:'AppCtrl'
+                            template: '<div ui-view ="main" class="parent-height"/>',
+                            controller: 'AppCtrl'
                         }
                     }
 

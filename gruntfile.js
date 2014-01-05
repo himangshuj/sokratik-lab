@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         },
         copy: {
             lib: {
-                dest: '<%= staticRoot %>/js/lib/',
+                dest: 'public/js/lib/',
                 src: ['angular/angular.js',
                     'angular-bootstrap/ui-bootstrap-tpls.js' ,
                     'angular-ui-router/release/angular-ui-router.js',
@@ -105,7 +105,7 @@ module.exports = function (grunt) {
                 expand: true
             },
             assets: {
-                dest: '<%= staticRoot %>/js/assets/',
+                dest: 'public/js/assets/',
                 src: ['**/*.js', '!**/*.spec.js'],
                 filter: 'isFile',
                 cwd: 'assets/js',
@@ -115,7 +115,7 @@ module.exports = function (grunt) {
             },
 
             atelierApp: {
-                dest: '<%= staticRoot %>/js/atelier/app',
+                dest: 'public/js/atelier/app',
                 src: ['**/*.js', '!**/*.spec.js'],
                 filter: 'isFile',
                 cwd: 'atelier/src/app',
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
                 expand: true
             },
             atelierCommon: {
-                dest: '<%= staticRoot %>/js/atelier/common',
+                dest: 'public/js/atelier/common',
                 src: ['**/*.js', '!**/*.spec.js'],
                 filter: 'isFile',
                 cwd: 'atelier/src/common',
@@ -168,11 +168,41 @@ module.exports = function (grunt) {
                     strictImports: true,
                 },
                 files: {
-                    'public/css/atelier.css': 'assets/less/main.less'
+                    'public/css/sokratik.css': 'assets/less/main.less'
+                }
+            },
+            production: {
+                options: {
+                    paths: ['atelier/src/less'],
+                    ieCompat: false,
+                    strictImports: true,
+                    compress: true,
+                    cleancss: true,
+                    report: 'gzip'
+                },
+                files: {
+                    '<%= staticRoot %>/css/sokratik.css': 'assets/less/main.less'
+                }
+            }
+        },
+        uglify: {
+
+            assets: {
+                options: {
+                    mangle: {
+                        except: ['angular', '_']
+                    },
+                    compress: true,
+                    sourceMap: '<%= staticRoot %>/js/sokratik-map.js',
+                    sourceMappingURL: '/js/sokratik-map.js'
+                },
+                files: {
+                    '<%= staticRoot %>/js/sokratik.js': ['public/js/templates*.js',
+                        'public/js/assets/**/*.js',
+                        'public/js/atelier/**/*.js']
                 }
             }
         }
-
     });
 
     //Load NPM tasks 
@@ -186,6 +216,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 
     //Making grunt default to force in order not to break the project.
@@ -193,6 +224,9 @@ module.exports = function (grunt) {
 
     //Default task(s).
     grunt.registerTask('default', ['jshint', 'copy' , 'html2js', 'less', 'concurrent']);
+
+    grunt.registerTask('compile', ['jshint', 'copy' , 'html2js', 'less', 'uglify']);
+
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

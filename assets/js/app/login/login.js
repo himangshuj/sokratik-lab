@@ -5,7 +5,7 @@
             'templates-lab',
             'sokratik.lab.user.services'
         ])
-        .config(function config($stateProvider) {
+        .config(['$stateProvider', function config($stateProvider) {
             $stateProvider.state('login', {
                 url: '/login',
                 views: {
@@ -15,13 +15,12 @@
                     }
                 }
             });
-        })
+        }])
 
     /**
      * And of course we define a controller for our route.
      */
         .controller('LoginCtrl', ['$scope', 'userService', '$state', function ($scope, userService, $state) {
-            $scope.showCase = true;
             $scope.login = function () {
                 userService.login($scope.email, $scope.password).then(function (resp) {
                     $state.go('list');
