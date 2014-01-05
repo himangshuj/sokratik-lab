@@ -190,7 +190,7 @@ module.exports = function (grunt) {
             assets: {
                 options: {
                     mangle: {
-                        except: ['angular', '_']
+                        except: ['angular', '_','BinaryClient']
                     },
                     compress: true,
                     sourceMap: '<%= staticRoot %>/js/sokratik-map.js',
