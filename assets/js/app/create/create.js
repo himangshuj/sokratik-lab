@@ -42,7 +42,7 @@
      * And of course we define a controller for our route.
      */
         .controller('CreateCtrl', ['$state', 'presentation', function ($state, presentation) {
-            $state.go('sokratik.edit.activate', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+            $state.go('edit.activate', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
 
         }]);
 })(angular, 'sokratik.lab.create');
