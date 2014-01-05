@@ -13,14 +13,15 @@
      */
         .config(['$stateProvider',function config($stateProvider) {
 
-            $stateProvider.state('sokratik.home', {
+            $stateProvider.state('home', {
                 url: '/home',
                 views: {
                     main: {
                         controller: 'HomeCtrl',
                         templateUrl: 'home/home.tpl.html'
                     }
-                }
+                },
+                parent:'root'
             });
         }])
 

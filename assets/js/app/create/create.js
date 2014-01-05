@@ -16,7 +16,7 @@
      */
         .config(['$stateProvider', function config($stateProvider) {
 
-            $stateProvider.state('sokratik.create', {
+            $stateProvider.state('create', {
                 url: '/create/:presentationId',
                 views: {
                     main: {
@@ -33,7 +33,8 @@
                         }
 
                     }]
-                }
+                },
+                parent:'root'
             });
         }])
 

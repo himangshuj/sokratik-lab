@@ -2,6 +2,7 @@
     'use strict';
     ng.module(app, ['ui.router',
             'templates-lab',
+            'sokratik.lab.root',
             'sokratik.lab.home',
             'sokratik.lab.login',
             'sokratik.lab.create'])

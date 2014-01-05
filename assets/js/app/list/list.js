@@ -1,6 +1,4 @@
 (function (ng, app) {
-    console.log(app);
-
     ng.module(app, [
             'ui.router',
             'templates-lab',
@@ -15,7 +13,7 @@
      */
         .config(['$stateProvider',function config($stateProvider) {
 
-            $stateProvider.state('sokratik.list', {
+            $stateProvider.state('list', {
                 url: '/list',
                 views: {
                     main: {
@@ -28,7 +26,8 @@
                         //noinspection JSValidateTypes
                         return presentationService.presentations();
                     }]
-                }
+                },
+                parent:'root'
             });
         }])
 
