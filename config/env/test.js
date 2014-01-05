@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://localhost/mean-test",
+    db: "mongodb://sokratik-lab-test:sokratik-lab-test@localhost:10000/sokratik-lab-test",
     port: 3001,
     app: {
         name: "MEAN - A Modern Stack - Test"

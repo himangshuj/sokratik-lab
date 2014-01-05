@@ -1,0 +1,15 @@
+doctype html
+html(lang='en',
+xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml',
+itemscope='itemscope',itemtype='http://schema.org/Product',
+ng-controller='AppCtrl')
+    include includes/head
+    body
+        block content
+            section(ui-view="main", class="full-height")
+                p Loading...
+            presentation(value=presentation)
+            audio(src= audioLocation,sokratik-audio-track="")
+            audio(src="//s3-ap-southeast-1.amazonaws.com/demo-answers-sg/Lantern/Happy-minute.mp3", sokratik-background-audio-track)
+        include includes/foot
+        script(type='text/javascript',src='/js/assets/app/play/play.js')

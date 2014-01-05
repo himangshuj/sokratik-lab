@@ -3,17 +3,23 @@
 /**
  * Module dependencies.
  */
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'test';
+
 var should = require('should'),
     mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    mongo = require('../../helpers/mongo')(),
+    user = require('../../../app/models/user')(mongoose);
+
+var User = mongoose.model('User');
 
 //Globals
 var user, user2;
 
 //The tests
-describe('<Unit Test>', function() {
-    describe('Model User:', function() {
-        before(function(done) {
+describe('<Unit Test>', function () {
+    describe('Model User:', function () {
+        before(function (done) {
             user = new User({
                 name: 'Full name',
                 email: 'test@test.com',
@@ -30,36 +36,36 @@ describe('<Unit Test>', function() {
             done();
         });
 
-        describe('Method Save', function() {
-            it('should begin with no users', function(done) {
-                User.find({}, function(err, users) {
+        describe('Method Save', function () {
+            it('should begin with no users', function (done) {
+                User.find({}, function (err, users) {
                     users.should.have.length(0);
                     done();
                 });
             });
 
-            it('should be able to save whithout problems', function(done) {
+            it('should be able to save whithout problems', function (done) {
                 user.save(done);
             });
 
-            it('should fail to save an existing user again', function(done) {
+            it('should fail to save an existing user again', function (done) {
                 user.save();
-                return user2.save(function(err) {
+                return user2.save(function (err) {
                     should.exist(err);
                     done();
                 });
             });
 
-            it('should be able to show an error when try to save without name', function(done) {
+            it('should be able to show an error when try to save without name', function (done) {
                 user.name = '';
-                return user.save(function(err) {
+                return user.save(function (err) {
                     should.exist(err);
                     done();
                 });
             });
         });
 
-        after(function(done) {
+        after(function (done) {
             User.remove().exec();
             done();
         });

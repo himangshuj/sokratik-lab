@@ -1,0 +1,145 @@
+@import '../../vendor/bootstrap/less/variables';
+@import '../../vendor/bootstrap/less/mixins';
+@import 'buttons';
+@import "../../atelier/src/less/main";
+
+body.navigation{
+  width:100%;
+  ul{
+    margin:0px;
+    padding:0px;
+  }
+  font-family:'Open Sans';
+  font-size:16px;
+  h1,h2,h3,h4,h5,h6{
+    font-family:'Open Sans';
+  }
+  margin:0px;
+  color:#FFF;
+  a{
+    text-decoration: none;
+  }
+}
+
+.navigation{
+  .no-border{
+    border:none !important;
+  }
+  .background-color-inherit{
+    background-color:inherit !important;
+  }
+
+  .color-red{
+    background-color: #f06060;
+    .btn-pop-out{
+      .btn-pop-out(#cb4e4e, #ab3c3c);
+    }
+    .btn-social{
+      .btn-social(#f06060,#cb4e4e,#ab3c3c);
+    }
+  }
+
+
+  .color-green{
+    background-color: #2ac56c;
+    .btn-pop-out{
+      .btn-pop-out(#17aa56, #119e4d);
+    }
+    .btn-social{
+      .btn-social(#17aa56, #119e4d, #119e4d);
+    }
+  }
+
+  .color-yellow{
+    background-color: #fcad26;
+    .btn-social{
+      .btn-social(#fcad26,#f29e0d,#f58500);
+    }
+  }
+
+  .color-blue{
+    background-color:#0e83cd;
+    .btn-social{
+      .btn-social(#5cbcf6, #49a7df,#0e83cd);
+    }
+  }
+
+  .color-facebook{
+    .btn-social{
+      .btn-social(#4966a1, #3a5181,#0e83cd);
+    }
+  }
+  .color-google{
+    .btn-social{
+      .btn-social(#dd211c, #be1d18,#ab3c3c);
+    }
+  }
+  .color-gray{
+    background-color:#ecf0f1;
+  }
+
+  .color-purple{
+    background-color:#9e54bd;
+  }
+
+  .color-dark-gray{
+    background-color: #CCCCCC;
+  }
+
+  .topbar{
+    background-color: #f06060;
+    padding:0.5em 2em 0.5em 2em;
+    font-size:2.4em;
+    font-weight:lighter;
+    .logo{
+      float:left;
+    }
+    .menu{
+      font-size:0.5em;
+      float:right;
+      margin-top: -0.75em;
+    }
+    a{
+      color:#FFFFFF;
+    }
+    .btn-hollow{
+      .btn-hollow(#cb4e4e);
+    }
+    .clearfix
+  }
+
+  .tile{
+    .make-xs-column(3,0px);
+    box-sizing: border-box;
+    text-align: center;
+    height:250px;
+    padding-top:125px;
+    opacity: 0.75;
+    h1{
+      color:#FFF;
+      font-size:2em;
+      font-weight: lighter;
+      padding-top:0px;
+      margin-top:-1.5em;
+      margin-bottom:0.2em;
+    }
+    -webkit-perspective: 0;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform .2s;
+    &:hover{
+      opacity:1;
+    }
+  }
+
+  .tile-footer{
+    padding-top:0px;
+    height:6em;
+    h1{
+      margin-top:1em;
+    }
+  }
+}
+
+@import 'home/home';
+@import 'signin/signin';
+@import 'listing/listing';

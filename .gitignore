@@ -4,3 +4,12 @@
 node_modules/
 public/lib
 test/coverage/
+.idea
+*.iml
+assets/vendor/
+public/js/assets/
+public/js/lib/
+public/js
+vendor/
+public/css/
+public/css/atelier.css
