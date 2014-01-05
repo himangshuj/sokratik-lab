@@ -6,14 +6,14 @@
             </a>
         </div>
         <div ng-repeat="presentation in presentations">
-            <a ui-sref="edit.activate({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
+            <a ui-sref="edit.template({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
             <div class="tile" ng-class="colors[$index%len]">
                 <h1>{{presentation.title}}</h1>
                 <div class="subtitle">
                     Updated on {{presentation.upDatedOn}}
                 </div>
                 <div class="icon-holder">
-                    <a ui-sref="edit.activate({templateName:'title',presentationId : presentation.id,page: 0,images:0})"><i class="fa fa-edit"></i></a>
+                    <a ui-sref="edit.template({templateName:'title',presentationId : presentation.id,page: 0,images:0})"><i class="fa fa-edit"></i></a>
                     <a ui-sref="record.activate({presentationId:presentation.id,page:0})"><i class="fa fa-microphone"></i></a>
                     <a ui-sref="play.init({presentationId:presentation.id,scriptIndex:0,pausedInterval:0})"><i class="fa fa-play-circle"></i></a>
                 </div>
