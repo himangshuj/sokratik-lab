@@ -98,6 +98,7 @@ module.exports = function (grunt) {
                     'underscore/underscore.js',
                     'angular-animate/angular-animate.js',
                     'underscore.string/lib/underscore.string.js',
+                    'kineticjs/dist/kinetic-v4.7.3.js',
                     '../node_modules/binaryjs/dist/binary.js'],
                 filter: 'isFile',
                 cwd: 'vendor',

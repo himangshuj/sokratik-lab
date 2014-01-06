@@ -1,6 +1,7 @@
 (function (ng, module) {
     ng.module(module, [
-            'sokratik.lab.user.services'
+            'sokratik.lab.user.services',
+            'ui.router'
         ])
 
         .config(['$stateProvider', function myAppConfig($stateProvider) {

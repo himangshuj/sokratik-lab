@@ -4,6 +4,7 @@
             'ui.router',
             'templates-app'    ,
             'sokratik.lab.presentation.services',
+            'sokratik.lab.root',
             'sokratik.atelier.edit',
             'sokratik.atelier.record'    ,
             'sokratik.atelier.player'
