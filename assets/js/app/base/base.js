@@ -19,7 +19,7 @@
                 },
                 views: {
                     'root': {
-                        template: '<div ui-view ="main" class="parent-height"/>',
+                        templateUrl: 'base/root.tpl.html',
                         controller: 'RootCtrl'
                     }
                 }
@@ -29,5 +29,6 @@
         .controller('RootCtrl', ['$rootScope', function ($rootScope) {
             $rootScope.presentationMode = false;
             $rootScope.navigationMode = true;
+
         }])
 })(angular, "sokratik.lab.root");

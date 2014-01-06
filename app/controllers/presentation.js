@@ -1,6 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
-    _ = require('../../vendor/underscore/underscore'),
+    _ = require('underscore'),
     Presentation = mongoose.model('Presentation'),
     knox = require('knox'),
     config = require('../../config/config');
@@ -50,7 +50,7 @@ exports.all = function (req, res) {
 
                 res.jsonp(_.map(presentations, function (presentation) {
                     var titleSlide = presentation.presentationData[0];
-                    return  _.extend({id: presentation._id}, titleSlide.keyVals);
+                    return  _.extend({id: presentation._id, upDatedOn: presentation.upDatedOn}, titleSlide.keyVals);
                 }));
             } else {
                 res.jsonp([]);

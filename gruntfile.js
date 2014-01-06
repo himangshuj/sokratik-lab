@@ -99,6 +99,7 @@ module.exports = function (grunt) {
                     'angular-animate/angular-animate.js',
                     'underscore.string/lib/underscore.string.js',
                     'kineticjs/dist/kinetic-v4.7.3.js',
+                    '../assets/js/lib/**/*.js',
                     '../node_modules/binaryjs/dist/binary.js'],
                 filter: 'isFile',
                 cwd: 'vendor',
@@ -107,7 +108,7 @@ module.exports = function (grunt) {
             },
             assets: {
                 dest: 'public/js/assets/',
-                src: ['**/*.js', '!**/*.spec.js'],
+                src: ['app/**/*.js','common/**/*.js', '!**/*.spec.js'],
                 filter: 'isFile',
                 cwd: 'assets/js',
                 flatten: false,

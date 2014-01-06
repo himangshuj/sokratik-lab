@@ -28,7 +28,8 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('HomeCtrl', ['$scope', '$state', function HomeController($scope, $state) {
-
+        .controller('HomeCtrl', ['$rootScope',  function ($rootScope) {
+            $rootScope.presentationMode = false;
+            $rootScope.navigationMode = true;
         }]);
 })(angular, 'sokratik.lab.home');

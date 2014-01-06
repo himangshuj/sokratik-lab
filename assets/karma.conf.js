@@ -34,9 +34,8 @@ module.exports = function (config) {
             '../atelier/src/testingmocks/acoustics.spec.js',
             '../atelier/src/common/**/*.js',
             '../atelier/src/app/**/*.js',
-            'js/app/*.js',
-            'js/common/*.js',
-
+            'js/app/**/*.js',
+            'js/common/**/*.js',
             'js/**/*.spec.js',
 
         ],
