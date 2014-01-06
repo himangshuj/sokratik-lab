@@ -16,8 +16,6 @@ describe('CreateCtrl', function () {
 
         it('initialization test', inject(function () {
             expect(CreateCtrl).toBeTruthy();
-            expect($scope.showCase).toBeFalsy();
-            expect($scope.presentation).toBeDefined();
         }));
     });
 });

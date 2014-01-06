@@ -6,32 +6,22 @@
             'sokratik.lab.home',
             'sokratik.lab.login',
             'sokratik.lab.create'])
-        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-            function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        .config(['$urlRouterProvider', '$urlRouterProvider',
+            function ($urlRouterProvider) {
                 $urlRouterProvider.otherwise('/home');
-                $locationProvider.html5Mode(true);
-                $stateProvider.state('sokratik', {
-                    abstract: true,
-                    resolve: {
-                        loggedUser: ['userService', function (userService) {
-                            return userService.loggedUser();
-                        }],
-                        logged: ['loggedUser', '$rootScope', function (loggedUser, $rootScope) {
-                            $rootScope.logged = !_.isEqual(loggedUser, 'null');
-                            return $rootScope.logged;
-                        }]
-
-                    },
-                    views: {
-                        'root': {
-                            template: '<div ui-view ="main" class="parent-height"/>',
-                            controller: 'AppCtrl'
-                        }
-                    }
+            }])
+        .run(['$rootScope', function ($rootScope) {
+            $rootScope.loading = false;
+            $rootScope.$on('$stateChangeStart',
+                function () {
+                    $rootScope.loading = true;
 
                 });
-
-            }])
+            $rootScope.$on('$stateChangeSuccess',
+                function () {
+                    $rootScope.loading = false;
+                });
+        }])
 
         .controller('AppCtrl', ['$rootScope', function ($rootScope) {
             $rootScope.presentationMode = false;

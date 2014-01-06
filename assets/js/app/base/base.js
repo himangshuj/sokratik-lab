@@ -1,6 +1,7 @@
 (function (ng, module) {
     ng.module(module, [
-            'sokratik.lab.user.services'
+            'sokratik.lab.user.services',
+            'ui.router'
         ])
 
         .config(['$stateProvider', function myAppConfig($stateProvider) {
@@ -18,7 +19,7 @@
                 },
                 views: {
                     'root': {
-                        template: '<div ui-view ="main" class="parent-height"/>',
+                        templateUrl: 'base/root.tpl.html',
                         controller: 'RootCtrl'
                     }
                 }
@@ -28,5 +29,6 @@
         .controller('RootCtrl', ['$rootScope', function ($rootScope) {
             $rootScope.presentationMode = false;
             $rootScope.navigationMode = true;
+
         }])
 })(angular, "sokratik.lab.root");
