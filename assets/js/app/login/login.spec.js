@@ -31,7 +31,6 @@ describe('LoginCtrl', function () {
 
         it('initialization test', inject(function () {
             expect(LoginCtrl).toBeTruthy();
-            expect($scope.showCase).toBeTruthy();
             expect($scope.login).toBeDefined();
             expect($scope.createUser).toBeDefined();
 
