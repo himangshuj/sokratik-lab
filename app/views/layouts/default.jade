@@ -6,7 +6,7 @@ itemscope='itemscope',
 itemtype='http://schema.org/Product',
 ng-app='sokratik.lab.app',
 ng-controller='AppCtrl',
-class="full-sized")
+ng-class="{'full-sized':presentationMode}")
     include ../includes/head
     body(ng-class="{presentation: presentationMode,navigation:navigationMode }")
         block content
