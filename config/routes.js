@@ -69,7 +69,7 @@ module.exports = function (app, passport, auth) {
     app.post('/presentation', presentations.create);
     app.get('/presentation/:presentationId', presentations.show);
     app.put('/presentation/:presentationId', presentations.savePresentation);
-
+    app.delete('/presentation/:presentationId', auth.requiresLogin, presentations.deletePresentation);
 
 
     //Finish with setting up the articleId param
@@ -89,7 +89,6 @@ module.exports = function (app, passport, auth) {
     app.get('/create', index.render);
     app.get('/create/:presentationId', index.render);
     app.get('/play/:presentationId/:dummy1/:dummy2/:dummy3/:dummy4', index.render);
-
 
 
 };

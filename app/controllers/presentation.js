@@ -45,9 +45,8 @@ function resolveAudioLocation(presentation, answerId, callback) {
 
 exports.all = function (req, res) {
     if (req.user) {
-        Presentation.find({'authors.username': req.user.username}).sort('-upDatedOn').exec(function (err, presentations) {
+        Presentation.find({'authors.username': req.user.username, 'deleted': {$ne: true}}).sort('-upDatedOn').exec(function (err, presentations) {
             if (!err) {
-
                 res.jsonp(_.map(presentations, function (presentation) {
                     var titleSlide = presentation.presentationData[0];
                     return  _.extend({id: presentation._id, upDatedOn: presentation.upDatedOn}, titleSlide.keyVals);
@@ -124,10 +123,19 @@ exports.savePresentation = function (req, res) {
 
     presentation.upDatedOn = new Date();
 
-    presentation.save(function () {
+    presentation.save(function (err, presentation) {
         res.jsonp(presentation);
     });
 
+};
+
+exports.deletePresentation = function (req, res) {
+    var presentation = req.presentation;
+    presentation.deleted = true;
+    presentation.save(function (err) {
+        console.log(err);
+        res.jsonp(presentation);
+    });
 };
 exports.show = function (req, res) {
     res.jsonp(req.presentation);
