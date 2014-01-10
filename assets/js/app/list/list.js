@@ -11,7 +11,7 @@
      * will handle ensuring they are all available at run-time, but splitting it
      * this way makes each module more "self-contained".
      */
-        .config(['$stateProvider',function config($stateProvider) {
+        .config(['$stateProvider', function config($stateProvider) {
 
             $stateProvider.state('list', {
                 url: '/list',
@@ -25,19 +25,27 @@
                     presentations: ['presentationService', function (presentationService) {
                         //noinspection JSValidateTypes
                         return presentationService.presentations();
+
                     }]
                 },
-                parent:'root'
+                parent: 'root'
             });
         }])
 
     /**
      * And of course we define a controller for our route.
      */
-        .controller('ListCtrl', ['$scope', 'presentations', '$rootScope', function ($scope, presentations, $rootScope) {
+        .controller('ListCtrl', ['$scope', 'presentations', '$rootScope', '$http', '$state', function ($scope, presentations, $rootScope, $http, $state) {
             $rootScope.showCase = false;
             $scope.presentations = presentations;
-            $scope.colors=["color-green","color-yellow","color-purple"];
-            $scope.len= $scope.colors.length;
+            $scope.colors = ["color-green", "color-yellow", "color-purple"];
+            $scope.len = $scope.colors.length;
+            $scope.deletePresentation = function (presentationId) {
+                $http.delete('/presentation/' + presentationId).success(function (resp) {
+                    $state.transitionTo($state.current, {}, {
+                        reload: true, inherit: true, notify: true
+                    });
+                });
+            }
         }]);
 })(angular, 'sokratik.lab.list');
