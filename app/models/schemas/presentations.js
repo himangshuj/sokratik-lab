@@ -50,7 +50,8 @@ module.exports = function (mongoose) {
                     subject: [String],
                     location: String,
                     language: [String]
-                }
+                },
+                deleted: Boolean
             }
         )
         ;

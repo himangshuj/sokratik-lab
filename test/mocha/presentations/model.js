@@ -138,7 +138,7 @@ describe('<Unit Test>', function () {
             });
 
             it('fetch presentation test',function(done){
-                Presentation.find({'authors.username':'Himangshu'},function(err,presentations){
+                Presentation.find({'authors.username':'Himangshu','deleted': {$ne: true}},function(err,presentations){
                     presentations.should.have.length(1);
                     done();
                 });
