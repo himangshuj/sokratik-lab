@@ -30,12 +30,12 @@ server{
     location /js {
         alias /local/www/sokratik/js;
     }
-
-    location ~* ^/static/(\w+)/([^/]+)_.+\.(js|css|png|jpg|jpeg|gif|ico)$ {
-        alias /usr/share/nginx/static/$1/$2.$3;
-        add_header Vary Accept-Encoding;
-        expires max;
-    }
+	
+location ~* ^/static/(\w+)/([^/]+)_.+\.(js|css|png|jpg|jpeg|gif|ico)$ {
+        	alias /local/www/sokratik/static/$1/$2.$3;
+       	    add_header Vary Accept-Encoding;
+        	expires max;
+     	 }
 
     location /css {
         alias /local/www/sokratik/css;
