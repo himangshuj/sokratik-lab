@@ -196,7 +196,7 @@ module.exports = function (grunt) {
                     },
                     compress: true,
                     sourceMap: '<%= staticRoot %>/js/sokratik-map.js',
-                    sourceMappingURL: '/js/sokratik-map.js'
+                    sourceMappingURL: '/static/js/sokratik-map.js'
                 },
                 files: {
                     '<%= staticRoot %>/js/sokratik.js': ['public/js/templates*.js',
