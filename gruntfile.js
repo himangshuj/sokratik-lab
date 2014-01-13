@@ -9,29 +9,29 @@ module.exports = function (grunt) {
             jade: {
                 files: ['app/views/**'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             js: {
                 files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'test/**/*.js', 'assets/js/**/*.js'],
                 tasks: ['jshint', 'copy'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             tpls: {
-                files: ['assets/js/**/*.html'],
+                files: ['assets/js/**/*.html', 'atelier/src/app/**/*.html'],
                 tasks: ['html2js'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
 
             html: {
                 files: ['public/views/**'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             css: {
                 files: ['assets/less/**', 'atelier/src/less/**'],

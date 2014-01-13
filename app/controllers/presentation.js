@@ -83,7 +83,7 @@ exports.create = function (req, res) {
         presentationData: [
             {
                 templateName: 'title',
-                keyVals: {title: 'What do you want to tell?'}
+                keyVals: {title: 'Presentation Title'}
             }
         ]
     };

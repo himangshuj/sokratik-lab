@@ -23,7 +23,10 @@ head
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
     link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Open+Sans:400,300')
     link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Bree+Serif:400,300')
-    link(rel='stylesheet', href='/css/sokratik.css')
+    if (process.env.NODE_ENV == 'development')
+        link(rel='stylesheet', href='/css/sokratik.css')
+    else
+        link(rel='stylesheet', href='/static/css/sokratik_v103.css')
 
 //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
