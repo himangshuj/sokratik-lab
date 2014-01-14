@@ -54,6 +54,7 @@ module.exports = function(app, passport, db) {
             })
 
 
+
         }));
 
         //connect flash for flash messages

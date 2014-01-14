@@ -3,6 +3,8 @@
 @import 'buttons';
 @import "../../atelier/src/less/main";
 
+@tile-height:250px;
+
 body.navigation{
   width:100%;
   ul{
@@ -112,8 +114,7 @@ body.navigation{
     .make-xs-column(3,0px);
     box-sizing: border-box;
     text-align: center;
-    height:250px;
-    padding-top:125px;
+    height:@tile-height;
     opacity: 0.75;
     h1{
       color:#FFF;
@@ -123,9 +124,7 @@ body.navigation{
       margin-top:-1.5em;
       margin-bottom:0.2em;
     }
-    -webkit-perspective: 0;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform .2s;
+    -webkit-backface-visibility:hidden;
     &:hover{
       opacity:1;
     }
