@@ -41,7 +41,7 @@ server{
         alias /local/www/sokratik/css;
     }
     location /recordings {
-        alias /mnt/code-base/sokratik-website/public/recordings;
+        alias /tmp/recordings;
     }
 
 }
