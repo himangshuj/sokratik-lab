@@ -18,21 +18,22 @@ function s3AudioLocation(prefix, answerId) {
     return (config.s3.AUDIOLOCATION_PREFIX + prefix + '/' + answerId + '.ogg');
 }
 
-function resolveAudioLocation(presentation, answerId, callback) {
+function resolveAudioLocation(presentation, presentationId, callback) {
     if (!!s3Client) {
-        if (fs.exists('/tmp/recordings/' + answerId.ogg)) {
-            callback('/recordings/' + answerId + '.ogg');
+        if (fs.exists('/tmp/recordings/' + presentationId.ogg)) {
+            callback('/recordings/' + presentationId + '.ogg');
         } else {
-            s3Client.head('/auphonic/' + answerId + '.ogg').on('response',function (res) {
-                if (res.statusCode === 200) {
-                    callback(s3AudioLocation('auphonic', answerId));
+            s3Client.head('/auphonic/' + presentationId + '.ogg').on('response',function (res) {
+                var modifiedTime = (new Date(presentation.upDatedOn)).getTime();
+                if ((res.statusCode === 200) && ((modifiedTime - (new Date(res.headers['last-modified'])).getTime()) < 10000)) {
+                    callback(s3AudioLocation('auphonic', presentationId));
                 } else {
-                    s3Client.head('/raw-recordings/' + answerId + '.ogg').on('response',function (res) {
+                    s3Client.head('/raw-recordings/' + presentationId + '.ogg').on('response',function (res) {
                         if (res.statusCode === 200) {
-                            callback(s3AudioLocation('raw-recordings', answerId));
+                            callback(s3AudioLocation('raw-recordings', presentationId));
                         } else {
                             console.log("where am I??");
-                            callback('/recordings/' + answerId + '.ogg');
+                            callback('/recordings/' + presentationId + '.ogg');
                         }
                     }).end();
 
@@ -40,7 +41,7 @@ function resolveAudioLocation(presentation, answerId, callback) {
             }).end();
         }
     } else {
-        callback('/recordings/' + answerId + '.ogg');
+        callback('/recordings/' + presentationId + '.ogg');
     }
 }
 
@@ -92,7 +93,7 @@ exports.create = function (req, res) {
 
     presentation.save(function (err) {
         if (err) {
-            return res.send('users/signup', {
+            res.send('users/signup', {
                 errors: err.errors,
                 article: presentation
             });
@@ -120,7 +121,7 @@ exports.presentation = function (req, res, next, id) {
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
-    presentation = _.extend(presentation, req.body, {'__v': presentation.__v});
+    presentation = _.extend(presentation, _.omit(req.body, '__v'));
 
     presentation.upDatedOn = new Date();
 
@@ -148,4 +149,8 @@ exports.play = function (req, res) {
         audioLocation: req.presentation.audioLocation
 
     });
+};
+
+exports.relatedImages = function (req, res) {
+    res.jsonp([]);
 };
