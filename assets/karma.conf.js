@@ -15,6 +15,7 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             '../vendor/angular/angular.js',
+            '../vendor/angular-elastic/elastic.js',
             '../vendor/angular-ui-router/release/angular-ui-router.js',
             '../vendor/underscore/underscore.js',
             '../public/js/templates-app.js',

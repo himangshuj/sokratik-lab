@@ -1,5 +1,5 @@
 .customize-signin(@color-light,@color-dark){
-  .signin-main{
+  &.signin-main{
     border-bottom: 0.8em solid @color-light;
     .flat-form{
       form{
@@ -21,17 +21,20 @@
           }
         }
       }
+    .forgot{
+        color:@color-light;
+      }
     }
-  }
-  .signin-main .signin-info{
-    border-right:1px solid @color-light;
+    .signin-info{
+      border-right:1px solid @color-light;
+    }
   }
 }
 
 .navigation{
   .signin-main{
     .make-row(0);
-    padding: 0em 4.8em 11.4em 4.8em;
+    padding: 0em 4.8em 7em 4.8em;
     text-align: center;
     .signin-info{
       .make-xs-column(6,0);
@@ -51,16 +54,14 @@
       margin-top:0.0em;
       margin-bottom: 1em;
     }
+    animation: translateContent 0.5s ease-in;
+    -webkit-animation: translateContent 0.5s ease-in;
     .clearfix
   }
 
-  .color-green{
-    .customize-signin(#119e4d,#2ac56c);
-  }
+  .color-green{.customize-signin(#119e4d,#2ac56c);}
 
-  .color-red{
-    .customize-signin(#ab3c3c,#cb4e4e);
-  }
+  .color-red{.customize-signin(#ab3c3c,#cb4e4e);}
 
   .flat-form {
     form {
@@ -85,7 +86,29 @@
         border: none;
         outline: none;
       }
+      input[type="submit"]{
+        float:left;
+        margin-left: 0px;
+        margin-bottom:1.5em
+      }
+    }
+    .forgot{
+      text-align: left;
+      a{
+        cursor:pointer;
+        color:#FFF;
+      }
     }
     .clearfix;
   }
+}
+
+@keyframes translateContent {
+  from { transform:translateY(-100%); opacity:1;}
+  to { transform:translateY(0%); opacity:1}
+}
+
+@-webkit-keyframes translateContent {
+  from { -webkit-transform:translateY(-100%); opacity:1;}
+  to { -webkit-transform:translateY(0%); opacity:1;}
 }

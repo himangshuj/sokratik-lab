@@ -1,29 +1,56 @@
-<div class="color-red">
-<div class="signin-main">
+<div class="color-red signin-main">
     <div class="signin-info">
-        <div class="flat-form">
+        <div class="flat-form" ng-hide="isSignupPage">
             <h1>
-                Sign in
+                Log in
             </h1>
             <form>
                 <ul>
                     <li>
                         <input type="text" placeholder="Email"  ng-model="email"/>
                     </li>
-                    <li>
+                    <li style="height: 54px">
                         <input type="password" placeholder="Password" ng-model="password"/>
                     </li>
+                    <li style="height:18px">
+                    <div class="forgot" style="color: #FFF">
+                        Placeholder for login error
+                    </div>
+                    </li>
                     <li>
-                        <a class="btn btn-small btn-pop-out btn-pop-outc"  style="float:left;margin-left: 0px" ng-click="login()">
-                            Log in
-                        </a>
-                        <a class="btn btn-small btn-pop-out btn-pop-outc"  style="float:left;margin-left: 0px" ng-click="createUser()">
-                            Sign Up
-                        </a>
+                        <input type="submit" value="Log in" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="login()">
                     </li>
                 </ul>
             </form>
-
+            <div class="forgot">
+                Not a member yet? Click here to <a ng-click="isSignupPage=true">sign up!</a>
+            </div>
+        </div>
+        <div class="flat-form" ng-show="isSignupPage">
+            <h1>
+                Sign up
+            </h1>
+            <form>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="Email"  ng-model="email"/>
+                    </li>
+                    <li style="height:54px">
+                        <input type="password" placeholder="Password" ng-model="password"/>
+                    </li>
+                    <li style="height:18px">
+                        <div class="forgot" style="color: #FFF">
+                            Placeholder for login error
+                        </div>
+                    </li>
+                    <li>
+                        <input type="submit" value="Sign up" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="createUser()">
+                    </li>
+                </ul>
+            </form>
+            <div class="forgot">
+                Already a member? Click here to <a ng-click="isSignupPage=false">log in</a>
+            </div>
         </div>
     </div>
     <div class="signin-social">
@@ -43,5 +70,4 @@
             </a>
         </div>
     </div>
-</div>
 </div>
