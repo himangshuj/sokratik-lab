@@ -4,8 +4,8 @@ block content
         div(class="logo")
             a(ui-sref="home") sokratik
         div(class="menu")
-            a(class="btn btn-small btn-hollow btn-hollowb", ui-sref="login",ng-hide="logged") LOG IN
-            a(class="btn btn-small btn-hollow btn-hollowb", href="/signout",ng-show="logged") LOG OUT
+            a(class="btn-small btn-hollow", ui-sref="login",ng-hide="logged || !homeScreen") LOG IN
+            a(class="btn-small btn-hollow", href="/signout",ng-show="logged") LOG OUT
     div(class="full-sized", ui-view="root")
     div(class="audio")
         audio(ng-src="{{audioLocation}}",sokratik-audio-track)
