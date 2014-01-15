@@ -126,7 +126,7 @@ exports.presentation = function (req, res, next, id) {
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
-    presentation = _.extend(presentation, _.omit(req.body, '__v'));
+    presentation = _.extend(presentation, _.omit(req.body,'__v'));
 
     presentation.upDatedOn = new Date();
 
