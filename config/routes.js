@@ -89,7 +89,5 @@ module.exports = function (app, passport, auth) {
     app.get('/create', index.render);
     app.get('/create/:presentationId', index.render);
     app.get('/play/:presentationId/:dummy1/:dummy2/:dummy3/:dummy4', index.render);
-    app.get("/related-images/:presentationId", presentation.relatedImages);
-
-
+    app.get("/related-images/:presentationId", presentations.relatedImages);
 };
