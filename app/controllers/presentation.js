@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
     _ = require('underscore'),
     Presentation = mongoose.model('Presentation'),
     knox = require('knox'),
+    fs = require('fs'),
     config = require('../../config/config');
 
 if (!!config.s3) {
@@ -19,25 +20,25 @@ function s3AudioLocation(prefix, answerId) {
 
 function resolveAudioLocation(presentation, answerId, callback) {
     if (!!s3Client) {
-        s3Client.head('/auphonic/' + answerId + '.ogg').on('response',function (res) {
-            if (res.statusCode === 200) {
-                callback(s3AudioLocation('auphonic', answerId));
-            } else {
-                s3Client.head('/sokratik-post-processor/' + answerId + '.ogg').on('response',function (res) {
-                    if (res.statusCode === 200) {
-                        callback(s3AudioLocation('sokratik-post-processor', answerId));
-                    } else {
-                        s3Client.head('/raw-recordings/' + answerId + '.ogg').on('response',function (res) {
-                            if (res.statusCode === 200) {
-                                callback(s3AudioLocation('raw-recordings', answerId));
-                            } else {
-                                callback('/recordings/' + answerId + '.ogg');
-                            }
-                        }).end();
-                    }
-                }).end();
-            }
-        }).end();
+        if (fs.exists('/tmp/recordings/' + answerId.ogg)) {
+            callback('/recordings/' + answerId + '.ogg');
+        } else {
+            s3Client.head('/auphonic/' + answerId + '.ogg').on('response',function (res) {
+                if (res.statusCode === 200) {
+                    callback(s3AudioLocation('auphonic', answerId));
+                } else {
+                    s3Client.head('/raw-recordings/' + answerId + '.ogg').on('response',function (res) {
+                        if (res.statusCode === 200) {
+                            callback(s3AudioLocation('raw-recordings', answerId));
+                        } else {
+                            console.log("where am I??");
+                            callback('/recordings/' + answerId + '.ogg');
+                        }
+                    }).end();
+
+                }
+            }).end();
+        }
     } else {
         callback('/recordings/' + answerId + '.ogg');
     }
@@ -119,7 +120,7 @@ exports.presentation = function (req, res, next, id) {
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
-    presentation = _.extend(presentation, req.body,{'__v':presentation.__v});
+    presentation = _.extend(presentation, req.body, {'__v': presentation.__v});
 
     presentation.upDatedOn = new Date();
 
