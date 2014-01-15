@@ -29,6 +29,7 @@
         .controller('RootCtrl', ['$rootScope', function ($rootScope) {
             $rootScope.presentationMode = false;
             $rootScope.navigationMode = true;
+            $rootScope.homeScreen = false;
 
         }])
 })(angular, "sokratik.lab.root");

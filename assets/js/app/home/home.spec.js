@@ -13,6 +13,7 @@ describe('AppCtrl', function () {
 
         it('initialization test', inject(function ($state) {
             expect(HomeCtrl).toBeTruthy();
+            expect($scope.homeScreen).toBeTruthy();
         }));
     });
 

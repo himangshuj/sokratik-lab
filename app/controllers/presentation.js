@@ -29,7 +29,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
                 if ((res.statusCode === 200) &&
                     ((modifiedTime - (new Date(res.headers['last-modified'])).getTime()) < 100000)
                     && (currentTime - modifiedTime > 100000)) {
-                    console.log("Negative time" + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
+                    console.log('Negative time' + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
 
                     callback(s3AudioLocation('auphonic', presentationId));
                 } else {
@@ -37,7 +37,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
                         if (res.statusCode === 200) {
                             callback(s3AudioLocation('raw-recordings', presentationId));
                         } else {
-                            console.log("where am I??");
+                            console.log('where am I??');
                             callback('/recordings/' + presentationId + '.ogg');
                         }
                     }).end();
@@ -126,7 +126,7 @@ exports.presentation = function (req, res, next, id) {
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
-    presentation = _.extend(presentation, _.omit(req.body, '__v'));
+    presentation = _.extend(presentation, _.omit(req.body,'__v'));
 
     presentation.upDatedOn = new Date();
 

@@ -49,9 +49,11 @@ module.exports = function (mongoose) {
                     concept: [String],
                     subject: [String],
                     location: String,
-                    language: [String]
+                    language: [String],
+                    boardMap: {board: String, standard: Number}
                 },
-                deleted: Boolean
+                deleted: Boolean,
+                summary: String
             }
         )
         ;

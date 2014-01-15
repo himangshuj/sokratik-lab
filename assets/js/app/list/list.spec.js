@@ -21,6 +21,7 @@ describe('ListCtrl', function () {
             expect(ListCtrl).toBeTruthy();
             expect($scope.showCase).toBeFalsy();
             expect($scope.presentations).toBeDefined();
+            expect($scope.homeScreen).toBeFalsy();
         }));
     });
 });
