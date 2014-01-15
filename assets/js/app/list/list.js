@@ -35,17 +35,19 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('ListCtrl', ['$scope', 'presentations', '$rootScope', '$http', '$state', function ($scope, presentations, $rootScope, $http, $state) {
-            $rootScope.showCase = false;
-            $scope.presentations = presentations;
-            $scope.colors = ["color-green", "color-yellow", "color-purple"];
-            $scope.len = $scope.colors.length;
-            $scope.deletePresentation = function (presentationId) {
-                $http.delete('/presentation/' + presentationId).success(function (resp) {
-                    $state.transitionTo($state.current, {}, {
-                        reload: true, inherit: true, notify: true
+        .controller('ListCtrl', ['$scope', 'presentations', '$rootScope', '$http', '$state', '$sce',
+            function ($scope, presentations, $rootScope, $http, $state, $sce) {
+                $rootScope.showCase = false;
+                $scope.presentations = presentations;
+                $scope.colors = ["color-green", "color-yellow", "color-purple"];
+                $scope.len = $scope.colors.length;
+                $scope.deletePresentation = function (presentationId) {
+                    $http.delete('/presentation/' + presentationId).success(function (resp) {
+                        $state.transitionTo($state.current, {}, {
+                            reload: true, inherit: true, notify: true
+                        });
                     });
-                });
-            }
-        }]);
+                };
+                $rootScope.audioLocation = $sce.trustAsResourceUrl('//s3-ap-southeast-1.amazonaws.com/demo-answers-sg/Lantern/Happy-minute.mp3');
+            }]);
 })(angular, 'sokratik.lab.list');
