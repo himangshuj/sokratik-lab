@@ -26,6 +26,8 @@ function resolveAudioLocation(presentation, presentationId, callback) {
             s3Client.head('/auphonic/' + presentationId + '.ogg').on('response',function (res) {
                 var modifiedTime = (new Date(presentation.upDatedOn)).getTime();
                 if ((res.statusCode === 200) && ((modifiedTime - (new Date(res.headers['last-modified'])).getTime()) < 100000)) {
+                    console.log("Negative time" + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
+
                     callback(s3AudioLocation('auphonic', presentationId));
                 } else {
                     s3Client.head('/raw-recordings/' + presentationId + '.ogg').on('response',function (res) {
