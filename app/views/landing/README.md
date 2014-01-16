@@ -1,0 +1,1 @@
+These folder will contain jade files for landing. These pages will be optimized for sharing with social media
