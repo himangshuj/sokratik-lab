@@ -34,9 +34,18 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('ShareCtrl', ['$rootScope', function ($rootScope) {
+        .controller('ShareCtrl', ['$rootScope', 'presentation', '$scope', function ($rootScope, presentation, $scope) {
             $rootScope.presentationMode = false;
             $rootScope.navigationMode = true;
             $rootScope.homeScreen = true;
+            $scope.title = presentation.presentationData[0].keyVals.title;
+            $scope.presentationId = presentation._id;
+            var playUrl = "http://lab.sokratik.com/#/play/" + presentation._id + "/0//0/init";
+            $scope.iframeLink = "<iframe width=\"420\" height=\"315\" " +
+                " src=\""+playUrl+"\" frameborder=\"0\"  allowfullscreen> </iframe>"
+            $scope.fbShareLink = "https://www.facebook.com/dialog/feed?app_id=412707485526849" +
+                "&display=popup&caption=" + encodeURIComponent($scope.title)+
+                "&link="+encodeURIComponent(playUrl)+
+                "&redirect_uri=http://lab.sokratik.com";
         }]);
 })(angular, 'sokratik.lab.share');

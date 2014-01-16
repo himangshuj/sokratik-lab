@@ -1,21 +1,24 @@
 <div class="presentation">
-<div class="slide full-sized share">
-    <div class="full-text">
-        <div class="vertical-center full-sized">
-            <div class="full-width">
-                <h1>
-                    <div>
-                        Repeat title here
-                    </div>
-                </h1><br/>
+    <div class="slide full-sized share">
+        <div class="full-text">
+            <div class="vertical-center full-sized">
+                <div class="full-width">
+                    <h1>
+                        <div>
+                            {{title}}
+                        </div>
+                    </h1>
+                    <br/>
                 <span>
                     <span>
-                    Share link: http://whatever
+                    Share link: http://lab.sokratik.com/#/play/{{presentationId}}/0//0/init
                     </span><br/><br/>
                 </span>
                 <span>
                     <span>
-                    Embed link: http://whatever
+                    Embed code:
+                        <textarea ng-model="iframeLink" class="iframeText">
+                        </textarea>
                     </span><br/><br/><br/>
                 </span>
                 <span>
@@ -26,7 +29,8 @@
                 <span>
                     <span>
                     <span class="color-blue">
-                        <a class="btn-pop-out">
+                        <a class="btn-pop-out"
+                           ng-href="{{fbShareLink}}">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </span>
@@ -42,8 +46,8 @@
                     </span>
                         </span>
                 </span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
