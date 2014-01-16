@@ -7,10 +7,11 @@ var express = require('express'),
     redisStore = require('connect-redis')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
-    config = require('./config');
+    config = require('./config'),
+    _ = require('underscore');
 
 module.exports = function(app, passport, db) {
-    app.set('showStackError', true);
+    app.set('showStackError', _.isEqual(process.env.NODE_ENV,'development'));
 
     //Prettify HTML
     app.locals.pretty = true;

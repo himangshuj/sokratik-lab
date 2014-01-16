@@ -12,21 +12,30 @@ module.exports = function (app, passport, auth) {
     app.post('/users/create', users.create);
 
     //Setting the local strategy route
-    app.post('/users/session', passport.authenticate('local', {
-        failureRedirect: '/signin',
-        failureFlash: true
-    }), users.session);
+    app.post('/users/session', passport.authenticate('local'), users.session);
 
     //Setting the local strategy ajax route
-    app.post('/users/login', passport.authenticate('local', {
-        failureRedirect: '/signin',
-        failureFlash: true
-    }), users.me);
+
+    app.post('/users/login', function (req, res, next) {
+        passport.authenticate('local', function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.jsonp({message:'loginFailed'});
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                return res.jsonp({message:'success'});
+            });
+        })(req, res, next);
+    });
 
     //Setting the facebook oauth routes
     app.get('/auth/facebook', passport.authenticate('facebook', {
-        scope: ['email', 'user_about_me'],
-        failureRedirect: '/signin'
+        scope: ['email', 'user_about_me']
     }), users.signin);
 
     app.get('/auth/facebook/callback', passport.authenticate('facebook', {

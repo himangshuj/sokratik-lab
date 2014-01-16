@@ -46,7 +46,6 @@ module.exports = function(passport) {
                         message: 'Invalid password'
                     });
                 }
-                console.log("aaa");
                 return done(null, user);
             });
         }

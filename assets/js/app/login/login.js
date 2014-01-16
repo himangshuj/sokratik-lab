@@ -23,12 +23,20 @@
         .controller('LoginCtrl', ['$scope', 'userService', '$state', function ($scope, userService, $state) {
             $scope.login = function () {
                 userService.login($scope.email, $scope.password).then(function (resp) {
-                    $state.go('list');
+                    if(_.isEqual(resp.message,"success")){
+                        $state.go('list');
+                    }else{
+                        $scope.errorMessage = "Invalid user id or password";
+                    }
                 });
             };
             $scope.createUser = function () {
                 userService.createUser($scope.email, $scope.password).then(function (resp) {
-                    $state.go('home');
+                    if(_.isEqual(resp.message,"success")){
+                        $state.go('home');
+                    }else{
+                        $scope.errorMessage = resp.message;
+                    }
                 });
             };
         }]);

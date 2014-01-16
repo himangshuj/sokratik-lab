@@ -1,6 +1,6 @@
 <div class="color-red signin-main">
     <div class="signin-info">
-        <div class="flat-form" ng-hide="isSignupPage">
+        <div class="flat-form">
             <h1>
                 Log in
             </h1>
@@ -14,41 +14,21 @@
                     </li>
                     <li style="height:18px">
                     <div class="forgot" style="color: #FFF">
-                        Placeholder for login error
+                        {{errorMessage}}
                     </div>
                     </li>
-                    <li>
+                    <li ng-hide="isSignupPage">
                         <input type="submit" value="Log in" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="login()">
                     </li>
-                </ul>
-            </form>
-            <div class="forgot">
-                Not a member yet? Click here to <a ng-click="isSignupPage=true">sign up!</a>
-            </div>
-        </div>
-        <div class="flat-form" ng-show="isSignupPage">
-            <h1>
-                Sign up
-            </h1>
-            <form>
-                <ul>
-                    <li>
-                        <input type="text" placeholder="Email"  ng-model="email"/>
-                    </li>
-                    <li style="height:54px">
-                        <input type="password" placeholder="Password" ng-model="password"/>
-                    </li>
-                    <li style="height:18px">
-                        <div class="forgot" style="color: #FFF">
-                            Placeholder for login error
-                        </div>
-                    </li>
-                    <li>
+                    <li ng-show="isSignupPage">
                         <input type="submit" value="Sign up" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="createUser()">
                     </li>
                 </ul>
             </form>
-            <div class="forgot">
+            <div class="forgot" ng-hide="isSignupPage">
+                Not a member yet? Click here to <a ng-click="isSignupPage=true">sign up!</a>
+            </div>
+            <div ng-show="isSignupPage">
                 Already a member? Click here to <a ng-click="isSignupPage=false">log in</a>
             </div>
         </div>

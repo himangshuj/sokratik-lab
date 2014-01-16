@@ -17,6 +17,7 @@ exports.authCallback = function(req, res) {
  * Show login form
  */
 exports.signin = function(req, res) {
+    //res.jsonp({message:'failed'});
     res.render('users/signin', {
         title: 'Signin',
         message: req.flash('error')
@@ -74,14 +75,11 @@ exports.create = function(req, res, next) {
                     message = 'Please fill all the required fields';
             }
 
-            return res.render('users/signup', {
-                message: message,
-                user: user
-            });
+            return res.jsonp({user:user,message:message})
         }
         req.logIn(user, function(err) {
             if (err) return next(err);
-            return res.jsonp(user);
+            return res.jsonp({user:user,message:'success'})
         });
     });
 };
