@@ -3,7 +3,7 @@
     border-bottom: 0.8em solid @color-light;
     .flat-form{
       form{
-        input[type=text],input[type=password] {
+        .text-input > input {
           color: @color-dark;
           ::-webkit-input-placeholder {
             color: @color-dark;
@@ -54,8 +54,6 @@
       margin-top:0.0em;
       margin-bottom: 1em;
     }
-    animation: translateContent 0.5s ease-in;
-    -webkit-animation: translateContent 0.5s ease-in;
     .clearfix
   }
 
@@ -76,7 +74,7 @@
       input[type=text], input[type=password], input[type=submit] {
         font-family: 'Open Sans';
       }
-      input[type=text],input[type=password] {
+      .text-input > input {
         display: block;
         width: 60%;
         height: 40px;
@@ -86,10 +84,18 @@
         border: none;
         outline: none;
       }
+      .text-input {
+        height:54px;
+      }
       input[type="submit"]{
         float:left;
         margin-left: 0px;
         margin-bottom:1.5em
+      }
+      .error-message{
+        .forgot;
+        height: 36px;
+        color:#FFF;
       }
     }
     .forgot{

@@ -3,12 +3,12 @@ describe('LoginCtrl', function () {
     var dummyUserService = {
         login: function () {
             return {then: function (fn) {
-                fn(arguments);
+                fn({message: 'success'});
             } };
         },
         createUser: function () {
             return {then: function (fn) {
-                fn(arguments);
+                fn({message: 'success'});
             } };
         }
     };
@@ -21,8 +21,9 @@ describe('LoginCtrl', function () {
         LoginCtrl = $controller('LoginCtrl', {  $scope: $scope,
             userService: dummyUserService, $state: $state });
         spyOn($state, 'go');
-        spyOn(dummyUserService,'login').andCallThrough();
-        spyOn(dummyUserService,'createUser').andCallThrough();
+        $scope.loginForm = {};
+        spyOn(dummyUserService, 'login').andCallThrough();
+        spyOn(dummyUserService, 'createUser').andCallThrough();
 
 
     }));
@@ -31,28 +32,32 @@ describe('LoginCtrl', function () {
 
         it('initialization test', inject(function () {
             expect(LoginCtrl).toBeTruthy();
-            expect($scope.login).toBeDefined();
-            expect($scope.createUser).toBeDefined();
+            expect($scope.submit).toBeDefined();
 
         }));
 
     });
-    describe('login tests',function(){
-       it('login check login args',function(){
-           $scope.email = "email";
-           $scope.password = "password";
-           $scope.login();
-           expect(dummyUserService.login).toHaveBeenCalledWith('email','password');
-           expect($state.go).toHaveBeenCalledWith('list');
-       });
-    });
-
-    describe('create user tests',function(){
-        it('login check login args',function(){
+    describe('login tests', function () {
+        it('login check login args', function () {
             $scope.email = "email";
             $scope.password = "password";
-            $scope.createUser();
-            expect(dummyUserService.createUser).toHaveBeenCalledWith('email','password');
+            $scope.submit();
+            expect(dummyUserService.login).not.toHaveBeenCalled();
+            $scope.loginForm.$valid = true;
+            $scope.submit();
+            expect(dummyUserService.login).toHaveBeenCalledWith('email', 'password');
+            expect($state.go).toHaveBeenCalledWith('list');
+        });
+    });
+
+    describe('create user tests', function () {
+        it('login check login args', function () {
+            $scope.email = "email";
+            $scope.password = "password";
+            $scope.isSignupPage = true;
+            $scope.loginForm.$valid = true;
+            $scope.submit();
+            expect(dummyUserService.createUser).toHaveBeenCalledWith('email', 'password');
             expect($state.go).toHaveBeenCalledWith('home');
         });
     });
