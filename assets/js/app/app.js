@@ -5,6 +5,7 @@
             'sokratik.lab.root',
             'sokratik.lab.home',
             'sokratik.lab.login',
+            'sokratik.lab.share',
             'sokratik.lab.create'])
         .config(['$urlRouterProvider', '$urlRouterProvider',
             function ($urlRouterProvider) {
