@@ -3,23 +3,23 @@ head
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='viewport', content='width=device-width,initial-scale=1')
 
-    title="Create,Share and edit Audio-visual presentations"
+    title=title
     meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
-    meta(name="keywords", content="html5, presentation , screen-capture, videos, audio-visual, teach , entertain and impress")
-    meta(name="description", content="Sokratik - a way to create audio-visual presentations in your browser and share them with the world")
+    meta(name="keywords", content="html5, presentation , screen-capture, videos, audio-visual, teach , entertain , impress")
+    meta(name="description", content= description)
 
     link(href='/img/icons/favicon.ico', rel='shortcut icon', type='image/x-icon')
     meta(name="twitter:card" content="summary_large_image")
     meta(name="twitter:site" content="@sokratikedu")
-    meta(name="twitter:title" content="Sokratik, create and share html5 audio-visual presentation")
-    meta(name="twitter:description" content="Sokratik - a way to create audio-visual presentations in your browser and share them with the world")
-    meta(name="twitter:creator" content="@himangshuj")
+    meta(name="twitter:title" content= title)
+    meta(name="twitter:description" content=description)
+    meta(name="twitter:creator" content="@sokratikedu")
     meta(name="twitter:image:src" content="https://s3-ap-southeast-1.amazonaws.com/qumran/sokratik-lab/sokratik-logo")
     meta(name="twitter:domain" content="lab.sokratik.com")
 
     meta(property='fb:app_id', content='1434846540077668')
-    meta(property='og:title', content='Sokratik, create and share html5 audio-visual presentations')
-    meta(property='og:description', content='Sokratik - a way to create audio-visual presentations in your browser and share them with the world')
+    meta(property='og:title', content=title)
+    meta(property='og:description', content=description)
     meta(property='og:type', content='website')
     meta(property='og:url', content='lab.sokratik.com')
     meta(property='og:image', content='https://s3-ap-southeast-1.amazonaws.com/qumran/sokratik-lab/sokratik-logo')
@@ -33,7 +33,7 @@ head
     if (process.env.NODE_ENV == 'development')
         link(rel='stylesheet', href='/css/sokratik.css')
     else
-        link(rel='stylesheet', href='/static/css/sokratik_v310.css')
+        link(rel='stylesheet', href='/static/css/sokratik_v300.css')
 
 //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')

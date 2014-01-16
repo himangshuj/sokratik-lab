@@ -56,7 +56,11 @@ exports.all = function (req, res) {
             if (!err) {
                 res.jsonp(_.map(presentations, function (presentation) {
                     var titleSlide = presentation.presentationData[0];
-                    return  _.extend({id: presentation._id, upDatedOn: presentation.upDatedOn}, titleSlide.keyVals);
+                    return  _.extend({id: presentation._id,
+                        upDatedOn: presentation.upDatedOn,
+                        summary: presentation.summary,
+                        conceptParams: presentation.conceptParams
+                    }, titleSlide.keyVals);
                 }));
             } else {
                 res.jsonp([]);
