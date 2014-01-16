@@ -43,14 +43,15 @@
             var playUrl = "http://lab.sokratik.com/play/" + presentation._id;
             $scope.directPlayUrl = playUrl;
             $scope.iframeLink = "<iframe width=\"420\" height=\"315\" " +
-                " src=\"" + playUrl + "\" frameborder=\"0\"  allowfullscreen> </iframe>"
+                " src=\"" + playUrl + "\" frameborder=\"0\"  allowfullscreen> </iframe>";
             $scope.fbShareLink = "https://www.facebook.com/dialog/feed?app_id=412707485526849" +
                 "&display=popup&caption=" + encodeURIComponent($scope.title) +
                 "&link=" + encodeURIComponent(playUrl) +
                 "&redirect_uri=http://lab.sokratik.com";
             $scope.shareGooglePlus = function () {
                 var url = "https://plus.google.com/share?url=" + playUrl;
-                $window.open(url,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-            }
+                $window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+            };
+            $scope.twitterSharelink = "https://twitter.com/intent/tweet?url="+encodeURIComponent(playUrl);
         }]);
 })(angular, 'sokratik.lab.share');
