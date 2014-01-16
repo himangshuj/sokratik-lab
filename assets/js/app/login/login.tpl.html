@@ -4,25 +4,29 @@
             <h1>
                 Log in
             </h1>
-            <form>
+
+            <form name="loginForm" ng-submit="submit()">
                 <ul>
+                    <li class="text-input">
+                        <input type="email" placeholder="Email" ng-model="email" name="email" required/>
+                    </li>
+                    <li class="error-message">
+                        <span ng-show="loginForm.email.$error.required"> Required!</span>
+                        <span ng-show="loginForm.email.$error.email">Not valid email!</span>
+                    </li>
+                    <li class="text-input">
+                        <input type="password" placeholder="Password" ng-model="password" name="password" required=""/>
+                    </li>
+                    <li class="error-message" ng-show="loginForm.password.$error.required">
+                            Required!
+                    </li>
+                    <li class="error-message">
+                             {{errorMessage}}
+                    </li>
                     <li>
-                        <input type="text" placeholder="Email"  ng-model="email"/>
+                        <input type="submit" value="{{submitText}}" class="btn-small btn-pop-out">
                     </li>
-                    <li style="height: 54px">
-                        <input type="password" placeholder="Password" ng-model="password"/>
-                    </li>
-                    <li style="height:18px">
-                    <div class="forgot" style="color: #FFF">
-                        {{errorMessage}}
-                    </div>
-                    </li>
-                    <li ng-hide="isSignupPage">
-                        <input type="submit" value="Log in" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="login()">
-                    </li>
-                    <li ng-show="isSignupPage">
-                        <input type="submit" value="Sign up" class="btn btn-small btn-pop-out btn-pop-outc" ng-click="createUser()">
-                    </li>
+
                 </ul>
             </form>
             <div class="forgot" ng-hide="isSignupPage">
@@ -34,7 +38,7 @@
         </div>
     </div>
     <div class="signin-social">
-            <div class="color-facebook background-color-inherit">
+        <div class="color-facebook background-color-inherit">
             <a class="btn btn-social btn-sociald fa-facebook" href="/auth/facebook">
                 Login with facebook
             </a>

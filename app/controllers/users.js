@@ -75,11 +75,11 @@ exports.create = function(req, res, next) {
                     message = 'Please fill all the required fields';
             }
 
-            return res.jsonp({user:user,message:message})
+            return res.jsonp({user:user,message:message});
         }
         req.logIn(user, function(err) {
             if (err) return next(err);
-            return res.jsonp({user:user,message:'success'})
+            return res.jsonp({user:user,message:'success'});
         });
     });
 };

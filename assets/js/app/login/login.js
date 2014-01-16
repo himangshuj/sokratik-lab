@@ -21,23 +21,39 @@
      * And of course we define a controller for our route.
      */
         .controller('LoginCtrl', ['$scope', 'userService', '$state', function ($scope, userService, $state) {
-            $scope.login = function () {
+            var login = function () {
                 userService.login($scope.email, $scope.password).then(function (resp) {
-                    if(_.isEqual(resp.message,"success")){
+                    if (_.isEqual(resp.message, "success")) {
                         $state.go('list');
-                    }else{
+                    } else {
                         $scope.errorMessage = "Invalid user id or password";
                     }
                 });
             };
-            $scope.createUser = function () {
+            var createUser = function () {
                 userService.createUser($scope.email, $scope.password).then(function (resp) {
-                    if(_.isEqual(resp.message,"success")){
+                    if (_.isEqual(resp.message, "success")) {
                         $state.go('home');
-                    }else{
+                    } else {
                         $scope.errorMessage = resp.message;
                     }
                 });
             };
+
+            $scope.submitText = 'Log In';
+
+            $scope.$watch('isSignupPage', function () {
+                $scope.submitText = $scope.isSignupPage ? 'Sign Up' : 'Log In';
+            }); //
+
+            $scope.submit = function () {
+                if ($scope.loginForm.$valid) {
+                    if ($scope.isSignupPage) {
+                        createUser();
+                    } else {
+                        login();
+                    }
+                }
+            }
         }]);
 })(angular, 'sokratik.lab.login');
