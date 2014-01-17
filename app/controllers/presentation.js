@@ -51,7 +51,11 @@ function resolveAudioLocation(presentation, presentationId, callback) {
 }
 
 var parseContentParams = function (contentParams) {
-    return _.chain({}).extend(_.pick(contentParams, 'concept', 'subject'), contentParams.boardMap).values().value();
+    return _.chain({})
+        .extend(_.pick(contentParams, 'concept', 'subject'), _.pick(contentParams.boardMap, 'board', 'class'))//TODO black magic write about it
+        .values()
+        .flatten()
+        .value();
 };
 exports.all = function (req, res) {
     if (req.user) {
