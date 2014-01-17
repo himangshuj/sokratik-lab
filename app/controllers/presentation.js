@@ -127,6 +127,13 @@ exports.presentation = function (req, res, next, id) {
     });
 };
 
+var sanitizeRequestBody = function (presentation) {
+    var script = _.without(presentation.script, null);
+    var presentationData = _.without(presentation.presentationData);
+    return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
+
+};
+
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
@@ -164,9 +171,4 @@ exports.relatedImages = function (req, res) {
     res.jsonp([]);
 };
 
-var sanitizeRequestBody = function (presentation) {
-    var script = _.without(presentation.script, null);
-    var presentationData = _.without(presentation.presentationData);
-    return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
 
-};
