@@ -50,6 +50,9 @@ function resolveAudioLocation(presentation, presentationId, callback) {
     }
 }
 
+var parseContentParams = function (contentParams) {
+    return _.chain({}).extend(_.pick(contentParams, 'concept', 'subject'), contentParams.boardMap).values().value();
+};
 exports.all = function (req, res) {
     if (req.user) {
         Presentation.find({'authors.username': req.user.username, 'deleted': {$ne: true}}).sort('-upDatedOn').exec(function (err, presentations) {
@@ -59,7 +62,7 @@ exports.all = function (req, res) {
                     return  _.extend({id: presentation._id,
                         upDatedOn: presentation.upDatedOn,
                         summary: presentation.summary,
-                        contentParams: presentation.contentParams
+                        contentParams: parseContentParams(presentation.contentParams)
                     }, titleSlide.keyVals);
                 }));
             } else {
@@ -142,6 +145,9 @@ exports.savePresentation = function (req, res) {
     presentation.upDatedOn = new Date();
 
     presentation.save(function (err, presentation) {
+        if (err) {
+            console.log(err.stack);
+        }
         res.jsonp(presentation);
     });
 

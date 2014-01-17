@@ -16,7 +16,9 @@
                 <a class="first-box" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
                 <h1>{{presentation.title}}</h1>
                 <div class="subtitle">
-                    {{presentation.contentParams.concept}}-{{presentation.contentParams.boardMap.board}}-{{presentation.contentParams.boardMap.standard})
+                    <span ng-repeat="contentParam in presentation.contentParams">
+                        {{contentParam}}
+                    </span>
                 </div>
                 </a>
                 <a class="second-box" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
