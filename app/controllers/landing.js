@@ -13,7 +13,7 @@ exports.play = function (req, res) {
     var description = _.chain(textVals).flatten().filter(function (value) {
         return !!value;
     }).reduce(function (val1, val2) {
-            return val1 + "," + val2;
+            return val1 + ',' + val2;
         }).value();
     res.render('landing/play', {
         title: presentation.presentationData[0].keyVals.title,
