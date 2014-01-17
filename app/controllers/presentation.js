@@ -37,7 +37,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
                         if (res.statusCode === 200) {
                             callback(s3AudioLocation('raw-recordings', presentationId));
                         } else {
-                            console.log('where am I??');
+                            console.log('[WTF] no recordings for ' + presentationId);
                             callback('/recordings/' + presentationId + '.ogg');
                         }
                     }).end();
@@ -59,7 +59,7 @@ exports.all = function (req, res) {
                     return  _.extend({id: presentation._id,
                         upDatedOn: presentation.upDatedOn,
                         summary: presentation.summary,
-                        conceptParams: presentation.conceptParams
+                        contentParams: presentation.contentParams
                     }, titleSlide.keyVals);
                 }));
             } else {
@@ -130,7 +130,7 @@ exports.presentation = function (req, res, next, id) {
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
-    presentation = _.extend(presentation, _.omit(req.body, '__v'));
+    presentation = _.extend(presentation, sanitizeRequestBody(req.body));
 
     presentation.upDatedOn = new Date();
 
@@ -162,4 +162,11 @@ exports.play = function (req, res) {
 
 exports.relatedImages = function (req, res) {
     res.jsonp([]);
+};
+
+var sanitizeRequestBody = function (presentation) {
+    var script = _.without(presentation.script, null);
+    var presentationData = _.without(presentation.presentationData);
+    return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
+
 };
