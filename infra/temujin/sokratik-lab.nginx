@@ -44,5 +44,9 @@ server{
         alias /tmp/recordings;
     }
 
+    location /google7ec736f2047acd1c.html {
+        alias /local/www/sokratik/domainverif/yt-video-domain-verif-sokratik-lab.html
+    }
+
 }
 
