@@ -29,6 +29,7 @@ if (process.env.NODE_ENV == 'development')
 
     //APP
     script(type='text/javascript',src='/js/assets/app/app.js')
+    script(type='text/javascript',src='/js/assets/common/logging/services.js')
     script(type='text/javascript',src='/js/assets/app/home/home.js')
     script(type='text/javascript',src='/js/assets/app/login/login.js')
     script(type='text/javascript',src='/js/assets/app/share/share.js')
@@ -54,7 +55,7 @@ if (process.env.NODE_ENV == 'development')
 
     script(type='text/javascript',src='/js/templates-app.js')
     script(type='text/javascript',src='/js/templates-common.js')
-
+    script(type="text/javascript",src="/js/lib/stacktrace.js")
 
 
 
@@ -83,10 +84,5 @@ else
     script(type="text/javascript",src="//www.youtube.com/iframe_api")
     //Sokratik
     script(type='text/javascript',src='/static/js/sokratik_v3112.js')
-
-
-
-
-
-
-
+    script(type="text/javascript",src="/js/lib/stacktrace.js")
+    script(type="text/javascript",src="/js/mine.js")
