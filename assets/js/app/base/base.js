@@ -8,10 +8,10 @@
             $stateProvider.state('root', {
                 abstract: true,
                 resolve: {
-                    loggedUser: ['userService', function (userService) {
+                    loggedUser: ['userService',  function (userService) {
                         return userService.loggedUser();
                     }],
-                    logged: ['loggedUser', '$rootScope', function (loggedUser, $rootScope) {
+                    logged: ['loggedUser', '$rootScope', '$log', function (loggedUser, $rootScope) {
                         $rootScope.logged = !_.isEqual(loggedUser, 'null');
                         return $rootScope.logged;
                     }]
