@@ -37,6 +37,7 @@
                             );
 
                         };
+                        return $delegate;
                     }]);
             }])
         .run(['$rootScope', 'loggingService', function ($rootScope, loggingService) {
