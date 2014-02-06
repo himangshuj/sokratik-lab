@@ -45,7 +45,7 @@ server{
     }
 
     location /googleb22ec1cf5298cab1.html {
-        alias /local/www/sokratik/domainverif/yt-video-domain-verif-sokratik-lab.html
+        alias /local/www/sokratik/domainverif/yt-video-domain-verif-sokratik-lab.html;
     }
 
 }
