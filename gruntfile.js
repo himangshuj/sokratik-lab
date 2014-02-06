@@ -207,6 +207,15 @@ module.exports = function (grunt) {
                         'public/js/atelier/**/*.js']
                 }
             }
+        } ,
+        /**
+         * Creates a changelog on a new version.
+         */
+        changelog: {
+            options: {
+                dest: 'CHANGELOG.md',
+                template: 'changelog.tpl'
+            }
         }
     });
 
@@ -222,6 +231,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-bump');
+    grunt.loadNpmTasks('grunt-conventional-changelog');
 
 
     //Making grunt default to force in order not to break the project.
