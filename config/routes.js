@@ -22,13 +22,13 @@ module.exports = function (app, passport, auth) {
                 return next(err);
             }
             if (!user) {
-                return res.jsonp({message:'loginFailed'});
+                return res.jsonp({message: 'loginFailed'});
             }
             req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
-                return res.jsonp({message:'success'});
+                return res.jsonp({message: 'success'});
             });
         })(req, res, next);
     });
@@ -99,8 +99,15 @@ module.exports = function (app, passport, auth) {
     app.get('/create/:presentationId', index.render);
     app.get('/related-images/:pId', presentations.relatedImages);
 
+    //logging routers
+
+    var logger = require('../app/controllers/clientLogger');
+
+    app.post('/log/info', logger.info);
+    app.post('/log/error', logger.error);
+
 
     //Presentation Landing
     var landing = require('../app/controllers/landing');
-    app.get('/play/:presentationId',landing.play);
+    app.get('/play/:presentationId', landing.play);
 };

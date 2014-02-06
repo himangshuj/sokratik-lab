@@ -1,15 +1,16 @@
 (function (ng, app) {
     'use strict';
     var loggingService = function () {
-        this.$get = [function () {
+        this.$get = ['$http', function ($http) {
             return {
-                log: function (err) {
-                    console.log(ng.toJson(err));
-                    var xhr = new XMLHttpRequest();
+                error: function (err) {
+                    $http.post('/log/error', err).success(function () {
+                    });
+                },
+                info: function (info) {
+                    $http.post('/log/info', info).success(function () {
+                    });
 
-                    xhr.open('POST', 'http://sokratiklogger.cloudapp.net/ng/', true);
-                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                    xhr.send('msg=' + encodeURIComponent(ng.toJson(err)));
                 }
             };
         }];

@@ -101,6 +101,7 @@ module.exports = function (grunt) {
                     'kineticjs/dist/kinetic-v4.7.3.js',
                     '../assets/js/lib/**/*.js',
                     '../node_modules/binaryjs/dist/binary.js',
+                    'stacktrace/stacktrace.js',
                     'angular-elastic/elastic.js'],
                 filter: 'isFile',
                 cwd: 'vendor',

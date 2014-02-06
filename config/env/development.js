@@ -30,5 +30,8 @@ module.exports = {
         SECRET: "P3/gKVSQWUSn6FsGaY02pl680gAg89Fk3YgYfRNt",
         BUCKET: "sokratik-audio",
         AUDIOLOCATION_PREFIX: "http://sokratik-audio.s3.amazonaws.com/"
-    }
+    },
+    infoLogger:'/tmp/sokratik-lab.info.log',
+    errorLogger:'/tmp/sokratik-lab.error.log',
+    debugLogger:'/tmp/sokratik-lab.debug.log'
 }

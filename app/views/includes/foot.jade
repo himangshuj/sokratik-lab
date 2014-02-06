@@ -1,3 +1,6 @@
+//common block for handling error
+script(type='text/javascript').
+    window.onerror=function(e,t,n,r){try{var i=function(e){return e.replace("\\","\\\\").replace('"','\\"')};var s=window.XMLHttpRequest||function(){try{return new ActiveXObject("Msxml3.XMLHTTP")}catch(e){}try{return new ActiveXObject("Msxml2.XMLHTTP.6.0")}catch(t){}try{return new ActiveXObject("Msxml2.XMLHTTP.3.0")}catch(n){}try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(r){}try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(i){}};var o=new s;o.open("POST","/log/error",true);o.setRequestHeader("Content-type","application/json");o.send("{ "+'"message": "'+i(e||"")+'",'+'"source": "'+i(t||"")+'",'+'"url": "'+i(window.location.href)+'",'+'"line": "'+(n||0)+'",'+'"column": "'+(r||0)+'"'+"}")}finally{}}
 if (process.env.NODE_ENV == 'development')
     //Livereload script rendered
     script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
