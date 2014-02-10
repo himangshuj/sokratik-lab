@@ -1,3 +1,7 @@
+<a name="v3.4.1"></a>
+### v3.4.1 (2014-02-10)
+## Fixes
+* gruntfile fixes for cdnloader.js
 <a name="v3.4.0"></a>
 ## v3.4.0 (2014-02-10)
 ### Features
