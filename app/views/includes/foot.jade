@@ -1,6 +1,6 @@
 //common block for handling error
 script(type='text/javascript').
-    window.onerror=function(e,t,n,r){try{var i=function(e){return e.replace("\\","\\\\").replace('"','\\"')};var s=window.XMLHttpRequest||function(){try{return new ActiveXObject("Msxml3.XMLHTTP")}catch(e){}try{return new ActiveXObject("Msxml2.XMLHTTP.6.0")}catch(t){}try{return new ActiveXObject("Msxml2.XMLHTTP.3.0")}catch(n){}try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(r){}try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(i){}};var o=new s;o.open("POST","/log/error",true);o.setRequestHeader("Content-type","application/json");o.send("{ "+'"message": "'+i(e||"")+'",'+'"source": "'+i(t||"")+'",'+'"url": "'+i(window.location.href)+'",'+'"line": "'+(n||0)+'",'+'"column": "'+(r||0)+'"'+"}")}finally{}}
+    window.onerror=function(e,t,n,r){try{var i=function(e){return e.replace('\\','\\\\').replace(''','\\'')};var s=window.XMLHttpRequest||function(){try{return new ActiveXObject('Msxml3.XMLHTTP')}catch(e){}try{return new ActiveXObject('Msxml2.XMLHTTP.6.0')}catch(t){}try{return new ActiveXObject('Msxml2.XMLHTTP.3.0')}catch(n){}try{return new ActiveXObject('Msxml2.XMLHTTP')}catch(r){}try{return new ActiveXObject('Microsoft.XMLHTTP')}catch(i){}};var o=new s;o.open('POST','/log/error',true);o.setRequestHeader('Content-type','application/json');o.send('{ '+''message': ''+i(e||'')+'','+''source': ''+i(t||'')+'','+''url': ''+i(window.location.href)+'','+''line': ''+(n||0)+'','+''column': ''+(r||0)+'''+'}')}finally{}}
 if (process.env.NODE_ENV == 'development')
     //Livereload script rendered
     script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
@@ -58,40 +58,14 @@ if (process.env.NODE_ENV == 'development')
 
     script(type='text/javascript',src='/js/templates-app.js')
     script(type='text/javascript',src='/js/templates-common.js')
-
     //stacktrace
-    script(type="text/javascript",src="/js/lib/stacktrace.js")
+    script(type='text/javascript',src='/js/lib/stacktrace.js')
     //canvas to blob
-    script(type="text/javascript",src="/js/lib/canvas-to-blob.js")
-
-
-
-
+    script(type='text/javascript',src='/js/lib/canvas-to-blob.js')
 else
-    //Angular js
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js')
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-cookies.min.js')
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.min.js')
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js')
-    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.min.js')
-    //Angular UI
-    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js')
-    script(type='text/javascript', src='//angular-ui.github.io/ui-router/release/angular-ui-router.min.js')
-
-
-    //stacktrace
-    script(type="text/javascript",src="//cdnjs.cloudflare.com/ajax/libs/stacktrace.js/0.5.3/stacktrace.min.js")
-
-    //underscore
-    script(type="text/javascript",src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js")
-    script(type='text/javascript',src='//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js')
-    //binaryjs
-    script(type="text/javascript",src="http://cdn.binaryjs.com/0/binary.min.js")
-
-    //kineticjs
-    script(type='text/javascript',src='//d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js')
-
-    //YT
-    script(type="text/javascript",src="//www.youtube.com/iframe_api")
-    //Sokratik
-    script(type='text/javascript',src='/static/js/sokratik_v332.js')
+    script(type='text/javascript',src='/static/js/lib/yepnope.min.js')
+    script(type='text/javascript',src='/static/js/assets/common/cdnloader.js')
+    script(type='text/javascript',src='/static/js/lib/canvas-to-blob.min.js')
+    script(type='text/javascript', src='/static/js/lib/elastic.js')
+    
+    
