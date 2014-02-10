@@ -95,6 +95,7 @@ module.exports = function (grunt) {
                     'angular-ui-router/release/angular-ui-router*js',
                     'angular-resource/angular-resource*js',
                     'angular-sanitize/angular-sanitize*js',
+                    'yepnope/yepnope*.js',
                     'underscore/underscore*js',
                     'angular-animate/angular-animate*js',
                     'underscore.string/lib/underscore.string.js',
