@@ -91,18 +91,19 @@ module.exports = function (grunt) {
             lib: {
                 dest: 'public/js/lib/',
                 src: ['angular/angular.js',
-                    'angular-bootstrap/ui-bootstrap-tpls.js' ,
-                    'angular-ui-router/release/angular-ui-router.js',
-                    'angular-resource/angular-resource.js',
-                    'angular-sanitize/angular-sanitize.js',
-                    'underscore/underscore.js',
-                    'angular-animate/angular-animate.js',
+                    'angular-bootstrap/ui-bootstrap-tpls*js' ,
+                    'angular-ui-router/release/angular-ui-router*js',
+                    'angular-resource/angular-resource*js',
+                    'angular-sanitize/angular-sanitize*js',
+                    'underscore/underscore*js',
+                    'angular-animate/angular-animate*js',
                     'underscore.string/lib/underscore.string.js',
-                    'kineticjs/dist/kinetic-v4.7.3.js',
+                    'kineticjs/dist/kinetic-v4.7.3*js',
+                    'blueimp-canvas-to-blob/js/canvas-to-blob*js',
                     '../assets/js/lib/**/*.js',
                     '../node_modules/binaryjs/dist/binary.js',
-                    'stacktrace/stacktrace.js',
-                    'angular-elastic/elastic.js'],
+                    'stacktrace/stacktrace*js',
+                    'angular-elastic/elastic*js'],
                 filter: 'isFile',
                 cwd: 'vendor',
                 flatten: true,
@@ -132,6 +133,14 @@ module.exports = function (grunt) {
                 filter: 'isFile',
                 cwd: 'atelier/src/common',
                 flatten: false,
+                expand: true
+            },
+            libminified: {
+                dest: '<%= staticRoot %>/js/lib',
+                src: ['*.js'],
+                filter: 'isFile',
+                cwd: 'public/js/lib',
+                flatten: true,
                 expand: true
             }
 
@@ -198,11 +207,10 @@ module.exports = function (grunt) {
                     },
                     compress: true,
                     sourceMap: '<%= staticRoot %>/js/sokratik-map.js',
-                    sourceMappingURL: '/static/js/sokratik-map_v208.js'
+                    sourceMappingURL: '/static/js/sokratik-map_v340.js'
                 },
                 files: {
                     '<%= staticRoot %>/js/sokratik.js': ['public/js/templates*.js',
-                        'public/js/lib/elastic.js',
                         'public/js/assets/**/*.js',
                         'public/js/atelier/**/*.js']
                 }
