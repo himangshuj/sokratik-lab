@@ -27,8 +27,8 @@ server{
         try_files @uri @proxy_to_sokratik_app;
     }
 
-    location /js {
-        alias /local/www/sokratik/js;
+    location /static/js/lib {
+        alias /local/www/sokratik/static/js/lib;
     }
 	
     location ~* ^/static/(\w+)/([^/]+)_.+\.(js|css|png|jpg|jpeg|gif|ico)$ {
