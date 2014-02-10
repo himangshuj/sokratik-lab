@@ -1,5 +1,5 @@
 window.onload = function () {
-    yepnope.errorTimeout=1000;
+    yepnope.errorTimeout=5000;
     yepnope([
         {
             load: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js',
