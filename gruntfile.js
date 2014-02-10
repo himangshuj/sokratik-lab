@@ -99,6 +99,7 @@ module.exports = function (grunt) {
                     'angular-animate/angular-animate.js',
                     'underscore.string/lib/underscore.string.js',
                     'kineticjs/dist/kinetic-v4.7.3.js',
+                    'blueimp-canvas-to-blob/js/canvas-to-blob.js',
                     '../assets/js/lib/**/*.js',
                     '../node_modules/binaryjs/dist/binary.js',
                     'stacktrace/stacktrace.js',
@@ -203,6 +204,7 @@ module.exports = function (grunt) {
                 files: {
                     '<%= staticRoot %>/js/sokratik.js': ['public/js/templates*.js',
                         'public/js/lib/elastic.js',
+                        'public/js/lib/canvas-to-blob.js',
                         'public/js/assets/**/*.js',
                         'public/js/atelier/**/*.js']
                 }
