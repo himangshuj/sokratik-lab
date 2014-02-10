@@ -81,7 +81,7 @@ window.onload = function () {
                 if (!window._) {
                     yepnope('/static/js/lib/underscore.min.js');
                 }
-                yepnope('/static/js/sokratik_v332.js')
+                yepnope('/static/js/sokratik_v340.js')
             }
         },
         {
