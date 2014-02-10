@@ -1,7 +1,6 @@
 //common block for handling error
-script(type='text/javascript').
-    window.onerror=function(e,t,n,r){try{var i=function(e){return e.replace('\\','\\\\').replace(''','\\'')};var s=window.XMLHttpRequest||function(){try{return new ActiveXObject('Msxml3.XMLHTTP')}catch(e){}try{return new ActiveXObject('Msxml2.XMLHTTP.6.0')}catch(t){}try{return new ActiveXObject('Msxml2.XMLHTTP.3.0')}catch(n){}try{return new ActiveXObject('Msxml2.XMLHTTP')}catch(r){}try{return new ActiveXObject('Microsoft.XMLHTTP')}catch(i){}};var o=new s;o.open('POST','/log/error',true);o.setRequestHeader('Content-type','application/json');o.send('{ '+''message': ''+i(e||'')+'','+''source': ''+i(t||'')+'','+''url': ''+i(window.location.href)+'','+''line': ''+(n||0)+'','+''column': ''+(r||0)+'''+'}')}finally{}}
-if (process.env.NODE_ENV == 'development')
+script(type='text/javascript') window.onerror=function(e,f,a,b){try{var d=function(h){return h.replace("\\","\\\\").replace('"','\\"')};var c=window.XMLHttpRequest||function(){try{return new ActiveXObject("Msxml3.XMLHTTP")}catch(l){}try{return new ActiveXObject("Msxml2.XMLHTTP.6.0")}catch(k){}try{return new ActiveXObject("Msxml2.XMLHTTP.3.0")}catch(j){}try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(i){}try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(h){}};var g=new c();g.open("POST","/log/error",true);g.setRequestHeader("Content-type","application/json");g.send('{ "message": "'+d(e||"")+'","source": "'+d(f||"")+'","url": "'+d(window.location.href)+'","line": "'+(a||0)+'","column": "'+(b||0)+'"}')}finally{}};
+if(process.env.NODE_ENV === 'development')
     //Livereload script rendered
     script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
     //AngularJS
@@ -64,8 +63,29 @@ if (process.env.NODE_ENV == 'development')
     script(type='text/javascript',src='/js/lib/canvas-to-blob.js')
 else
     script(type='text/javascript',src='/static/js/lib/yepnope.1.5.4-min.js')
-    script(type='text/javascript',src='/static/js/cdnloaderv344.js')
+    script(type='text/javascript',src='/static/js/cdnloader_v346.js')
     script(type='text/javascript',src='/static/js/lib/canvas-to-blob.min.js')
-    script(type='text/javascript', src='/static/js/lib/elastic.js')
+    //Angular js
+   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js')
+   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-cookies.min.js')
+   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.min.js')
+   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js')
+   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.min.js')
+   //Angular UI
+   script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js')
+   script(type='text/javascript', src='//cdn.jsdelivr.net/angular.ui-router/0.2.7/angular-ui-router.js')
+         //stacktrace
+   script(type="text/javascript",src="//cdnjs.cloudflare.com/ajax/libs/stacktrace.js/0.5.3/stacktrace.min.js")
+      //underscore
+   script(type="text/javascript",src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js")
+   script(type='text/javascript',src='//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js')
+   //binaryjs
+      //kineticjs
+   script(type='text/javascript',src='//d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js')
+      //YT
+   script(type="text/javascript",src="//www.youtube.com/iframe_api")
+   //Sokratik
+   script(type='text/javascript',src='/static/js/sokratik_v346.js')
+   script(type='text/javascript', src='/static/js/lib/elastic_v346.js')
     
     

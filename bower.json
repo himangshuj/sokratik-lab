@@ -1,6 +1,6 @@
 {
-  "name": "sokratik-lab",
-  "version": "3.4.4",
+  "name": "sokratik-labs",
+  "version": "3.4.6",
   "dependencies": {
     "angular": "~1.2.6",
     "angular-resource": "~1.2.6",
