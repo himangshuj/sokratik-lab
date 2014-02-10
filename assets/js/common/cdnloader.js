@@ -1,5 +1,5 @@
 window.onload = function () {
-    yepnope.errorTimeout=1000;
+    yepnope.errorTimeout=5000;
     yepnope([
         {
             load: '//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js',
@@ -81,7 +81,7 @@ window.onload = function () {
                 if (!window._) {
                     yepnope('/static/js/lib/underscore.min.js');
                 }
-                yepnope('/static/js/sokratik_v332.js')
+                yepnope('/static/js/sokratik_v340.js')
             }
         },
         {
