@@ -111,7 +111,7 @@ module.exports = function (grunt) {
             },
             assets: {
                 dest: 'public/js/assets/',
-                src: ['app/**/*.js','common/**/*.js', '!**/*.spec.js'],
+                src: ['app/**/*.js', 'common/**/*.js', '!**/*.spec.js'],
                 filter: 'isFile',
                 cwd: 'assets/js',
                 flatten: false,
@@ -212,10 +212,25 @@ module.exports = function (grunt) {
                 files: {
                     '<%= staticRoot %>/js/sokratik.js': ['public/js/templates*.js',
                         'public/js/assets/**/*.js',
+                        '!public/js/assets/common/cdnloader.js',
                         'public/js/atelier/**/*.js']
                 }
+            },
+            loader: {
+                options: {
+                    mangle: {
+                        except: ['yepnope', 'angular']
+                    },
+                    compress: true,
+                    sourceMap: '<%= staticRoot %>/js/cdnloader-map.js',
+                    sourceMappingURL: '/static/js/cdnloader-map_v341.js'
+                },
+                files: {
+                    '<%= staticRoot %>/js/cdnloader.js': ['public/js/assets/common/cdnloader.js'
+                    ]
+                }
             }
-        } ,
+        },
         /**
          * Creates a changelog on a new version.
          */
