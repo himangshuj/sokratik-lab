@@ -1,3 +1,8 @@
+<a name="v3.4.5"></a>
+### v3.4.5 (2014-02-10)
+## Fixes
+cdnloader format was wrong in foot.jade
+
 <a name="v3.4.2"></a>
 ### v3.4.2 (2014-02-10)
 ##Fixes
