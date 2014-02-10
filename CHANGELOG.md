@@ -1,3 +1,8 @@
+<a name="v3.4.2"></a>
+### v3.4.2 (2014-02-10)
+##Fixes
+*nginx configs for lib files
+
 <a name="v3.4.1"></a>
 ### v3.4.1 (2014-02-10)
 ## Fixes
