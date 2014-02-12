@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Presentation = mongoose.model('Presentation'),
     knox = require('knox'),
     fs = require('fs'),
+    logger = require('../../config/logging'),
     config = require('../../config/config');
 
 if (!!config.s3) {
@@ -111,7 +112,7 @@ exports.create = function (req, res) {
         if (err) {
             res.send('users/signup', {
                 errors: err.errors,
-                article: presentation
+                presentation: presentation
             });
         } else {
             res.jsonp(presentation);
@@ -136,9 +137,8 @@ exports.presentation = function (req, res, next, id) {
 
 var sanitizeRequestBody = function (presentation) {
     var script = _.without(presentation.script, null);
-    var presentationData = _.without(presentation.presentationData);
-    return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
-
+    var presentationData = _.without(presentation.presentationData,null);
+   return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
 };
 
 exports.savePresentation = function (req, res) {
@@ -150,9 +150,13 @@ exports.savePresentation = function (req, res) {
 
     presentation.save(function (err, presentation) {
         if (err) {
-            console.log(err.stack);
+            logger.error({head: req.headers, body: req.body, error: err.stack})
         }
-        res.jsonp(presentation);
+        try {
+            res.jsonp(presentation);
+        } catch (err) {
+            res.jsonp({});
+        }
     });
 
 };
