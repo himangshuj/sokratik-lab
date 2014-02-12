@@ -1,3 +1,8 @@
+<a name="v3.4.7"></a>
+### v3.4.7 (2014-02-12)
+##### Fixes
+* Backend changes to sanitize presentationBody before going to mongodb
+
 <a name="v3.4.5"></a>
 ### v3.4.5 (2014-02-10)
 ## Fixes
