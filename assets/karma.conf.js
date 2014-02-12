@@ -19,6 +19,7 @@ module.exports = function (config) {
             '../vendor/angular-ui-router/release/angular-ui-router.js',
             '../vendor/underscore/underscore.js',
             '../public/js/templates-app.js',
+            '../vendor/yepnope/yepnope*.js',
             '../vendor/angular-mocks/angular-mocks.js',
             '../vendor/angular-sanitize/angular-sanitize.min.js',
             '../vendor/angular-cookies/angular-cookies.min.js',
