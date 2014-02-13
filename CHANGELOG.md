@@ -1,3 +1,8 @@
+<a name="v3.5.1"></a>
+### v3.5.1 (2014-02-14)
+#### Hack
+* explainer video should play once
+
 <a name="v3.5.0"></a>
 ## v3.5.0 (2014-02-14)
 #### Features
