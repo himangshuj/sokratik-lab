@@ -77,8 +77,8 @@ module.exports = function (app, passport, auth) {
     app.get('/presentations', presentations.all);
     app.post('/presentation', presentations.create);
     app.get('/presentation/:presentationId', presentations.show);
-    app.put('/presentation/:presentationId', presentations.savePresentation);
-    app.delete('/presentation/:presentationId', auth.requiresLogin, presentations.deletePresentation);
+    app.put('/presentation/:presentationId',presentations.hasAccess, presentations.savePresentation);
+    app.delete('/presentation/:presentationId', auth.requiresLogin,presentations.hasAccess, presentations.deletePresentation);
 
 
     //Finish with setting up the articleId param
