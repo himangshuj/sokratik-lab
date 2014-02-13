@@ -135,10 +135,24 @@ exports.presentation = function (req, res, next, id) {
     });
 };
 
+exports.hasAccess = function (req, res, next) {
+
+    var authors = _.chain(req.presentation.authors).pluck('username')
+        .filter(function (username) {
+            return _.isString(username);
+        }).value();
+    if (_.isEmpty(authors) || _.contains(authors, (req.user || {}).username)) {
+        next();
+    } else {
+        return res.send(401, 'User is not authorized');
+    }
+
+};
+
 var sanitizeRequestBody = function (presentation) {
     var script = _.without(presentation.script, null);
-    var presentationData = _.without(presentation.presentationData,null);
-   return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
+    var presentationData = _.without(presentation.presentationData, null);
+    return _.chain(presentation).omit('__v').extend({script: script, presentationData: presentationData}).value();
 };
 
 exports.savePresentation = function (req, res) {
@@ -150,7 +164,7 @@ exports.savePresentation = function (req, res) {
 
     presentation.save(function (err, presentation) {
         if (err) {
-            logger.error({head: req.headers, body: req.body, error: err.stack})
+            logger.error({head: req.headers, body: req.body, error: err.stack});
         }
         try {
             res.jsonp(presentation);

@@ -1,8 +1,17 @@
 'use strict';
 (function (ng, app) {
+    var _videoModalCtrl = ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+        $scope.done = function () {
+            $modalInstance.close();
+        };
+        $scope.cancel = function () {
+            $modalInstance.dismiss();
+        };
+    }];
     ng.module(app, [
             'ui.router',
             'templates-app'    ,
+            'ui.bootstrap',
             'sokratik.lab.presentation.services',
             'sokratik.lab.root',
             'sokratik.atelier.edit',
@@ -29,21 +38,31 @@
                     presentation: ['$stateParams', 'presentationService', function ($stateParams, presentationService) {
                         if (($stateParams.presentationId || "").length > 0) {
                             return presentationService.fetchPresentation($stateParams.presentationId);
+
                         } else {
-                            return presentationService.createNew();
+                            return  presentationService.createNew();
+
                         }
 
                     }]
                 },
-                parent:'root'
+                parent: 'root'
             });
         }])
 
     /**
      * And of course we define a controller for our route.
      */
-        .controller('CreateCtrl', ['$state', 'presentation', function ($state, presentation) {
-            $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
-
-        }]);
+        .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation',
+            function ($state, $stateParams, $modal, presentation) {
+                var modalInstance = $modal.open({
+                    templateUrl: 'create/howto.modal.tpl.html',
+                    controller: _videoModalCtrl
+                });
+                modalInstance.result.then(function () {
+                    $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+                }, function () {
+                    $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+                });
+            }]);
 })(angular, 'sokratik.lab.create');
