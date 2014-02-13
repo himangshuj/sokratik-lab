@@ -55,14 +55,17 @@
      */
         .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation',
             function ($state, $stateParams, $modal, presentation) {
-                var modalInstance = $modal.open({
-                    templateUrl: 'create/howto.modal.tpl.html',
-                    controller: _videoModalCtrl
+                var createPresentation = _.once(function ($state, $stateParams, $modal, presentation) {
+                    var modalInstance = $modal.open({
+                        templateUrl: 'create/howto.modal.tpl.html',
+                        controller: _videoModalCtrl
+                    });
+                    modalInstance.result.then(function () {
+                        $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+                    }, function () {
+                        $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+                    });
                 });
-                modalInstance.result.then(function () {
-                    $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
-                }, function () {
-                    $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
-                });
+                createPresentation($state, $stateParams, $modal, presentation);
             }]);
 })(angular, 'sokratik.lab.create');
