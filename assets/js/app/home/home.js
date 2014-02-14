@@ -23,6 +23,17 @@
                 },
                 parent:'root'
             });
+
+            $stateProvider.state('why', {
+                url: '/why',
+                views: {
+                    main: {
+                        controller: 'HomeCtrl',
+                        templateUrl: 'home/why.tpl.html'
+                    }
+                },
+                parent:'root'
+            });
         }])
 
     /**

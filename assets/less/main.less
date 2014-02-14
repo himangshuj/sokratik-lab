@@ -2,6 +2,7 @@
 @import '../../vendor/bootstrap/less/mixins';
 @import 'buttons';
 @import "../../atelier/src/less/main";
+@import 'mixins';
 
 @tile-height:250px;
 
@@ -111,9 +112,15 @@ body.navigation{
       font-size:0.5em;
       float:right;
       margin-top: -0.75em;
+      .text-link{
+        font-weight: 700;
+        vertical-align: sub;
+        .color-changing-link(#ab3c3c);
+      }
     }
     a{
       color:#FFFFFF;
+
     }
     .btn-hollow{
       .btn-hollow(#cb4e4e);

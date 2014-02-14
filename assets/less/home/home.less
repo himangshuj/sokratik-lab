@@ -4,6 +4,9 @@
     border-bottom: 0.8em solid #ab3c3c;
     padding: 0em 0em 12em 0em;
     text-align: center;
+    &.smaller-padding{
+      padding-bottom: 5em;
+    }
     h1{
       font-size:3.6em;
       font-family:'Bree Serif';
@@ -14,9 +17,30 @@
       color:#ab3c3c;
       font-size: 2em;
       margin-bottom: 1em;
+      h1 {
+        font-size: 1.8em;
+      }
+      a{
+        .color-changing-link(#ab3c3c);
+      }
     }
     .btn-pop-out{
       font-size:1.2em;
+    }
+    .white-text, a{
+      color: #FFF;
+    }
+    .sub-container{
+      padding-left: 8em;
+      text-align: left;
+      font-size: 0.6em;
+    }
+    .bottom-heading{
+      margin-top:1em;
+    }
+    .logo-text{
+      font-family: 'Open Sans';
+//      color:#FFF;
     }
     .clearfix
   }
