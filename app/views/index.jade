@@ -4,6 +4,7 @@ block content
         div(class="logo")
             a(ui-sref="home") sokratik
         div(class="menu")
+            a(class="text-link" ui-sref="why") Why should I use sokratik?
             a(class="btn-small btn-hollow", ui-sref="login",ng-hide="logged || !homeScreen") LOG IN
             a(class="btn-small btn-hollow", href="/signout",ng-show="logged") LOG OUT
     div(class="full-sized", ui-view="root")
