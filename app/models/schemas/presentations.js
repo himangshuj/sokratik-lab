@@ -32,6 +32,7 @@ module.exports = function (mongoose) {
                 annotation: {},
                 files: [],
                 audioLocation: String,
+                audioId: String,
                 authors: [
                     {
                         username: String,

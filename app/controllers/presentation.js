@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Presentation = mongoose.model('Presentation'),
     knox = require('knox'),
     fs = require('fs'),
+    uuid = require('node-uuid'),
     logger = require('../../config/logging'),
     config = require('../../config/config');
 
@@ -21,10 +22,10 @@ function s3AudioLocation(prefix, answerId) {
 
 function resolveAudioLocation(presentation, presentationId, callback) {
     if (!!s3Client) {
-        if (fs.exists('/tmp/recordings/' + presentationId.ogg)) {
-            callback('/recordings/' + presentationId + '.ogg');
+        if (fs.exists('/tmp/recordings/' + presentation.audioId + '.ogg')) {
+            callback('/recordings/' + presentationId + '_' + presentation.audioId + '.ogg');
         } else {
-            s3Client.head('/auphonic/' + presentationId + '.ogg').on('response',function (res) {
+            s3Client.head('/auphonic/' + presentationId + '_' + presentation.audioId + '.ogg').on('response',function (res) {
                 var modifiedTime = (new Date(presentation.upDatedOn)).getTime();
                 var currentTime = (new Date()).getTime();
                 if ((res.statusCode === 200) &&
@@ -32,14 +33,14 @@ function resolveAudioLocation(presentation, presentationId, callback) {
                     (currentTime - modifiedTime > 100000)) {
                     console.log('Negative time' + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
 
-                    callback(s3AudioLocation('auphonic', presentationId));
+                    callback(s3AudioLocation('auphonic', presentationId + '_' + presentation.audioId));
                 } else {
-                    s3Client.head('/raw-recordings/' + presentationId + '.ogg').on('response',function (res) {
+                    s3Client.head('/raw-recordings/' + presentationId + '_' + presentation.audioId + '.ogg').on('response',function (res) {
                         if (res.statusCode === 200) {
-                            callback(s3AudioLocation('raw-recordings', presentationId));
+                            callback(s3AudioLocation('raw-recordings', presentationId + '_' + presentation.audioId));
                         } else {
                             console.log('[WTF] no recordings for ' + presentationId);
-                            callback('/recordings/' + presentationId + '.ogg');
+                            callback('/recordings/' + presentationId + '_' + presentation.audioId + '.ogg');
                         }
                     }).end();
 
@@ -47,7 +48,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
             }).end();
         }
     } else {
-        callback('/recordings/' + presentationId + '.ogg');
+        callback('/recordings/' + presentationId + '_' + presentation.audioId + '.ogg');
     }
 }
 
@@ -104,7 +105,9 @@ exports.create = function (req, res) {
                 templateName: 'title',
                 keyVals: {title: 'Title'}
             }
-        ]
+        ],
+        audioId: uuid.v4()
+
     };
     presentation = _.extend(presentation, init);
 
