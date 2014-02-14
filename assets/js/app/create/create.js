@@ -8,6 +8,20 @@
             $modalInstance.dismiss();
         };
     }];
+    var createPresentation = _.once(function ($state, $stateParams, $modal, presentation) {
+        var modalInstance = $modal.open({
+            templateUrl: 'create/howto.modal.tpl.html',
+            controller: _videoModalCtrl
+        });
+        modalInstance.result.then(function () {
+            $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+        }, function () {
+            $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+        });
+        createPresentation = function(){
+            $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
+        }
+    });
     ng.module(app, [
             'ui.router',
             'templates-app'    ,
@@ -55,17 +69,7 @@
      */
         .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation',
             function ($state, $stateParams, $modal, presentation) {
-                var createPresentation = _.once(function ($state, $stateParams, $modal, presentation) {
-                    var modalInstance = $modal.open({
-                        templateUrl: 'create/howto.modal.tpl.html',
-                        controller: _videoModalCtrl
-                    });
-                    modalInstance.result.then(function () {
-                        $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
-                    }, function () {
-                        $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
-                    });
-                });
+
                 createPresentation($state, $stateParams, $modal, presentation);
             }]);
 })(angular, 'sokratik.lab.create');
