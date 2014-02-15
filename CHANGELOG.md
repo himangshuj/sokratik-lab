@@ -1,3 +1,10 @@
+<a name="v3.6.0"></a>
+## v3.6.0 (2014-02-15)
+### Features
+* why should you create a video
+* getting started starts the explainer
+* on play mode you can create video
+
 <a name="v3.5.1"></a>
 ### v3.5.1 (2014-02-14)
 #### Hack
