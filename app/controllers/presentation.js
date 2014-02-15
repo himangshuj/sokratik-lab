@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Presentation = mongoose.model('Presentation'),
     knox = require('knox'),
     fs = require('fs'),
+    uuid = require('node-uuid'),
     logger = require('../../config/logging'),
     config = require('../../config/config');
 
@@ -20,26 +21,27 @@ function s3AudioLocation(prefix, answerId) {
 }
 
 function resolveAudioLocation(presentation, presentationId, callback) {
+    var audioToken = presentation.audioRecorded ? ( presentationId + '_' + presentation.audioRecorded) : presentationId;
     if (!!s3Client) {
-        if (fs.exists('/tmp/recordings/' + presentationId.ogg)) {
-            callback('/recordings/' + presentationId + '.ogg');
+        if (fs.exists('/tmp/recordings/' + presentation.audioId + '.ogg')) {
+            callback('/recordings/' + audioToken + '.ogg');
         } else {
-            s3Client.head('/auphonic/' + presentationId + '.ogg').on('response',function (res) {
+            s3Client.head('/auphonic/' + audioToken + '.ogg').on('response',function (res) {
                 var modifiedTime = (new Date(presentation.upDatedOn)).getTime();
                 var currentTime = (new Date()).getTime();
                 if ((res.statusCode === 200) &&
                     ((modifiedTime - (new Date(res.headers['last-modified'])).getTime()) < 100000) &&
                     (currentTime - modifiedTime > 100000)) {
-                    console.log('Negative time' + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
+                    logger.debug('Negative time' + (modifiedTime - (new Date(res.headers['last-modified'])).getTime()));
 
-                    callback(s3AudioLocation('auphonic', presentationId));
+                    callback(s3AudioLocation('auphonic', audioToken));
                 } else {
-                    s3Client.head('/raw-recordings/' + presentationId + '.ogg').on('response',function (res) {
+                    s3Client.head('/raw-recordings/' + audioToken + '.ogg').on('response',function (res) {
                         if (res.statusCode === 200) {
-                            callback(s3AudioLocation('raw-recordings', presentationId));
+                            callback(s3AudioLocation('raw-recordings', audioToken));
                         } else {
-                            console.log('[WTF] no recordings for ' + presentationId);
-                            callback('/recordings/' + presentationId + '.ogg');
+                            logger.debug('[WTF] no recordings for ' + presentationId);
+                            callback('/recordings/' + audioToken + '.ogg');
                         }
                     }).end();
 
@@ -47,7 +49,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
             }).end();
         }
     } else {
-        callback('/recordings/' + presentationId + '.ogg');
+        callback('/recordings/' + audioToken + '.ogg');
     }
 }
 
@@ -104,7 +106,9 @@ exports.create = function (req, res) {
                 templateName: 'title',
                 keyVals: {title: 'Title'}
             }
-        ]
+        ],
+        audioId: uuid.v4()
+
     };
     presentation = _.extend(presentation, init);
 
@@ -173,6 +177,26 @@ exports.savePresentation = function (req, res) {
         }
     });
 
+};
+
+exports.completePresentation = function (req, res) {
+    req.presentation.audioRecorded = req.presentation.audioId ;
+    req.presentation.audioId = uuid.v4();
+    req.presentation.save();
+    var clonedPresentation = new Presentation(_.without(req.presentation, '_id'));
+    clonedPresentation.authors = [
+        {
+            name: 'sokratik-admin',
+            description: 'description',
+            role: 'Owner',
+            percentageContribution: '100',
+            username: 'admin@sokratik.com'
+        }
+    ];
+    clonedPresentation.save(function () {
+        res.jsonp('done');
+    });
+    console.log(clonedPresentation.audioRecorded);
 };
 
 exports.deletePresentation = function (req, res) {
