@@ -65,12 +65,12 @@ exports.all = function (req, res) {
         Presentation.find({'authors.username': req.user.username, 'deleted': {$ne: true}}).sort('-upDatedOn').exec(function (err, presentations) {
             if (!err) {
                 res.jsonp(_.map(presentations, function (presentation) {
-                    var titleSlide = presentation.presentationData[0];
+                    var titleSlide = presentation.presentationData[0]|| {};
                     return  _.extend({id: presentation._id,
                         upDatedOn: presentation.upDatedOn,
                         summary: presentation.summary,
                         contentParams: parseContentParams(presentation.contentParams)
-                    }, titleSlide.keyVals);
+                    }, titleSlide.keyVals || {} );
                 }));
             } else {
                 res.jsonp([]);
