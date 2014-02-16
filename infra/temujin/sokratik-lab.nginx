@@ -50,3 +50,52 @@ server{
 
 }
 
+server{
+
+    access_log   /var/log/nginx/sokratik_access.log  ;
+    error_log   /var/log/nginx/sokratik_error.log  ;
+
+    server_name lab.sokratik.com;
+    listen 443 ;
+    ssl    on;
+    ssl_certificate    /local/certs/sokratik.crt;
+    ssl_certificate_key    /local/certs/sokratik.key;
+    root /local/www/sokratik;
+
+    location @proxy_to_sokratik_app {
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+        proxy_set_header X-Forwarded-Port $http_x_forwarded_port;
+        proxy_set_header X-Forwarded-For $http_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://sokratik-nodejs;
+    }
+
+    location / {
+        try_files @uri @proxy_to_sokratik_app;
+    }
+
+    location /static/js/lib {
+        alias /local/www/sokratik/static/js/lib;
+    }
+
+    location ~* ^/static/(\w+)/([^/]+)_.+\.(js|css|png|jpg|jpeg|gif|ico)$ {
+        	alias /local/www/sokratik/static/$1/$2.$3;
+       	    add_header Vary Accept-Encoding;
+        	expires max;
+     	 }
+
+    location /css {
+        alias /local/www/sokratik/css;
+    }
+    location /recordings {
+        alias /tmp/recordings;
+    }
+
+    location /googleb22ec1cf5298cab1.html {
+        alias /local/www/sokratik/domainverif/yt-video-domain-verif-sokratik-lab.html;
+    }
+
+}
+
+
