@@ -61,8 +61,7 @@
                     });
 
                     $rootScope.loading = false;
-                    $window._gaq.push(['_trackPageview', toState.url]);
-
+                    $window.ga('send', 'pageview', toState.url);
                 });
         }])
 
