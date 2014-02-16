@@ -67,9 +67,9 @@
     /**
      * And of course we define a controller for our route.
      */
-        .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation',
-            function ($state, $stateParams, $modal, presentation) {
-
+        .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation','$window',
+            function ($state, $stateParams, $modal, presentation,$window) {
+                $window._trackEvent('creationMileStone', 'editMode', 'ImportantStates');
                 createPresentation($state, $stateParams, $modal, presentation);
             }]);
 })(angular, 'sokratik.lab.create');
