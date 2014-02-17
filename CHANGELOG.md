@@ -1,3 +1,9 @@
+<a name="v3.7.0"></a>
+## v3.7.0 (2014-02-17)
+### Features
+* google analytics pageviews
+* better logging of errors
+
 <a name="v3.6.0"></a>
 ## v3.6.0 (2014-02-15)
 ### Features
