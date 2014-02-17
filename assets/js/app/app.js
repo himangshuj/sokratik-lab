@@ -40,7 +40,7 @@
                         return $delegate;
                     }]);
             }])
-        .run(['$rootScope', 'loggingService', function ($rootScope, loggingService) {
+        .run(['$rootScope', 'loggingService','$window', function ($rootScope, loggingService,$window) {
             $rootScope.loading = false;
             $rootScope.$on('$stateChangeStart',
                 function (event, toState, toParams, fromState, fromParams) {
@@ -59,8 +59,9 @@
                         fromState: fromState,
                         fromParams: fromParams
                     });
-                    $rootScope.loading = false;
 
+                    $rootScope.loading = false;
+                    $window.ga('send', 'pageview', toState.url);
                 });
         }])
 
