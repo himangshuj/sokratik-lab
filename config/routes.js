@@ -77,8 +77,6 @@ module.exports = function (app, passport, auth) {
     app.get('/presentations', presentations.all);
     app.post('/presentation', presentations.create);
     app.get('/presentation/:presentationId', presentations.show);
-    app.get('/presentation/complete/:presentationId', presentations.hasAccess, presentations.completePresentation);
-
     app.put('/presentation/:presentationId', presentations.hasAccess, presentations.savePresentation);
     app.delete('/presentation/:presentationId', auth.requiresLogin, presentations.hasAccess, presentations.deletePresentation);
 

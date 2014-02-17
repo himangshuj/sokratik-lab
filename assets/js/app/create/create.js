@@ -69,7 +69,7 @@
      */
         .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation','$window',
             function ($state, $stateParams, $modal, presentation,$window) {
-                $window._trackEvent('creationMileStone', 'editMode', 'ImportantStates');
+                $window.ga('send', 'event', 'ImportantStates', 'click', 'editStarted');
                 createPresentation($state, $stateParams, $modal, presentation);
             }]);
 })(angular, 'sokratik.lab.create');

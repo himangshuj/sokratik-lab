@@ -163,9 +163,19 @@ exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
 
     presentation = _.extend(presentation, sanitizeRequestBody(req.body));
+    if(!!presentation.recorded){//a hack todo have a separate method later
+        presentation.audioRecorded = presentation.audioId ;
+        presentation.audioId = uuid.v4();
+        var clonedPresentation = new Presentation();
+        clonedPresentation = _.extend(clonedPresentation, _.omit(presentation,'_id'));
+        clonedPresentation.authors[0].username='admin@sokratik.com';
+        clonedPresentation.save(function (err,obj) {
+            logger.error(err);
+            logger.debug('[Cloned object]'+obj);
+        });
 
+    }
     presentation.upDatedOn = new Date();
-
     presentation.save(function (err, presentation) {
         if (err) {
             logger.error({head: req.headers, body: req.body, error: err.stack});
@@ -179,31 +189,11 @@ exports.savePresentation = function (req, res) {
 
 };
 
-exports.completePresentation = function (req, res) {
-    req.presentation.audioRecorded = req.presentation.audioId ;
-    req.presentation.audioId = uuid.v4();
-    req.presentation.save();
-    var clonedPresentation = new Presentation(_.without(req.presentation, '_id'));
-    clonedPresentation.authors = [
-        {
-            name: 'sokratik-admin',
-            description: 'description',
-            role: 'Owner',
-            percentageContribution: '100',
-            username: 'admin@sokratik.com'
-        }
-    ];
-    clonedPresentation.save(function () {
-        res.jsonp('done');
-    });
-    console.log(clonedPresentation.audioRecorded);
-};
 
 exports.deletePresentation = function (req, res) {
     var presentation = req.presentation;
     presentation.deleted = true;
     presentation.save(function (err) {
-        console.log(err);
         res.jsonp(presentation);
     });
 };
