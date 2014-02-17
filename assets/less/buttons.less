@@ -98,10 +98,11 @@
   margin:0px;
   padding:0px;
   z-index:1;
-  *{
+  .fa{
     position: absolute;
     top:50%;
     margin-top:-18px;
+    color:#FFF;
     z-index:3;
   }
   &:after{
@@ -116,24 +117,6 @@
   }
   &:hover:after,&:active:after{
     width: 100%;
-  }
-  &.btn-fill-right{
-    &:after{
-      left:0px;
-    }
-    *{
-      left:50%;
-      margin-left:-15px;
-    }
-  }
-  &.btn-fill-left{
-    &:after{
-      right:0px;
-    }
-    *{
-      right:50%;
-      margin-right:-15px;
-    }
   }
 }
 
