@@ -17,16 +17,16 @@ if (!!config.s3) {
 }
 
 function s3AudioLocation(prefix, answerId) {
-    return (config.s3.AUDIOLOCATION_PREFIX + prefix + '/' + answerId + '.ogg');
+    return (config.s3.AUDIOLOCATION_PREFIX + prefix + '/' + answerId + '.mp3');
 }
 
 function resolveAudioLocation(presentation, presentationId, callback) {
     var audioToken = presentation.audioRecorded ? ( presentationId + '_' + presentation.audioRecorded) : presentationId;
     if (!!s3Client) {
-        if (fs.exists('/tmp/recordings/' + presentation.audioId + '.ogg')) {
-            callback('/recordings/' + audioToken + '.ogg');
+        if (fs.exists('/tmp/recordings/' + presentation.audioId + '.mp3')) {
+            callback('/recordings/' + audioToken + '.mp3');
         } else {
-            s3Client.head('/auphonic/' + audioToken + '.ogg').on('response',function (res) {
+            s3Client.head('/auphonic/' + audioToken + '.mp3').on('response',function (res) {
                 var modifiedTime = (new Date(presentation.upDatedOn)).getTime();
                 var currentTime = (new Date()).getTime();
                 if ((res.statusCode === 200) &&
@@ -36,12 +36,12 @@ function resolveAudioLocation(presentation, presentationId, callback) {
 
                     callback(s3AudioLocation('auphonic', audioToken));
                 } else {
-                    s3Client.head('/raw-recordings/' + audioToken + '.ogg').on('response',function (res) {
+                    s3Client.head('/raw-recordings/' + audioToken + '.mp3').on('response',function (res) {
                         if (res.statusCode === 200) {
                             callback(s3AudioLocation('raw-recordings', audioToken));
                         } else {
                             logger.debug('[WTF] no recordings for ' + presentationId);
-                            callback('/recordings/' + audioToken + '.ogg');
+                            callback('/recordings/' + audioToken + '.mp3');
                         }
                     }).end();
 
@@ -49,7 +49,7 @@ function resolveAudioLocation(presentation, presentationId, callback) {
             }).end();
         }
     } else {
-        callback('/recordings/' + audioToken + '.ogg');
+        callback('/recordings/' + audioToken + '.mp3');
     }
 }
 
