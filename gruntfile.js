@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                 }
             },
             css: {
-                files: ['assets/less/**', 'atelier/src/less/**'],
+                files: ['assets/less/**', 'atelier/src/less/**', 'atelier/src/app/**/*.less'],
                 tasks: ['less'],
                 options: {
                     livereload: true
