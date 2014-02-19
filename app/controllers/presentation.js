@@ -103,8 +103,8 @@ exports.create = function (req, res) {
         },
         presentationData: [
             {
-                templateName: 'title',
-                keyVals: {title: 'Title'}
+                templateName: '1imageText',
+                keyVals: {}
             }
         ],
         audioId: uuid.v4()
