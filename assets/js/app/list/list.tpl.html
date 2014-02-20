@@ -1,31 +1,33 @@
 <div class="color-gray">
     <div class="listing-main">
         <div class="color-dark-gray tile">
-            <a class="btn btn-icon-create btn-icon-createg btn-icon-only fa-plus"  ui-sref="create({})">
-                Create a new presentation
+            <a class="btn btn-icon-create btn-icon-createg btn-icon-only fa-plus"  ui-sref="create({})" tooltip-placement="left" tooltip="Create a new video">
+                Create a new video
             </a>
         </div>
         <div ng-repeat="presentation in presentations">
             <div class="tile" ng-class="colors[$index%len]">
                 <div class="icon-holder">
-                    <a ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})"><i class="fa fa-edit"></i></a>
-                    <a ui-sref="record.activate({presentationId:presentation.id,page:0})"><i class="fa fa-microphone"></i></a>
-                    <a ui-sref="play.init({presentationId:presentation.id,scriptIndex:0,pausedInterval:0})"><i class="fa fa-play-circle"></i></a>
-                    <a ng-click="deletePresentation(presentation.id)"><i class="fa fa-trash-o"></i></a>
+                    <div class="icons">
+                        <a ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" target="_blank"><i class="fa fa-edit" tooltip-placement="left" tooltip="Edit your video"></i></a>
+                        <a ui-sref="record.activate({presentationId:presentation.id,page:0})"><i class="fa fa-microphone" target="_blank" tooltip-placement="left" tooltip="Record your voice over the video"></i></a>
+                        <a ui-sref="play.init({presentationId:presentation.id,scriptIndex:0,pausedInterval:0})" target="_blank"><i class="fa fa-play-circle" tooltip-placement="left" tooltip="Play your video"></i></a>
+                        <a ng-click="deletePresentation(presentation.id)" ><i class="fa fa-trash-o" tooltip-placement="left" tooltip="Delete your video" target="_blank"></i></a>
+                    </div>
                 </div>
-                <a class="first-box" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
-                <h1>{{presentation.title}}</h1>
-                <div class="subtitle">
-                    <span ng-repeat="contentParam in presentation.contentParams">
-                        {{contentParam}}
-                    </span>
+                <a class="tile-box heading-box animated-box no-animation" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" target="_blank">
+                    <h1>{{presentation.title}}</h1>
+                    <div class="subtitle">
+                        <span ng-repeat="contentParam in presentation.contentParams">
+                            {{contentParam}}
+                        </span>
+                    </div>
                 </div>
-                </a>
-                <a class="second-box" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" >
+                <a class="tile-box description-box" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" target="_blank">
                     <div class="subtitle">
                         {{presentation.summary}}
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>

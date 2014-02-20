@@ -1,9 +1,11 @@
+@icon-holder-home-height: 42px;
 .navigation{
   .masthead{
     background-color: #f06060;
     border-bottom: 0.8em solid #ab3c3c;
-    padding: 0em 0em 12em 0em;
+    padding: 0em 0em 0.5em 0em;
     text-align: center;
+    min-height: 33.4em;
     &.smaller-padding{
       padding-bottom: 6em;
     }
@@ -51,6 +53,31 @@
       font-family: 'Open Sans';
       font-size: 1.1em;
 //      color:#FFF;
+    }
+    .home-show-case{
+      margin-top: 1em;
+      h1{
+        font-family: 'Open Sans';
+        font-size: 2em;
+      }
+      .subtitle{
+        font-size:1.2em;
+      }
+      .tile .icon-holder{
+        height: @icon-holder-home-height;
+      }
+      height: @icon-holder-home-height+1px;
+      &.no-animation{
+        height: @tile-height;
+      }
+      overflow: hidden;
+      .transition-standard;
+      &:hover{
+        height: @tile-height;
+      }
+      .tile:hover .animated-box{
+        margin-top: 0px;
+      }
     }
     .clearfix
   }
