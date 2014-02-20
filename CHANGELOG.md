@@ -1,3 +1,8 @@
+<a name="v3.9.0"></a>
+## v3.9.0 (2014-02-20)
+#### Features
+* Looks matter
+
 <a name="v3.8.1"></a>
 ### v3.8.1 (2014-02-20)
 #### fixes
