@@ -95,6 +95,13 @@ exports.create = function (req, res) {
                 role: 'Owner',
                 percentageContribution: '100',
                 username: user.username
+            },
+            {
+                name: 'admin',
+                description: 'description',
+                role: 'Watcher',
+                percentageContribution: '0',
+                username: 'admin@sokratik.com'
             }
         ],
         voting: {
@@ -166,14 +173,6 @@ exports.savePresentation = function (req, res) {
     if(!!presentation.recorded){//a hack todo have a separate method later
         presentation.audioRecorded = presentation.audioId ;
         presentation.audioId = uuid.v4();
-        var clonedPresentation = new Presentation();
-        clonedPresentation = _.extend(clonedPresentation, _.omit(presentation,'_id'));
-        clonedPresentation.authors[0].username='admin@sokratik.com';
-        clonedPresentation.save(function (err,obj) {
-            logger.error(err);
-            logger.debug('[Cloned object]'+obj);
-        });
-
     }
     presentation.upDatedOn = new Date();
     presentation.save(function (err, presentation) {
