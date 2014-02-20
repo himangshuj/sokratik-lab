@@ -1,3 +1,8 @@
+<a name="v3.9.1"></a>
+### v3.9.1 (2014-02-20)
+#### Fixes
+admin@sokratik.com was causing issues
+
 <a name="v3.9.0"></a>
 ## v3.9.0 (2014-02-20)
 #### Features
