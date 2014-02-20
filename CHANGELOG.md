@@ -1,3 +1,9 @@
+<a name="v3.8.0"></a>
+## v3.8.0 (2014-02-20)
+### Features
+* session cam integration
+* creation walkthroughs
+
 <a name="v3.7.0"></a>
 ## v3.7.0 (2014-02-17)
 ### Features
