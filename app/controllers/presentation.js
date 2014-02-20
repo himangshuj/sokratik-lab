@@ -150,7 +150,7 @@ exports.hasAccess = function (req, res, next) {
 
     var authors = _.chain(req.presentation.authors).pluck('username')
         .filter(function (username) {
-            return _.isString(username);
+            return _.isString(username) || username != 'admin@sokratik.com';
         }).value();
     if (_.isEmpty(authors) || _.contains(authors, (req.user || {}).username)) {
         next();
@@ -168,7 +168,6 @@ var sanitizeRequestBody = function (presentation) {
 
 exports.savePresentation = function (req, res) {
     var presentation = req.presentation || (new Presentation());
-
     presentation = _.extend(presentation, sanitizeRequestBody(req.body));
     if(!!presentation.recorded){//a hack todo have a separate method later
         presentation.audioRecorded = presentation.audioId ;
