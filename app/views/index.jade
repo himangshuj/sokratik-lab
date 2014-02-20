@@ -11,16 +11,14 @@ block content
     div(class="audio")
         audio(ng-src="{{audioLocation}}",sokratik-audio-track)
         audio(src="//s3-ap-southeast-1.amazonaws.com/demo-answers-sg/Lantern/Happy-minute.mp3", sokratik-background-audio-track)
-    div(class="show-case",ng-show="navigationMode")
-        a(href='//alpha.sokratik.com/play/52a5b24f89163bb73f000026',target='_blank')
-            div.color-purple.tile.tile-footer
-                h1 Teaching
-        a(ui-sref='play.init({presentationId:"52d70691d9de7400c100000e",scriptIndex:0,pausedInterval:0})')
-            div.color-green.tile.tile-footer
-                h1 Story-telling
-        a(ui-sref='play.init({presentationId:"52cef1fb2d9e0d0d6e00045",scriptIndex:0,pausedInterval:0})')
-            div.color-yellow.tile.tile-footer
-                h1 Explainer
-        a(href='//alpha.sokratik.com/play/52a005b54f3b5d090f000007',target='_blank')
-            div.color-blue.tile.tile-footer
-                h1 Active Learning
+    div.sokratik-footer.color-purple.clearfix(ng-show="navigationMode")
+        div.links
+            a.footer-link(ui-sref="why") About
+        div.social
+            div.social-link
+                i.fa.fa-facebook
+            div.social-link
+                i.fa.fa-twitter
+            div.social-link
+                i.fa.fa-youtube
+

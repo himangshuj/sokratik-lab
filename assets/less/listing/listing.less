@@ -1,63 +1,7 @@
-@icon-holder-height:1.3em;
-.navigation{
+  .navigation{
   .listing-main{
     padding: 0em 0px 4px 0px;
     .clearfix;
-    .tile{
-      a{
-        display: block;
-      }
-      a.btn-icon-create{
-        display: inline-block;
-      }
-      .first-box, .second-box{
-        height: inherit;
-      }
-      .first-box{
-        padding-top:@tile-height/2;
-      }
-      .second-box{
-        padding: 2*@icon-holder-height 5px;
-        .subtitle{
-          color:#FFF;
-          text-align: justify;
-        }
-      }
-      .btn-icon-create{
-        margin-top:@tile-height/2-40px;
-      }
-      overflow: hidden;
-      .icon-holder{
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        background-color: rgba(0,0,0,0.2);
-        height: @icon-holder-height;
-        text-align: right;
-        font-size: 1.5em;
-        .fa{
-          padding:0px 4px 0px 4px;
-        }
-        a{
-          color:#CCC;
-          cursor:pointer;
-          display: inline-block;
-          &:hover{
-            color:#FFF;
-          }
-        }
-      }
-    }
-    .tile, .first-box{
-      -webkit-transition: 0.3s;
-      -moz-transition: 0.3s;
-      -ms-transition: 0.3s;
-      -o-transition: 0.3s;
-      transition: 0.3s;
-    }
-    .tile:hover .first-box{
-      margin-top: -@tile-height;
-    }
   }
 
   .color-gray{

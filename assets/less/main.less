@@ -4,7 +4,8 @@
 @import "../../atelier/src/less/main";
 @import 'mixins';
 
-@tile-height:250px;
+@tile-height:214px;
+@icon-holder-height:31px;
 
 .color-red{
   background-color: #f06060;
@@ -128,6 +129,40 @@ body.navigation{
     .clearfix
   }
 
+  .sokratik-footer{
+    width:100%;
+    padding:0.5em 3.43em;
+    font-size:1em;
+    .links{
+      color:#2e046d;
+      float:left;
+      a{
+        color:inherit;
+      }
+      .footer-link{
+        width:100px;
+        display: inline-block;
+      }
+    }
+    .social{
+      float:right;
+      margin-top: -0.2em;
+      .social-link{
+        font-size:1.4em;
+        width:30px;
+        display: inline-block;
+      }
+    }
+    a{
+      color:#FFFFFF;
+
+    }
+    .btn-hollow{
+      .btn-hollow(#cb4e4e);
+    }
+    .clearfix
+  }
+
   .tile{
     .make-xs-column(3,0px);
     box-sizing: border-box;
@@ -138,13 +173,76 @@ body.navigation{
       color:#FFF;
       font-size:2em;
       font-weight: lighter;
-      padding-top:0px;
-      margin-top:-1.5em;
+      padding-top:2em;
       margin-bottom:0.2em;
+      opacity: 1;
     }
     -webkit-backface-visibility:hidden;
     &:hover{
       opacity:1;
+    }
+  }
+  .tile{
+    .tile-box{
+      display: block;
+      height: 100%;
+      &.btn-icon-create{
+        display: inline-block;
+      }
+      .subtitle{
+        color:#FFF;
+        text-align: justify;
+      }
+      img{
+        width:100%;
+        height:100%;
+      }
+    &.heading-box{
+      padding-top:@tile-height/2;
+    }
+    &.description-box{
+      padding: 2*@icon-holder-height 15px;
+      }
+    }
+    overflow: hidden;
+    .icon-holder{
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      background-color: rgba(0,0,0,0.4);
+      height: @icon-holder-height;
+      font-size: 2em;
+      color:#FFF;
+      opacity:1;
+      .icons{
+        text-align: right;
+        font-size: 0.75em;
+        .fa{
+          padding:0px 4px 0px 4px;
+        }
+        a{
+          color:#CCC;
+          cursor:pointer;
+          display: inline-block;
+          &:hover{
+            color:#FFF;
+          }
+        }
+      }
+    }
+    .btn-icon-create{
+      margin-top:@tile-height/2-40px;
+    }
+  }
+  .tile, .animated-box{
+     .transition-standard
+  }
+  .tile:hover {
+      .animated-box{
+          margin-top: -@tile-height;
+        &.no-animation{
+          margin-top: -@tile-height;
+        }
     }
   }
 
@@ -157,7 +255,9 @@ body.navigation{
   }
 }
 
-
+.no-padding{
+  padding:0 !important;
+}
 
 @import 'home/home';
 @import 'signin/signin';
