@@ -59,6 +59,10 @@
                         fromState: fromState,
                         fromParams: fromParams
                     });
+                    if($window.sessionCamRecorder) {
+                        if($window.sessionCamRecorder.createVirtualPageLoad)
+                            $window.sessionCamRecorder.createVirtualPageLoad(toState.name);
+                    }
 
                     $rootScope.loading = false;
                     $window.ga('send', 'pageview', toState.url);
