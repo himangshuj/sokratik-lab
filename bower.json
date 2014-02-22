@@ -18,6 +18,7 @@
     "angular-elastic": "~2.3.0",
     "stacktrace": "~0.5.3",
     "blueimp-canvas-to-blob": "~2.1.0",
-    "yepnope": "~1.5.4"
+    "yepnope": "~1.5.4",
+    "hopscotch": "*"
   }
 }

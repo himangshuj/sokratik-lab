@@ -1,5 +1,5 @@
 window.onload = function () {
-    yepnope.errorTimeout = 5000;
+    yepnope.errorTimeout = 2000;
     yepnope([
 
         {
@@ -9,7 +9,16 @@ window.onload = function () {
                     yepnope('/static/js/lib/binary.min.js');
                 }
             }
-        }
+        } ,
+        {
+            load: '/static/js/hopscotch-0.1.2.min.js',
+            complete: function () {
+                if (!window.hopscotch) {
+                    yepnope('/js/hopscotch-0.1.2.min.js');
+                }
+            }
+        } ,
+
 
     ]);
 
