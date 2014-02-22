@@ -104,6 +104,7 @@ module.exports = function (grunt) {
                     '../assets/js/lib/**/*.js',
                     '../node_modules/binaryjs/dist/binary.js',
                     'stacktrace/stacktrace*js',
+                    'hopscotch/js/hopscotch-0.1.2*.js',
                     'angular-elastic/elastic*js'],
                 filter: 'isFile',
                 cwd: 'vendor',
@@ -143,6 +144,24 @@ module.exports = function (grunt) {
                 cwd: 'public/js/lib',
                 flatten: true,
                 expand: true
+            },
+            css:{
+                dest: '<%= staticRoot %>/css',
+                src: ['**/*.css'],
+                filter: 'isFile',
+                cwd: 'vendor',
+                flatten: true,
+                expand: true
+
+            },
+            img:{
+                dest: '<%= staticRoot %>/img',
+                src: ['**/*.png'],
+                filter: 'isFile',
+                cwd: 'vendor',
+                flatten: true,
+                expand: true
+
             }
 
         },

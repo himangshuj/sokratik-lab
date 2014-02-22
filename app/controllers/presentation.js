@@ -150,7 +150,7 @@ exports.hasAccess = function (req, res, next) {
 
     var authors = _.chain(req.presentation.authors).pluck('username')
         .filter(function (username) {
-            return _.isString(username) || username != 'admin@sokratik.com';
+            return _.isString(username) || username !== 'admin@sokratik.com';
         }).value();
     if (_.isEmpty(authors) || _.contains(authors, (req.user || {}).username)) {
         next();
@@ -192,6 +192,7 @@ exports.deletePresentation = function (req, res) {
     var presentation = req.presentation;
     presentation.deleted = true;
     presentation.save(function (err) {
+        logger.error(err);
         res.jsonp(presentation);
     });
 };
