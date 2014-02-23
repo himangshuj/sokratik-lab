@@ -37,9 +37,9 @@ server{
         	expires max;
      	 }
 
-    location /css {
-        alias /local/www/sokratik/css;
-    }
+  location /static/css/hopscotch-0.1.2.min.css {
+             alias /local/www/sokratik/static/css/hopscotch-0.1.2.min.css;
+         }
     location /recordings {
         alias /tmp/recordings;
     }
@@ -85,9 +85,9 @@ server{
         	expires max;
      	 }
 
-    location /css {
-        alias /local/www/sokratik/css;
-    }
+   location /static/css/hopscotch-0.1.2.min.css {
+           alias /local/www/sokratik/static/css/hopscotch-0.1.2.min.css;
+       }
     location /recordings {
         alias /tmp/recordings;
     }
