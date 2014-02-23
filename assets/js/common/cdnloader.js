@@ -34,8 +34,6 @@ window.onload = function () {
         {
             load:['//d2oh4tlt9mrke9.cloudfront.net/Record/js/sessioncam.js']
         }
-
-
     ]);
 
 
