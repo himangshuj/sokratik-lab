@@ -1,3 +1,7 @@
+@padding-sm:50px;
+@padding-md:150px;
+@padding-lg:250px;
+
 .color-changing-link(@color-final){
   &:hover{
     color:@color-final;
@@ -12,4 +16,17 @@
   -ms-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+}
+
+.padme(@top-padding:5px, @add-padding:0px){
+    padding: 0px;
+  @media (min-width: @screen-sm) {
+    padding:@top-padding @padding-sm + @add-padding;
+  }
+  @media (min-width: @screen-md) {
+    padding:@top-padding @padding-md + @add-padding;
+  }
+  @media (min-width: @screen-lg) {
+    padding:@top-padding @padding-lg + @add-padding;
+  }
 }
