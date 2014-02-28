@@ -1,6 +1,7 @@
 (function (ng, app) {
     'use strict';
     ng.module(app, ['ui.router',
+            'ui.bootstrap',
             'templates-lab',
             'sokratik.lab.root',
             'sokratik.lab.home',
