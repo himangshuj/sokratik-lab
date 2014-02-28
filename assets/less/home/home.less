@@ -3,6 +3,7 @@
 @home-tile-height:214px;
 .navigation{
   .masthead{
+    position:relative;
     .padme;
     @media (min-width: @screen-sm) {
       padding-top: 50px;
@@ -79,16 +80,27 @@
         margin-top: 0px;
       }
     }
+    .arrow-down {
+      position:absolute;
+      bottom:-20px;
+      .left-calc(50%, 0.00001, 10, 45%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #f06060;
+    }
     .clearfix
   }
   .gallery{
     text-align:center;
     h1{
+      margin-top:5px;
       font-size:3.5em;
       color:#FFF;
     }
     .subtitle{
-      font-size:15px;
+      color:#FFF;
     }
     .home-show-case{
       margin-top: 1em;

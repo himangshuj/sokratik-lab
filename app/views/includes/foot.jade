@@ -1,6 +1,7 @@
 //common block for handling error
 script(type='text/javascript') window.onerror=function(e,f,a,b){try{var d=function(h){return h.replace("\\","\\\\").replace('"','\\"')};var c=window.XMLHttpRequest||function(){try{return new ActiveXObject("Msxml3.XMLHTTP")}catch(l){}try{return new ActiveXObject("Msxml2.XMLHTTP.6.0")}catch(k){}try{return new ActiveXObject("Msxml2.XMLHTTP.3.0")}catch(j){}try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(i){}try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(h){}};var g=new c();g.open("POST","/log/error",true);g.setRequestHeader("Content-type","application/json");g.send('{ "message": "'+d(e||"")+'","source": "'+d(f||"")+'","url": "'+d(window.location.href)+'","line": "'+(a||0)+'","column": "'+(b||0)+'"}')}finally{}};
 if(process.env.NODE_ENV === 'development')
+    script#_webengage_script_tag(type='text/javascript') var _weq = _weq || {}; _weq['webengage.licenseCode'] = '76a9cb8';_weq['webengage.widgetVersion'] = "4.0";(function(d){var _we = d.createElement('script');_we.type = 'text/javascript';_we.async = true;_we.src = (d.location.protocol == 'https:' ? "https://ssl.widgets.webengage.com" : "http://cdn.widgets.webengage.com") + "/js/widget/webengage-min-v-4.0.js";var _sNode = d.getElementById('_webengage_script_tag'); _sNode.parentNode.insertBefore(_we, _sNode);})(document);
     //Livereload script rendered
     script(type='text/javascript', src='http://' + req.host + ':35729/livereload.js')
     //AngularJS
@@ -65,6 +66,7 @@ if(process.env.NODE_ENV === 'development')
     //hopscotch
     script(type="text/javascript",src="/js/lib/hopscotch-0.1.2.min.js")
 else
+    script#_webengage_script_tag(type='text/javascript') var _weq = _weq || {}; _weq['webengage.licenseCode'] = '~2024c5b7';_weq['webengage.widgetVersion'] = "4.0";(function(d){var _we = d.createElement('script');_we.type = 'text/javascript';_we.async = true;_we.src = (d.location.protocol == 'https:' ? "https://ssl.widgets.webengage.com" : "http://cdn.widgets.webengage.com") + "/js/widget/webengage-min-v-4.0.js";var _sNode = d.getElementById('_webengage_script_tag'); _sNode.parentNode.insertBefore(_we, _sNode);})(document);
     script(type='text/javascript',src='/static/js/lib/yepnope.1.5.4-min.js')
     script(type='text/javascript',src='/static/js/cdnloader_v346.js')
     script(type='text/javascript',src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')

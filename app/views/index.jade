@@ -14,41 +14,25 @@ block content
             ul.nav.navbar-nav(ng-show='presentationMode')
               li
                 a(ng-click="prevTip()")
-                  i.fa.fa-arrow-circle-left
-                  &nbsp;Last tip
+                  i.fa.fa-arrow-circle-left &nbsp;
+                  | Last tip
               li.active
                 a.highlight.flashing(ng-click="nextTip()") Next tip&nbsp;
                   i.fa.fa-arrow-circle-right
               li.number Slide 1 / 3
             ul.nav.navbar-nav.navbar-right
               li(ng-hide='presentationMode')
-                a(href='#') Samples
+                a(href='#samples') Samples
               li(ng-hide='presentationMode')
                 a(ui-sref="why") Why Sokratik
-              li(ng-hide='presentationMode')
-                a(href='#') How it works
               li(ng-hide="presentationMode || logged || !homeScreen")
                 a.highlight(ui-sref="login") Log in
               li(ng-show="navigationMode && logged")
                 a.highlight(href="/signout") Log out
               li(ng-show="presentationMode")
-                a.help-icon
+                a.help-icon(ng-click='walkthroughActive = true')
+                  | Help
                   i.fa.fa-question-circle
-
-
-              //-li.dropdown
-                //-a.dropdown-toggle(href='#', data-toggle='dropdown')
-                  //-| Dropdown
-                  //-b.caret
-                //-ul.dropdown-menu
-                  //-li
-                    //-a(href='#') Action
-                  //-li
-                    //-a(href='#') Another action
-                  //-li
-                    //-a(href='#') Something else here
-                  //-li
-                    //-a(href='#') Separated link
     div(class="slide-area full-sized", ui-view="root")
     div(class="audio")
         audio(ng-src="{{audioLocation}}",sokratik-audio-track)
