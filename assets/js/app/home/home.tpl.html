@@ -1,5 +1,26 @@
 <div class="color-red masthead">
-    <div class="home-show-case no-animation clearfix" style="display: none">
+    <h1>Explain something today</h1>
+    <div class="subtitle">
+        Create visual narratives. In your voice. <span style="color: #FFF">In minutes</span>
+    </div>
+    <a class="btn btn-pop-out btn-pop-outc" ui-sref=create({}) ng-hide="logged">
+        GET STARTED
+    </a>
+
+    <a class="btn btn-pop-out btn-pop-outc" ui-sref=list({}) ng-show="logged">
+        EDIT YOUR VIDEOS
+    </a>
+    <div class="arrow-down">
+    </div>
+</div>
+<div class="gallery color-gallery-green clearfix" id="samples">
+    <h1>
+        SAMPLES
+    </h1>
+    <div class="subtitle">
+        Here's what people are creating using sokratik
+    </div>
+    <div class="home-show-case no-animation clearfix">
         <div class="tile">
             <a href="//alpha.sokratik.com/play/52a5b24f89163bb73f000026" target="_blank">
                 <div class="icon-holder">
@@ -27,9 +48,9 @@
             </a>
         </div>
         <div class="tile">
-            <a ui-sref="play.init({presentationId:'52cef1fb2d9e0d0d6e000450',scriptIndex:0,pausedInterval:0})" target="_blank">
+            <a target="_blank">
                 <div class="icon-holder">
-                    Product pitches
+                    Marketing videos
                 </div>
                 <div class="tile-box heading-box no-padding animated-box">
                     <img src="img/product-tile.jpg"/>
@@ -40,29 +61,43 @@
             </a>
         </div>
         <div class="tile">
-            <a href="//alpha.sokratik.com/play/52a005b54f3b5d090f000007" target="_blank">
+            <a target="_blank">
                 <div class="icon-holder">
-                    Student projects
+                    Video blogs
                 </div>
                 <div class="tile-box heading-box no-padding animated-box">
-                    <img src="img/active-tile.jpg"/>
+                    <img src="img/blog-tile.jpg"/>
                 </div>
                 <div class="tile-box color-purple description-box">
-                    <div class="subtitle">Implement project-based-learning for any topic! Teach articulation, critical thinking. Unleash your students' creativity and imagination</div>
+                    <div class="subtitle">Explain anything you want to</div>
+                </div>
+            </a>
+        </div>
+        <div class="tile">
+            <a target="_blank">
+                <div class="icon-holder">
+                    Holiday documentaries
+                </div>
+                <div class="tile-box heading-box no-padding animated-box">
+                    <img src="img/holiday-tile.jpg"/>
+                </div>
+                <div class="tile-box color-purple description-box">
+                    <div class="subtitle">Record your precious moments</div>
+                </div>
+            </a>
+        </div>
+        <div class="tile">
+            <a target="_blank">
+                <div class="icon-holder">
+                    Greeting cards
+                </div>
+                <div class="tile-box heading-box no-padding animated-box">
+                    <img src="img/greeting-tile.jpg"/>
+                </div>
+                <div class="tile-box color-purple description-box">
+                    <div class="subtitle">Wish your near and dear ones</div>
                 </div>
             </a>
         </div>
     </div>
-    <h1>Explain something today</h1>
-    <div class="subtitle">
-        Create visual narratives. In your voice. <span style="color: #FFF">In minutes</span>
-    </div>
-    <a class="btn btn-pop-out btn-pop-outc" ui-sref=create({}) ng-hide="logged">
-        GET STARTED
-    </a>
-
-    <a class="btn btn-pop-out btn-pop-outc" ui-sref=list({}) ng-show="logged">
-        EDIT YOUR VIDEOS
-    </a>
-
 </div>
