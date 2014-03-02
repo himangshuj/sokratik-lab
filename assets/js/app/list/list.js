@@ -49,7 +49,6 @@
                     });
                 };
                 $rootScope.presentationMode = false;
-                $rootScope.navigationMode = true;
                 $rootScope.homeScreen = false;
                 $rootScope.audioLocation = $sce.trustAsResourceUrl('//s3-ap-southeast-1.amazonaws.com/demo-answers-sg/Lantern/Happy-minute.mp3');
             }]);

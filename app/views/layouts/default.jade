@@ -8,7 +8,7 @@ ng-app='sokratik.lab.app',
 ng-controller='AppCtrl',
 ng-class="{'full-sized':presentationMode}")
     include ../includes/head
-    body(ng-class="{presentation: presentationMode,navigation:navigationMode }")
+    body(ng-class="{presentation: presentationMode,navigation:!presentationMode }")
             block content
         include ../includes/foot
 

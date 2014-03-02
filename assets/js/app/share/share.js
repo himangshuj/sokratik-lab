@@ -36,7 +36,6 @@
      */
         .controller('ShareCtrl', ['$rootScope', 'presentation', '$scope', '$window', function ($rootScope, presentation, $scope, $window) {
             $rootScope.presentationMode = false;
-            $rootScope.navigationMode = true;
             $rootScope.homeScreen = true;
             $scope.title = presentation.presentationData[0].keyVals.title;
             $scope.presentationId = presentation._id;

@@ -1,43 +1,11 @@
 extends layouts/default
 block content
-    nav.navbar.sokratik-navbar.color-dark-gray(role='navigation')
-          .navbar-header
-            button.navbar-toggle(type='button', ng-init='navCollapsed = true', ng-click='navCollapsed = !navCollapsed')
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand(href='#', ng-show='navigationMode') sokratik
-            a.navbar-brand(href='#', ng-hide='navigationMode')
-              i.fa.fa-home
-          .collapse.navbar-collapse(ng-class='!navCollapsed && \'in\'')
-            ul.nav.navbar-nav(ng-show='presentationMode')
-              li
-                a(ng-click="prevTip()")
-                  i.fa.fa-arrow-circle-left &nbsp;
-                  | Last tip
-              li.active
-                a.highlight.flashing(ng-click="nextTip()") Next tip&nbsp;
-                  i.fa.fa-arrow-circle-right
-              li.number Slide 1 / 3
-            ul.nav.navbar-nav.navbar-right
-              li(ng-hide='presentationMode')
-                a(href='#samples') Samples
-              li(ng-hide='presentationMode')
-                a(ui-sref="why") Why Sokratik
-              li(ng-hide="presentationMode || logged || !homeScreen")
-                a.highlight(ui-sref="login") Log in
-              li(ng-show="navigationMode && logged")
-                a.highlight(href="/signout") Log out
-              li(ng-show="presentationMode")
-                a.help-icon(ng-click='walkthroughActive = true')
-                  | Help
-                  i.fa.fa-question-circle
+
     div(class="slide-area full-sized", ui-view="root")
     div(class="audio")
         audio(ng-src="{{audioLocation}}",sokratik-audio-track)
         audio(src="//s3-ap-southeast-1.amazonaws.com/demo-answers-sg/Lantern/Happy-minute.mp3", sokratik-background-audio-track)
-    div.sokratik-footer.color-dark-gray.clearfix(ng-show="navigationMode")
+    div.sokratik-footer.color-dark-gray.clearfix(ng-hide="presentationMode")
         div.links
             a.footer-link(ui-sref="why") &copy; 2014 sokratik
         div.social

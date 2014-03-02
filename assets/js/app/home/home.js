@@ -19,6 +19,10 @@
                     main: {
                         controller: 'HomeCtrl',
                         templateUrl: 'home/home.tpl.html'
+                    } ,
+                    navBar: {
+                        controller: 'HomeCtrl',
+                        template: 'navigationBar'
                     }
                 },
                 parent:'root'
@@ -41,7 +45,6 @@
      */
         .controller('HomeCtrl', ['$rootScope',  function ($rootScope) {
             $rootScope.presentationMode = false;
-            $rootScope.navigationMode = true;
             $rootScope.homeScreen = true;
         }]);
 })(angular, 'sokratik.lab.home');

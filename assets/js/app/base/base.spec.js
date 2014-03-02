@@ -14,7 +14,6 @@ describe('RootScope', function () {
         it('initialization test', inject(function () {
             expect(RootCtrl).toBeTruthy();
             expect($scope.presentationMode).toBeFalsy();
-            expect($scope.navigationMode).toBeTruthy();
         }));
     });
 });
