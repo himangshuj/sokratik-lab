@@ -1,28 +1,31 @@
-@icon-holder-home-height: 42px;
+@icon-holder-home-height: 30px;
+@tile-padding: 5px;
+@home-tile-height:214px;
 .navigation{
   .masthead{
-    background-color: #f06060;
-    border-bottom: 0.8em solid #ab3c3c;
-    padding: 0em 0em 0.5em 0em;
-    text-align: center;
-    min-height: 33.4em;
-    &.smaller-padding{
-      padding-bottom: 6em;
+    position:relative;
+    .padme;
+    @media (min-width: @screen-sm) {
+      padding-top: 50px;
     }
+    text-align: center;
+    min-height: 34.8em;
     h1{
       font-size:3.6em;
       font-family:'Bree Serif';
       font-weight:lighter;
       margin-bottom:0em;
-//      color:#FFF;
+      color:#FFF;
     }
     .subtitle{
       .desc{
         color:initial;
+        text-align:justify;
         a{
           color:initial;
         }
       }
+      font-family:'Open Sans', sans-serif;
       font-size: 2em;
       margin-bottom: 1em;
       h1 {
@@ -40,8 +43,6 @@
       color: #FFF;
     }
     .sub-container{
-      padding-left: 8em;
-      padding-right: 8em;
       text-align: left;
       font-size: 0.6em;
     }
@@ -79,6 +80,64 @@
         margin-top: 0px;
       }
     }
+    .arrow-down {
+      position:absolute;
+      bottom:-20px;
+      .left-calc(50%, 0.00001, 10, 45%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid #f06060;
+    }
     .clearfix
   }
+  .gallery{
+    text-align:center;
+    h1{
+      margin-top:5px;
+      font-size:3.5em;
+      color:#FFF;
+    }
+    .subtitle{
+      color:#FFF;
+    }
+    .home-show-case{
+      margin-top: 1em;
+      h1{
+        font-family: 'Open Sans';
+        font-size: 2em;
+      }
+      .subtitle{
+        font-size:1.2em;
+      }
+      .tile .icon-holder{
+        font-size:1.5em;
+        height: @icon-holder-home-height;
+        top:@tile-padding;
+        .width-calc(100%, 0.0001, 2*unit(@tile-padding), 85%)
+      }
+      height: @icon-holder-home-height+1px;
+      &.no-animation{
+        height: initial;
+      }
+      overflow: hidden;
+      .transition-standard;
+      &:hover{
+        height: initial;
+      }
+      .tile:hover .animated-box{
+        margin-top: 0px;
+      }
+      .tile{
+        height: @home-tile-height;
+        .make-xs-column(12,0px);
+        .make-sm-column(4,0px);
+        .make-md-column(4,0px);
+        padding:@tile-padding;
+      }
+    }
+    .padme
+  }
 }
+
