@@ -1,16 +1,38 @@
-<div ng-hide="loading" class="full-sized">
-    <div>
-        <div ui-view="navbar">
-
+<div>
+    <nav role="navigation" class="navbar sokratik-navbar color-dark-gray">
+        <div class="navbar-header">
+            <a href="#" ng-hide="presentationMode" class="navbar-brand">sokratik</a>
+            <a href="#" ng-show="presentationMode" class="navbar-brand"><i class="fa fa-home"></i></a>
         </div>
+        <div>
+            <ul ng-show="presentationMode" class="nav navbar-nav ng-hide">
+                <li ng-hide="hideTour"><a ng-click="prevTip()"><i class="fa fa-arrow-circle-left">&nbsp;</i>Last tip</a></li>
+                <li ng-hide="hideTour" class="active"><a ng-click="nextTip()" class="highlight flashing">Next tip&nbsp;<i
+                        class="fa fa-arrow-circle-right"></i></a></li>
+                <li class="number">Slide {{page}} / {{totalPage}}</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-hide="presentationMode">
+                <li><a ng-click="goToSamples()">Samples</a></li>
+                <li><a ui-sref="why" href="#/why">Why Sokratik</a></li>
+                <li><a ng-click="openHowToVideo()">How it works</a></li>
+                <li ng-hide="logged"><a ui-sref="login" class="highlight" href="#/login">Log in</a></li>
+                <li ng-show="logged"><a href="/signout" class="highlight">Log out</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="presentationMode">
+                <li ng-show="presentationMode && !hideTour"><a ng-click="walkthroughActive = true" class="help-icon">Help<i
+                        class="fa fa-question-circle"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="slide-area">
+    <div ng-hide="loading" class="full-sized">
 
-        <div ui-view="main" class="parent-height">
+        <div ui-view="main" class="full-sized">
         </div>
     </div>
-
+    <div ng-show="loading">
+        <div class="spinner-backdrop" style="opacity:0.5"></div>
+        <div id="spinner"></div>
+    </div>
 </div>
-<div ng-show="loading">
-    <div class="spinner-backdrop" style="opacity:0.5"></div>
-    <div id="spinner"></div>
-</div>
-

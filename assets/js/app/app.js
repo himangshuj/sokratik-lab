@@ -27,8 +27,8 @@
                             );
                         };
                     }]);
-                $provide.decorator("$log", ['$delegate', '$injector',
-                    function ($delegate, $injector) {
+                $provide.decorator("$log", ['$delegate', '$injector','$window',
+                    function ($delegate, $injector,$window) {
                         var _info = $delegate.info; //Saving the original behavior
                         $delegate.info = function (msg) {
                             $injector.get('loggingService').info({info: msg,
