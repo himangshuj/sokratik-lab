@@ -19,10 +19,6 @@
                     main: {
                         controller: 'HomeCtrl',
                         templateUrl: 'home/home.tpl.html'
-                    } ,
-                    navBar: {
-                        controller: 'HomeCtrl',
-                        template: 'navigationBar'
                     }
                 },
                 parent:'root'

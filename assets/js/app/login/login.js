@@ -9,11 +9,12 @@
             $stateProvider.state('login', {
                 url: '/login',
                 views: {
-                    root: {
+                    main: {
                         controller: 'LoginCtrl',
                         templateUrl: 'login/login.tpl.html'
                     }
-                }
+                },
+                parent: 'root'
             });
         }])
 

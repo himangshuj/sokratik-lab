@@ -8,6 +8,7 @@
             $modalInstance.dismiss();
         };
     }];
+
     var createPresentation = _.once(function ($state, $stateParams, $modal, presentation) {
         var modalInstance = $modal.open({
             templateUrl: 'create/howto.modal.tpl.html',
@@ -70,6 +71,6 @@
         .controller('CreateCtrl', ['$state', '$stateParams', '$modal', 'presentation','$window',
             function ($state, $stateParams, $modal, presentation,$window) {
                 $window.ga('send', 'event', 'ImportantStates', 'click', 'editStarted');
-                createPresentation($state, $stateParams, $modal, presentation);
+                $state.go('edit', {templateName: 'title', presentationId: presentation._id, page: 0, images: 0});
             }]);
 })(angular, 'sokratik.lab.create');

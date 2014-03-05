@@ -16,7 +16,7 @@
                         return function (exception, cause) {
                             $delegate(exception, cause);
                             var errorMessage = exception.toString();
-                            var stackTrace = printStackTrace({ e: exception });
+                            var stackTrace = ($window.printStackTrace || ng.noop)({ e: exception });
                             var errorUrl = $window.location.href;
                             var because = cause || "";
 
@@ -32,10 +32,8 @@
                         var _info = $delegate.info; //Saving the original behavior
                         $delegate.info = function (msg) {
                             $injector.get('loggingService').info({info: msg,
-                                    stackTrace: printStackTrace(),
                                     url: $injector.get('$location').hash()}
                             );
-
                         };
                         return $delegate;
                     }]);

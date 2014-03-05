@@ -71,7 +71,6 @@
                         $window.hopscotch.startTour(_tour, tourIndex);
                     }
                 }
-                console.log("variables propagated");
                 $scope.page = _page + 1;
                 $scope.totalPage = _totalPage;
                 event.stopPropagation();
