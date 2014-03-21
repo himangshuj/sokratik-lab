@@ -10,7 +10,7 @@
             'sokratik.lab.create'])
         .config(['$urlRouterProvider', '$provide',
             function ($urlRouterProvider, $provide) {
-                $urlRouterProvider.otherwise('/home');
+                $urlRouterProvider.otherwise('/home/false');
                 $provide.decorator("$exceptionHandler", ['$delegate', '$injector', '$window',
                     function ($delegate, $injector, $window) {
                         return function (exception, cause) {
@@ -40,7 +40,7 @@
                         return $delegate;
                     }]);
             }])
-        .run(['$rootScope', 'loggingService','$window', function ($rootScope, loggingService,$window) {
+        .run(['$rootScope', 'loggingService','$window','apollo', function ($rootScope, loggingService,$window,apollo) {
             $rootScope.loading = false;
             $rootScope.$on('$stateChangeStart',
                 function (event, toState, toParams, fromState, fromParams) {
@@ -49,6 +49,11 @@
                         fromState: fromState,
                         fromParams: fromParams
                     });
+                    if(!_.str.include(toState.name, "play")){
+                        apollo.cleanUp();
+                        apollo.stopBGAudio();
+                    }
+
                     $rootScope.loading = true;
 
                 });

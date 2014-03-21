@@ -137,14 +137,35 @@ describe('<Unit Test>', function () {
                 });
             });
 
-            it('fetch presentation test',function(done){
-                Presentation.find({'authors.username':'Himangshu','deleted': {$ne: true}},function(err,presentations){
+            it('fetch presentation test', function (done) {
+                Presentation.find({'authors.username': 'Himangshu', 'deleted': {$ne: true}}, function (err, presentations) {
                     presentations.should.have.length(1);
                     done();
                 });
-            })
+            });
 
-
+            it('fallbackscript test', function (done) {
+                var presentationConsidered = presentation1;
+                var page = 0;
+                var startTime = (new Date()).getTime();
+                presentationConsidered.fallBackScript = _.flatten(_.map(presentationConsidered.presentationData, function (presentationData) {
+                    var fragmentIndex = 0;
+                    return _.union(
+                        [
+                            {fnName: 'changeState', args: {subState: 'active', params: {page: page++}},
+                                actionInitiated: startTime,
+                                module: 'dialogue'}
+                        ], _.map(presentationData.keyVals, function (key, val) {
+                            return {'fnName': 'makeVisible', module: 'dialogue',
+                                args: {index: fragmentIndex++},
+                                actionInitiated: ((startTime += _.size(key) * 1000 ) - _.size(key) * 1000 )};//ensuring startTime is incremented after assignment
+                        }));
+                }));
+                presentationConsidered.save(function (err, obj) {
+                    console.log(obj.fallBackScript);
+                    done();
+                });
+            });
         });
 
 
