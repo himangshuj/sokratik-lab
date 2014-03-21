@@ -7,7 +7,7 @@
         </div>
         <div ng-repeat="presentation in presentations">
             <div class="tile" ng-class="colors[$index%len]">
-                <div class="icon-holder">
+                <div class="icon-holder" ng-show="logged">
                     <div class="icons">
                         <a ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" target="_blank"><i class="fa fa-edit" tooltip-placement="left" tooltip="Edit your video"></i></a>
                         <a ui-sref="record.activate({presentationId:presentation.id,page:0})"><i class="fa fa-microphone" target="_blank" tooltip-placement="left" tooltip="Record your voice over the video"></i></a>
@@ -15,7 +15,7 @@
                         <a ng-click="deletePresentation(presentation.id)" ><i class="fa fa-trash-o" tooltip-placement="left" tooltip="Delete your video" target="_blank"></i></a>
                     </div>
                 </div>
-                <a class="tile-box heading-box animated-box no-animation" ui-sref="edit({templateName:'title',presentationId : presentation.id,page: 0,images:0})" target="_blank">
+                <a class="tile-box heading-box animated-box no-animation" ui-sref="play.init({presentationId:presentation.id,scriptIndex:0,pausedInterval:0})" target="_blank">
                     <h1>{{presentation.title}}</h1>
                     <div class="subtitle">
                         <span ng-repeat="contentParam in presentation.contentParams">
