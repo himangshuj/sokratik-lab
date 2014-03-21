@@ -26,7 +26,9 @@
             var login = function () {
                 userService.login($scope.email, $scope.password).then(function (resp) {
                     if (_.isEqual(resp.message, "success")) {
-                        $state.go('list');
+                        _.defer(function () {
+                            $state.go('list',{},{reload:true});
+                        });
                     } else {
                         $scope.errorMessage = "Invalid user id or password";
                     }
@@ -35,7 +37,9 @@
             var createUser = function () {
                 userService.createUser($scope.email, $scope.password).then(function (resp) {
                     if (_.isEqual(resp.message, "success")) {
-                        $state.go('home');
+                        _.defer(function () {
+                            $state.go('home',{},{reload:true});
+                        });
                     } else {
                         $scope.errorMessage = resp.message;
                     }
