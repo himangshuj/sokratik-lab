@@ -10,7 +10,7 @@
             'sokratik.lab.create'])
         .config(['$urlRouterProvider', '$provide',
             function ($urlRouterProvider, $provide) {
-                $urlRouterProvider.otherwise('/home');
+                $urlRouterProvider.otherwise('/home/false');
                 $provide.decorator("$exceptionHandler", ['$delegate', '$injector', '$window',
                     function ($delegate, $injector, $window) {
                         return function (exception, cause) {

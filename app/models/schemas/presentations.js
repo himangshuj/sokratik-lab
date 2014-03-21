@@ -28,6 +28,14 @@ module.exports = function (mongoose) {
                         module: String
                     }
                 ],
+                fallBackScript: [
+                    {
+                        fnName: String,
+                        actionInitiated: Number,
+                        args: {},
+                        module: String
+                    }
+                ],
                 recordingStarted: Date,
                 annotation: {},
                 files: [],

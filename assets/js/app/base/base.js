@@ -12,7 +12,9 @@
             templateUrl: 'create/howto.modal.tpl.html',
             controller: _videoModalCtrl
         });
-        modalInstance.result.then(function () {}, function () {});
+        modalInstance.result.then(function () {
+        }, function () {
+        });
 
     };
     ng.module(module, [
@@ -24,7 +26,7 @@
             $stateProvider.state('root', {
                 abstract: true,
                 resolve: {
-                    loggedUser: ['userService',  function (userService) {
+                    loggedUser: ['userService', function (userService) {
                         return userService.loggedUser();
                     }],
                     logged: ['loggedUser', '$rootScope', '$log', function (loggedUser, $rootScope) {
@@ -46,11 +48,10 @@
             $rootScope.presentationMode = false;
             $rootScope.homeScreen = false;
             $scope.walkthroughActive = false;
-            $scope.goToSamples = function(){
-                $location.hash('samples');
-                $anchorScroll();
+            $scope.goToSamples = function () {
+                $state.go("home", {scroll: true}, {reload: true});
             };
-            $scope.openHowToVideo = function(){
+            $scope.openHowToVideo = function () {
                 createPresentation($state, $stateParams, $modal);
             };
             $scope.$on('variablePropagation', function (event, _page, _totalPage, _tour) {
@@ -93,10 +94,10 @@
                         $window.hopscotch.startTour(_tour, tourIndex);
                     }
                 }
-                else{   //To know that this is play mode
-                    $scope.hideTour=true;
+                else {   //To know that this is play mode
+                    $scope.hideTour = true;
                 }
-                $scope.page = _page + 1;
+                $scope.page = parseInt("" + _page, 10) + 1;
                 $scope.totalPage = _totalPage;
                 event.stopPropagation();
             });

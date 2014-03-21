@@ -12,10 +12,11 @@
                 <li class="number">Slide {{page}} / {{totalPage}}</li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-hide="presentationMode">
-                <li><a ng-click="goToSamples()">Samples</a></li>
-                <li><a ui-sref="why" href="#/why">Why Sokratik</a></li>
+                <li><a ng-click="goToSamples()">Showcase</a></li>
+                <li><a ui-sref="list">Encyclopedia</a> </li>
+                <li><a ui-sref="why" ui-sref="why">Why Sokratik?</a></li>
                 <li><a ng-click="openHowToVideo()">How it works</a></li>
-                <li ng-hide="logged"><a ui-sref="login" class="highlight" href="#/login">Log in</a></li>
+                <li ng-hide="logged"><a ui-sref="login" class="highlight" ui-sref="login">Log in</a></li>
                 <li ng-show="logged"><a href="/signout" class="highlight">Log out</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="presentationMode">
