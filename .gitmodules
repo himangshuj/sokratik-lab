@@ -1,3 +1,3 @@
 [submodule "atelier"]
 	path = atelier
-	url = git@gitlab.com:sokratik/atelier.git
+	url = git@github.com:himangshuj/atelier.git
